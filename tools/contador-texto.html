@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Texto - My Tools</title>
+    <meta name="description" content="Conte palavras, caracteres, parágrafos e linhas de qualquer texto. Ferramenta gratuita e precisa para análise de texto.">
+    <meta name="keywords" content="contador palavras, contador caracteres, análise texto, contar palavras">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../" class="logo">My Tools</a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../" class="nav-link">Início</a></li>
+                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>🔢 Contador de Texto</h1>
+            <p>Conte palavras, caracteres, parágrafos e linhas de qualquer texto</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label for="textInput" class="form-label">Digite ou cole seu texto:</label>
+                <textarea id="textInput" class="form-textarea" placeholder="Digite ou cole seu texto aqui..." rows="10"></textarea>
+            </div>
+
+            <div class="result-area" style="display: block;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #2563eb;" id="charCount">0</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Caracteres</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #10b981;" id="charCountNoSpaces">0</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Sem espaços</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #f59e0b;" id="wordCount">0</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Palavras</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #ef4444;" id="lineCount">0</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Linhas</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #8b5cf6;" id="paragraphCount">0</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Parágrafos</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                        <div style="font-size: 2rem; font-weight: bold; color: #06b6d4;" id="readingTime">0</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Min. leitura</div>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <button onclick="copyStats()" class="btn btn-secondary">Copiar Estatísticas</button>
+                    <button onclick="clearText()" class="btn btn-secondary">Limpar Texto</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Análise Detalhada</h3>
+            <div id="detailedStats">
+                <p><strong>Densidade de palavras:</strong> <span id="wordDensity">0</span> palavras por linha</p>
+                <p><strong>Tamanho médio das palavras:</strong> <span id="avgWordLength">0</span> caracteres</p>
+                <p><strong>Palavras mais comuns:</strong> <span id="commonWords">-</span></p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Como usar o Contador de Texto</h3>
+            <ul>
+                <li>Digite ou cole seu texto na área de texto acima</li>
+                <li>As estatísticas são atualizadas automaticamente em tempo real</li>
+                <li>Use o botão "Copiar Estatísticas" para copiar um resumo das contagens</li>
+                <li>O tempo de leitura é calculado baseado em 200 palavras por minuto</li>
+            </ul>
+
+            <h3>Informações sobre as Métricas</h3>
+            <ul>
+                <li><strong>Caracteres:</strong> Total de caracteres incluindo espaços e pontuação</li>
+                <li><strong>Sem espaços:</strong> Caracteres excluindo espaços em branco</li>
+                <li><strong>Palavras:</strong> Sequências de caracteres separadas por espaços</li>
+                <li><strong>Linhas:</strong> Número de quebras de linha no texto</li>
+                <li><strong>Parágrafos:</strong> Blocos de texto separados por linhas em branco</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Ferramentas</h4>
+                    <ul class="footer-links">
+                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Geradores</h4>
+                    <ul class="footer-links">
+                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html">Base64</a></li>
+                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">Sobre Nós</a></li>
+                        <li><a href="../contact.html">Contato</a></li>
+                        <li><a href="../privacy.html">Privacidade</a></li>
+                        <li><a href="../terms.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>My Tools</h4>
+                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 My Tools. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function countText() {
+            const text = document.getElementById('textInput').value;
+            
+            // Basic counts
+            const charCount = text.length;
+            const charCountNoSpaces = text.replace(/\s/g, '').length;
+            const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+            const lineCount = text === '' ? 0 : text.split('\n').length;
+            
+            // Paragraph count (blocks of text separated by empty lines)
+            const paragraphs = text.trim().split(/\n\s*\n/);
+            const paragraphCount = text.trim() === '' ? 0 : paragraphs.length;
+            
+            // Reading time (200 words per minute)
+            const readingTime = Math.ceil(wordCount / 200);
+
+            // Update basic stats
+            document.getElementById('charCount').textContent = formatNumber(charCount);
+            document.getElementById('charCountNoSpaces').textContent = formatNumber(charCountNoSpaces);
+            document.getElementById('wordCount').textContent = formatNumber(wordCount);
+            document.getElementById('lineCount').textContent = formatNumber(lineCount);
+            document.getElementById('paragraphCount').textContent = formatNumber(paragraphCount);
+            document.getElementById('readingTime').textContent = readingTime;
+
+            // Detailed analysis
+            const wordDensity = lineCount > 0 ? (wordCount / lineCount).toFixed(1) : 0;
+            document.getElementById('wordDensity').textContent = wordDensity;
+
+            const avgWordLength = wordCount > 0 ? (charCountNoSpaces / wordCount).toFixed(1) : 0;
+            document.getElementById('avgWordLength').textContent = avgWordLength;
+
+            // Most common words
+            if (wordCount > 0) {
+                const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+                const wordFreq = {};
+                words.forEach(word => {
+                    if (word.length > 2) { // Ignore words with 2 or fewer characters
+                        wordFreq[word] = (wordFreq[word] || 0) + 1;
+                    }
+                });
+
+                const sortedWords = Object.entries(wordFreq)
+                    .sort(([,a], [,b]) => b - a)
+                    .slice(0, 3)
+                    .map(([word, count]) => `${word} (${count})`)
+                    .join(', ');
+
+                document.getElementById('commonWords').textContent = sortedWords || '-';
+            } else {
+                document.getElementById('commonWords').textContent = '-';
+            }
+        }
+
+        function copyStats() {
+            const charCount = document.getElementById('charCount').textContent;
+            const charCountNoSpaces = document.getElementById('charCountNoSpaces').textContent;
+            const wordCount = document.getElementById('wordCount').textContent;
+            const lineCount = document.getElementById('lineCount').textContent;
+            const paragraphCount = document.getElementById('paragraphCount').textContent;
+            const readingTime = document.getElementById('readingTime').textContent;
+
+            const stats = `Estatísticas do Texto:
+Caracteres: ${charCount}
+Caracteres (sem espaços): ${charCountNoSpaces}
+Palavras: ${wordCount}
+Linhas: ${lineCount}
+Parágrafos: ${paragraphCount}
+Tempo de leitura: ${readingTime} min`;
+
+            copyToClipboard(stats);
+        }
+
+        function clearText() {
+            document.getElementById('textInput').value = '';
+            countText();
+            document.getElementById('textInput').focus();
+        }
+
+        // Update counts in real time
+        document.getElementById('textInput').addEventListener('input', countText);
+        document.getElementById('textInput').addEventListener('paste', function() {
+            setTimeout(countText, 10); // Small delay to ensure paste content is processed
+        });
+
+        // Initialize counts
+        document.addEventListener('DOMContentLoaded', function() {
+            countText();
+            document.getElementById('textInput').focus();
+        });
+    </script>
+</body>
+</html>

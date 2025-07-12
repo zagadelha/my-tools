@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codificador Base64 - My Tools</title>
+    <meta name="description" content="Codifique e decodifique textos em Base64 de forma rápida e segura. Ferramenta gratuita para encoding e decoding Base64.">
+    <meta name="keywords" content="base64, codificar, decodificar, encoding, decoding, conversor base64">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../" class="logo">My Tools</a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../" class="nav-link">Início</a></li>
+                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>🔐 Codificador Base64</h1>
+            <p>Codifique e decodifique textos em Base64 de forma rápida e segura</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                    <button id="encodeBtn" class="btn btn-primary" onclick="setMode('encode')">Codificar</button>
+                    <button id="decodeBtn" class="btn btn-secondary" onclick="setMode('decode')">Decodificar</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputText" class="form-label" id="inputLabel">Texto para codificar:</label>
+                <textarea id="inputText" class="form-textarea" placeholder="Digite o texto aqui..." rows="6"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button onclick="processText()" class="btn btn-primary btn-full" id="processBtn">Codificar</button>
+            </div>
+
+            <div class="form-group">
+                <label for="outputText" class="form-label" id="outputLabel">Resultado:</label>
+                <textarea id="outputText" class="form-textarea" placeholder="O resultado aparecerá aqui..." rows="6" readonly></textarea>
+            </div>
+
+            <div class="result-actions">
+                <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
+                <button onclick="swapTextAreas()" class="btn btn-secondary">Trocar ⇅</button>
+                <button onclick="clearAll()" class="btn btn-secondary">Limpar Tudo</button>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Codificação/Decodificação de Arquivos</h3>
+            <div class="form-group">
+                <label for="fileInput" class="form-label">Selecionar arquivo:</label>
+                <input type="file" id="fileInput" class="form-input" accept=".txt,.json,.xml,.csv,.log">
+            </div>
+            <div class="form-group">
+                <button onclick="processFile()" class="btn btn-primary btn-full">Processar Arquivo</button>
+            </div>
+            <div class="form-group">
+                <label for="fileOutput" class="form-label">Resultado do arquivo:</label>
+                <textarea id="fileOutput" class="form-textarea" rows="4" readonly placeholder="O resultado do arquivo aparecerá aqui..."></textarea>
+            </div>
+            <div class="result-actions">
+                <button onclick="copyFileResult()" class="btn btn-secondary">Copiar</button>
+                <button onclick="downloadResult()" class="btn btn-secondary">Download</button>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Sobre Base64</h3>
+            <p>Base64 é um método de codificação que converte dados binários em texto ASCII usando 64 caracteres específicos (A-Z, a-z, 0-9, +, /).</p>
+            
+            <h4>Quando usar Base64:</h4>
+            <ul>
+                <li><strong>Transmissão de dados:</strong> Para enviar dados binários por protocolos que só aceitam texto</li>
+                <li><strong>URLs e emails:</strong> Para incluir dados em URLs ou emails sem quebrar a formatação</li>
+                <li><strong>Armazenamento:</strong> Para salvar dados binários em bancos de dados que só aceitam texto</li>
+                <li><strong>APIs:</strong> Muitas APIs usam Base64 para transmitir imagens e outros arquivos</li>
+            </ul>
+
+            <h4>Características:</h4>
+            <ul>
+                <li>Não é criptografia - é apenas codificação</li>
+                <li>Aumenta o tamanho do dados em aproximadamente 33%</li>
+                <li>É reversível - você pode sempre decodificar de volta</li>
+                <li>É seguro para URLs e sistemas que não suportam caracteres especiais</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Ferramentas</h4>
+                    <ul class="footer-links">
+                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Geradores</h4>
+                    <ul class="footer-links">
+                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html">Base64</a></li>
+                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">Sobre Nós</a></li>
+                        <li><a href="../contact.html">Contato</a></li>
+                        <li><a href="../privacy.html">Privacidade</a></li>
+                        <li><a href="../terms.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>My Tools</h4>
+                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 My Tools. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        let currentMode = 'encode';
+
+        function setMode(mode) {
+            currentMode = mode;
+            const encodeBtn = document.getElementById('encodeBtn');
+            const decodeBtn = document.getElementById('decodeBtn');
+            const inputLabel = document.getElementById('inputLabel');
+            const outputLabel = document.getElementById('outputLabel');
+            const processBtn = document.getElementById('processBtn');
+
+            if (mode === 'encode') {
+                encodeBtn.className = 'btn btn-primary';
+                decodeBtn.className = 'btn btn-secondary';
+                inputLabel.textContent = 'Texto para codificar:';
+                outputLabel.textContent = 'Base64 codificado:';
+                processBtn.textContent = 'Codificar';
+                document.getElementById('inputText').placeholder = 'Digite o texto aqui...';
+            } else {
+                encodeBtn.className = 'btn btn-secondary';
+                decodeBtn.className = 'btn btn-primary';
+                inputLabel.textContent = 'Base64 para decodificar:';
+                outputLabel.textContent = 'Texto decodificado:';
+                processBtn.textContent = 'Decodificar';
+                document.getElementById('inputText').placeholder = 'Cole o Base64 aqui...';
+            }
+
+            // Auto process if there's content
+            const inputText = document.getElementById('inputText').value;
+            if (inputText.trim()) {
+                processText();
+            }
+        }
+
+        function processText() {
+            const inputText = document.getElementById('inputText').value;
+            const outputText = document.getElementById('outputText');
+
+            if (!inputText.trim()) {
+                outputText.value = '';
+                return;
+            }
+
+            try {
+                if (currentMode === 'encode') {
+                    // Encode to Base64
+                    const encoded = btoa(unescape(encodeURIComponent(inputText)));
+                    outputText.value = encoded;
+                } else {
+                    // Decode from Base64
+                    const decoded = decodeURIComponent(escape(atob(inputText)));
+                    outputText.value = decoded;
+                }
+            } catch (error) {
+                if (currentMode === 'decode') {
+                    outputText.value = 'Erro: Base64 inválido. Verifique se o texto está correto.';
+                } else {
+                    outputText.value = 'Erro ao codificar o texto.';
+                }
+            }
+        }
+
+        function copyResult() {
+            const outputText = document.getElementById('outputText').value;
+            if (outputText) {
+                copyToClipboard(outputText);
+            }
+        }
+
+        function swapTextAreas() {
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            
+            const temp = inputText.value;
+            inputText.value = outputText.value;
+            outputText.value = temp;
+
+            // Switch mode
+            setMode(currentMode === 'encode' ? 'decode' : 'encode');
+        }
+
+        function clearAll() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            document.getElementById('fileOutput').value = '';
+            document.getElementById('fileInput').value = '';
+            document.getElementById('inputText').focus();
+        }
+
+        function processFile() {
+            const fileInput = document.getElementById('fileInput');
+            const fileOutput = document.getElementById('fileOutput');
+            
+            if (!fileInput.files[0]) {
+                alert('Por favor, selecione um arquivo.');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                try {
+                    const content = e.target.result;
+                    if (currentMode === 'encode') {
+                        const encoded = btoa(unescape(encodeURIComponent(content)));
+                        fileOutput.value = encoded;
+                    } else {
+                        const decoded = decodeURIComponent(escape(atob(content)));
+                        fileOutput.value = decoded;
+                    }
+                } catch (error) {
+                    fileOutput.value = 'Erro ao processar arquivo. Verifique se é um arquivo de texto válido.';
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+        function copyFileResult() {
+            const fileOutput = document.getElementById('fileOutput').value;
+            if (fileOutput) {
+                copyToClipboard(fileOutput);
+            }
+        }
+
+        function downloadResult() {
+            const fileOutput = document.getElementById('fileOutput').value;
+            if (!fileOutput) {
+                alert('Nenhum resultado para download.');
+                return;
+            }
+
+            const blob = new Blob([fileOutput], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = currentMode === 'encode' ? 'encoded_base64.txt' : 'decoded_text.txt';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Auto process on input
+        document.getElementById('inputText').addEventListener('input', function() {
+            if (this.value.trim()) {
+                processText();
+            } else {
+                document.getElementById('outputText').value = '';
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            setMode('encode');
+            document.getElementById('inputText').focus();
+        });
+    </script>
+</body>
+</html>

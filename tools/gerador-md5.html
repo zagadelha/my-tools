@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador MD5 - My Tools</title>
+    <meta name="description" content="Gere hashes MD5 para verificação de integridade e segurança. Ferramenta gratuita para criação de checksums MD5.">
+    <meta name="keywords" content="md5, hash, checksum, criptografia, segurança, verificação integridade">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../" class="logo">My Tools</a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../" class="nav-link">Início</a></li>
+                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>🔒 Gerador MD5</h1>
+            <p>Gere hashes MD5 para verificação de integridade e segurança</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label for="inputText" class="form-label">Texto para gerar MD5:</label>
+                <textarea id="inputText" class="form-textarea" placeholder="Digite o texto aqui..." rows="6"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button onclick="generateMD5()" class="btn btn-primary btn-full">Gerar MD5</button>
+            </div>
+
+            <div class="form-group">
+                <label for="md5Result" class="form-label">Hash MD5:</label>
+                <input type="text" id="md5Result" class="form-input" readonly placeholder="O hash MD5 aparecerá aqui...">
+            </div>
+
+            <div class="result-actions">
+                <button onclick="copyMD5()" class="btn btn-secondary">Copiar MD5</button>
+                <button onclick="clearAll()" class="btn btn-secondary">Limpar</button>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Verificador MD5</h3>
+            <p>Compare dois hashes MD5 para verificar se são iguais:</p>
+            
+            <div class="form-group">
+                <label for="hash1" class="form-label">Hash 1:</label>
+                <input type="text" id="hash1" class="form-input" placeholder="Cole o primeiro hash MD5 aqui...">
+            </div>
+
+            <div class="form-group">
+                <label for="hash2" class="form-label">Hash 2:</label>
+                <input type="text" id="hash2" class="form-input" placeholder="Cole o segundo hash MD5 aqui...">
+            </div>
+
+            <div class="form-group">
+                <button onclick="compareHashes()" class="btn btn-primary btn-full">Comparar Hashes</button>
+            </div>
+
+            <div id="compareResult" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 4px; text-align: center; font-weight: bold;">
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Geração de MD5 para Arquivos</h3>
+            <div class="form-group">
+                <label for="fileInput" class="form-label">Selecionar arquivo:</label>
+                <input type="file" id="fileInput" class="form-input">
+            </div>
+            
+            <div class="form-group">
+                <button onclick="generateFileMD5()" class="btn btn-primary btn-full">Gerar MD5 do Arquivo</button>
+            </div>
+
+            <div class="form-group">
+                <label for="fileMD5Result" class="form-label">MD5 do arquivo:</label>
+                <input type="text" id="fileMD5Result" class="form-input" readonly placeholder="O MD5 do arquivo aparecerá aqui...">
+            </div>
+
+            <div class="result-actions">
+                <button onclick="copyFileMD5()" class="btn btn-secondary">Copiar MD5</button>
+            </div>
+
+            <div id="fileInfo" style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 4px; display: none;">
+                <h4>Informações do Arquivo:</h4>
+                <p><strong>Nome:</strong> <span id="fileName"></span></p>
+                <p><strong>Tamanho:</strong> <span id="fileSize"></span></p>
+                <p><strong>Tipo:</strong> <span id="fileType"></span></p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Sobre MD5</h3>
+            <p>MD5 (Message Digest Algorithm 5) é uma função de hash criptográfica que produz um valor hash de 128 bits (32 caracteres hexadecimais).</p>
+            
+            <h4>Usos Comuns do MD5:</h4>
+            <ul>
+                <li><strong>Verificação de integridade:</strong> Verificar se um arquivo não foi corrompido durante a transferência</li>
+                <li><strong>Checksums:</strong> Validar downloads e backups</li>
+                <li><strong>Identificação única:</strong> Criar identificadores únicos para dados</li>
+                <li><strong>Cache e deduplicação:</strong> Identificar conteúdo duplicado</li>
+            </ul>
+
+            <h4>Características do MD5:</h4>
+            <ul>
+                <li>Sempre produz um hash de 32 caracteres</li>
+                <li>É unidirecional - não pode ser "descriptografado"</li>
+                <li>Pequenas mudanças no input resultam em hashes completamente diferentes</li>
+                <li>O mesmo input sempre produz o mesmo hash</li>
+            </ul>
+
+            <div style="background: #fef3cd; border: 1px solid #facc15; border-radius: 4px; padding: 1rem; margin-top: 1rem;">
+                <h4 style="color: #92400e;">⚠️ Importante sobre Segurança:</h4>
+                <p style="color: #92400e; margin-bottom: 0;">MD5 não é mais considerado seguro para uso criptográfico devido a vulnerabilidades conhecidas. Para aplicações de segurança, use SHA-256 ou algoritmos mais modernos. MD5 ainda é útil para verificação de integridade básica e checksums.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Ferramentas</h4>
+                    <ul class="footer-links">
+                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Geradores</h4>
+                    <ul class="footer-links">
+                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html">Base64</a></li>
+                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">Sobre Nós</a></li>
+                        <li><a href="../contact.html">Contato</a></li>
+                        <li><a href="../privacy.html">Privacidade</a></li>
+                        <li><a href="../terms.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>My Tools</h4>
+                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 My Tools. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
+    <script>
+        function generateMD5() {
+            const inputText = document.getElementById('inputText').value;
+            const resultField = document.getElementById('md5Result');
+
+            if (!inputText) {
+                resultField.value = '';
+                return;
+            }
+
+            try {
+                const hash = CryptoJS.MD5(inputText).toString();
+                resultField.value = hash;
+            } catch (error) {
+                resultField.value = 'Erro ao gerar MD5';
+            }
+        }
+
+        function copyMD5() {
+            const md5Result = document.getElementById('md5Result').value;
+            if (md5Result) {
+                copyToClipboard(md5Result);
+            }
+        }
+
+        function clearAll() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('md5Result').value = '';
+            document.getElementById('inputText').focus();
+        }
+
+        function compareHashes() {
+            const hash1 = document.getElementById('hash1').value.trim().toLowerCase();
+            const hash2 = document.getElementById('hash2').value.trim().toLowerCase();
+            const resultDiv = document.getElementById('compareResult');
+
+            if (!hash1 || !hash2) {
+                resultDiv.style.display = 'none';
+                return;
+            }
+
+            // Validate MD5 format
+            const md5Regex = /^[a-f0-9]{32}$/i;
+            
+            if (!md5Regex.test(hash1) || !md5Regex.test(hash2)) {
+                resultDiv.innerHTML = '❌ Um ou ambos os hashes não são MD5 válidos';
+                resultDiv.style.backgroundColor = '#fef2f2';
+                resultDiv.style.color = '#ef4444';
+                resultDiv.style.border = '1px solid #ef4444';
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            if (hash1 === hash2) {
+                resultDiv.innerHTML = '✅ Os hashes são IDÊNTICOS';
+                resultDiv.style.backgroundColor = '#f0f9f4';
+                resultDiv.style.color = '#10b981';
+                resultDiv.style.border = '1px solid #10b981';
+            } else {
+                resultDiv.innerHTML = '❌ Os hashes são DIFERENTES';
+                resultDiv.style.backgroundColor = '#fef2f2';
+                resultDiv.style.color = '#ef4444';
+                resultDiv.style.border = '1px solid #ef4444';
+            }
+
+            resultDiv.style.display = 'block';
+        }
+
+        function generateFileMD5() {
+            const fileInput = document.getElementById('fileInput');
+            const fileMD5Result = document.getElementById('fileMD5Result');
+            const fileInfo = document.getElementById('fileInfo');
+
+            if (!fileInput.files[0]) {
+                alert('Por favor, selecione um arquivo.');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            // Show file info
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = formatBytes(file.size);
+            document.getElementById('fileType').textContent = file.type || 'Desconhecido';
+            fileInfo.style.display = 'block';
+
+            reader.onload = function(e) {
+                try {
+                    const arrayBuffer = e.target.result;
+                    const wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
+                    const hash = CryptoJS.MD5(wordArray).toString();
+                    fileMD5Result.value = hash;
+                } catch (error) {
+                    fileMD5Result.value = 'Erro ao gerar MD5 do arquivo';
+                }
+            };
+
+            reader.onerror = function() {
+                fileMD5Result.value = 'Erro ao ler o arquivo';
+            };
+
+            reader.readAsArrayBuffer(file);
+        }
+
+        function copyFileMD5() {
+            const fileMD5Result = document.getElementById('fileMD5Result').value;
+            if (fileMD5Result) {
+                copyToClipboard(fileMD5Result);
+            }
+        }
+
+        // Auto generate MD5 when text changes
+        document.getElementById('inputText').addEventListener('input', function() {
+            if (this.value.trim()) {
+                generateMD5();
+            } else {
+                document.getElementById('md5Result').value = '';
+            }
+        });
+
+        // Auto compare hashes when they change
+        document.getElementById('hash1').addEventListener('input', compareHashes);
+        document.getElementById('hash2').addEventListener('input', compareHashes);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('inputText').focus();
+        });
+    </script>
+</body>
+</html>

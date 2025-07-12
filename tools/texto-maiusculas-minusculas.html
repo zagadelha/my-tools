@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor Maiúsculas/Minúsculas - My Tools</title>
+    <meta name="description" content="Converta texto para maiúsculas, minúsculas, capitalize ou outras formatações. Ferramenta gratuita para formatação de texto.">
+    <meta name="keywords" content="maiúsculas, minúsculas, capitalize, formatação texto, converter texto">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../" class="logo">My Tools</a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../" class="nav-link">Início</a></li>
+                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>🔤 Conversor Maiúsculas/Minúsculas</h1>
+            <p>Transforme texto em diferentes formatações rapidamente</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label for="inputText" class="form-label">Digite seu texto:</label>
+                <textarea id="inputText" class="form-textarea" placeholder="Digite ou cole seu texto aqui..." rows="8"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <button onclick="convertText('uppercase')" class="btn btn-primary">MAIÚSCULAS</button>
+                    <button onclick="convertText('lowercase')" class="btn btn-primary">minúsculas</button>
+                    <button onclick="convertText('capitalize')" class="btn btn-primary">Capitalizar</button>
+                    <button onclick="convertText('title')" class="btn btn-primary">Título</button>
+                    <button onclick="convertText('sentence')" class="btn btn-primary">Sentença</button>
+                    <button onclick="convertText('alternating')" class="btn btn-primary">AlTeRnAdO</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="outputText" class="form-label">Resultado:</label>
+                <textarea id="outputText" class="form-textarea" rows="8" readonly placeholder="O resultado aparecerá aqui..."></textarea>
+            </div>
+
+            <div class="result-actions">
+                <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
+                <button onclick="swapTexts()" class="btn btn-secondary">Trocar ⇅</button>
+                <button onclick="clearAll()" class="btn btn-secondary">Limpar Tudo</button>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Estatísticas do Texto</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #2563eb;" id="charCount">0</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;">Caracteres</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #10b981;" id="wordCount">0</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;">Palavras</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #f59e0b;" id="lineCount">0</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;">Linhas</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #ef4444;" id="upperCount">0</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;">Maiúsculas</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #8b5cf6;" id="lowerCount">0</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;">Minúsculas</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Tipos de Formatação</h3>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>MAIÚSCULAS</h4>
+                    <p>Converte todo o texto para letras maiúsculas.</p>
+                    <p><strong>Exemplo:</strong> "olá mundo" → "OLÁ MUNDO"</p>
+                </div>
+
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>minúsculas</h4>
+                    <p>Converte todo o texto para letras minúsculas.</p>
+                    <p><strong>Exemplo:</strong> "OLÁ MUNDO" → "olá mundo"</p>
+                </div>
+
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>Capitalizar</h4>
+                    <p>Torna a primeira letra de cada palavra maiúscula.</p>
+                    <p><strong>Exemplo:</strong> "olá mundo" → "Olá Mundo"</p>
+                </div>
+
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>Título</h4>
+                    <p>Capitaliza palavras importantes, ignora artigos e preposições pequenas.</p>
+                    <p><strong>Exemplo:</strong> "o gato subiu no telhado" → "O Gato Subiu no Telhado"</p>
+                </div>
+
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>Sentença</h4>
+                    <p>Torna maiúscula apenas a primeira letra de cada sentença.</p>
+                    <p><strong>Exemplo:</strong> "olá. como vai?" → "Olá. Como vai?"</p>
+                </div>
+
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>AlTeRnAdO</h4>
+                    <p>Alterna entre maiúsculas e minúsculas a cada letra.</p>
+                    <p><strong>Exemplo:</strong> "olá mundo" → "OlÁ mUnDo"</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Ferramentas</h4>
+                    <ul class="footer-links">
+                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Geradores</h4>
+                    <ul class="footer-links">
+                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html">Base64</a></li>
+                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">Sobre Nós</a></li>
+                        <li><a href="../contact.html">Contato</a></li>
+                        <li><a href="../privacy.html">Privacidade</a></li>
+                        <li><a href="../terms.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>My Tools</h4>
+                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 My Tools. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function convertText(type) {
+            const inputText = document.getElementById('inputText').value;
+            const outputText = document.getElementById('outputText');
+
+            if (!inputText.trim()) {
+                outputText.value = '';
+                return;
+            }
+
+            let result;
+
+            switch(type) {
+                case 'uppercase':
+                    result = inputText.toUpperCase();
+                    break;
+
+                case 'lowercase':
+                    result = inputText.toLowerCase();
+                    break;
+
+                case 'capitalize':
+                    result = inputText.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+                    break;
+
+                case 'title':
+                    // Words that shouldn't be capitalized in titles (articles, prepositions, etc.)
+                    const smallWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'if', 'in', 'of', 'on', 'or', 'the', 'to', 'up', 'via', 'com', 'de', 'do', 'da', 'dos', 'das', 'em', 'na', 'no', 'nas', 'nos', 'para', 'por', 'que', 'se', 'um', 'uma'];
+                    
+                    result = inputText.toLowerCase().replace(/\b\w+/g, function(word, index) {
+                        if (index === 0 || !smallWords.includes(word)) {
+                            return word.charAt(0).toUpperCase() + word.slice(1);
+                        }
+                        return word;
+                    });
+                    break;
+
+                case 'sentence':
+                    result = inputText.toLowerCase().replace(/(^\w{1}|\.\s*\w{1})/g, letter => letter.toUpperCase());
+                    break;
+
+                case 'alternating':
+                    result = inputText.split('').map((char, index) => {
+                        if (char.match(/[a-zA-ZÀ-ÿ]/)) {
+                            return index % 2 === 0 ? char.toUpperCase() : char.toLowerCase();
+                        }
+                        return char;
+                    }).join('');
+                    break;
+
+                default:
+                    result = inputText;
+            }
+
+            outputText.value = result;
+        }
+
+        function updateStats() {
+            const text = document.getElementById('inputText').value;
+            
+            const charCount = text.length;
+            const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+            const lineCount = text === '' ? 0 : text.split('\n').length;
+            const upperCount = (text.match(/[A-ZÀ-Ÿ]/g) || []).length;
+            const lowerCount = (text.match(/[a-zà-ÿ]/g) || []).length;
+
+            document.getElementById('charCount').textContent = formatNumber(charCount);
+            document.getElementById('wordCount').textContent = formatNumber(wordCount);
+            document.getElementById('lineCount').textContent = formatNumber(lineCount);
+            document.getElementById('upperCount').textContent = formatNumber(upperCount);
+            document.getElementById('lowerCount').textContent = formatNumber(lowerCount);
+        }
+
+        function copyResult() {
+            const outputText = document.getElementById('outputText').value;
+            if (outputText) {
+                copyToClipboard(outputText);
+            }
+        }
+
+        function swapTexts() {
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            
+            const temp = inputText.value;
+            inputText.value = outputText.value;
+            outputText.value = temp;
+            
+            updateStats();
+        }
+
+        function clearAll() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            updateStats();
+            document.getElementById('inputText').focus();
+        }
+
+        // Event listeners
+        document.getElementById('inputText').addEventListener('input', updateStats);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStats();
+            document.getElementById('inputText').focus();
+        });
+    </script>
+</body>
+</html>

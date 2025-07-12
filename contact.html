@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - My Tools</title>
+    <meta name="description" content="Entre em contato conosco para sugestões, bugs ou dúvidas sobre o My Tools. Estamos aqui para ajudar!">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">My Tools</a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link">Início</a></li>
+                    <li><a href="about.html" class="nav-link">Sobre</a></li>
+                    <li><a href="contact.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>Entre em Contato</h1>
+            <p>Sugestões, bugs ou dúvidas? Estamos aqui para ajudar!</p>
+        </div>
+
+        <div class="form-container">
+            <h2>Como podemos ajudar?</h2>
+            <p>Adoramos ouvir feedback dos nossos usuários! Seja para reportar um bug, sugerir uma nova ferramenta ou apenas dizer olá, use o formulário abaixo.</p>
+
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Nome *</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email *</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject" class="form-label">Assunto *</label>
+                    <select id="subject" class="form-select" required>
+                        <option value="">Selecione um assunto</option>
+                        <option value="bug">Reportar Bug</option>
+                        <option value="suggestion">Sugestão de Ferramenta</option>
+                        <option value="improvement">Melhoria</option>
+                        <option value="question">Dúvida</option>
+                        <option value="other">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">Mensagem *</label>
+                    <textarea id="message" class="form-textarea" rows="6" required placeholder="Descreva sua mensagem detalhadamente..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Enviar Mensagem</button>
+            </form>
+
+            <div id="contactResult" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 4px;">
+                <p id="contactMessage"></p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2>Outras Formas de Contato</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 8px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🐛</div>
+                    <h3>Bugs e Problemas</h3>
+                    <p>Encontrou um bug? Reporte diretamente no nosso GitHub Issues para uma resposta mais rápida.</p>
+                    <a href="#" class="btn btn-secondary">GitHub Issues</a>
+                </div>
+
+                <div style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 8px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
+                    <h3>Sugestões</h3>
+                    <p>Tem uma ideia para uma nova ferramenta? Compartilhe conosco suas sugestões!</p>
+                    <a href="#" class="btn btn-secondary">Sugerir Ferramenta</a>
+                </div>
+
+                <div style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 8px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
+                    <h3>Contribuir</h3>
+                    <p>Quer contribuir com código? Veja nosso repositório no GitHub e faça um fork!</p>
+                    <a href="#" class="btn btn-secondary">Ver Código</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2>Perguntas Frequentes</h2>
+            
+            <details style="margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                <summary style="cursor: pointer; font-weight: 500;">As ferramentas são realmente gratuitas?</summary>
+                <p style="margin-top: 1rem;">Sim! Todas as ferramentas do My Tools são 100% gratuitas e sempre serão. Não há taxas ocultas, assinaturas ou limitações.</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                <summary style="cursor: pointer; font-weight: 500;">Meus dados são seguros?</summary>
+                <p style="margin-top: 1rem;">Absolutamente! Todas as ferramentas funcionam 100% no seu navegador. Seus dados nunca são enviados para nossos servidores.</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                <summary style="cursor: pointer; font-weight: 500;">Posso usar as ferramentas offline?</summary>
+                <p style="margin-top: 1rem;">Sim! Depois que a página carrega, você pode usar as ferramentas mesmo sem conexão com a internet.</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                <summary style="cursor: pointer; font-weight: 500;">Como posso sugerir uma nova ferramenta?</summary>
+                <p style="margin-top: 1rem;">Use o formulário acima selecionando "Sugestão de Ferramenta" ou abra uma issue no nosso GitHub.</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                <summary style="cursor: pointer; font-weight: 500;">O My Tools é open source?</summary>
+                <p style="margin-top: 1rem;">Sim! Todo o código está disponível no GitHub. Você pode contribuir, fazer fork ou usar o código nos seus projetos.</p>
+            </details>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Ferramentas</h4>
+                    <ul class="footer-links">
+                        <li><a href="tools/converter-temperatura.html">Conversor de Temperatura</a></li>
+                        <li><a href="tools/converter-medidas.html">Conversor de Medidas</a></li>
+                        <li><a href="tools/texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="tools/contador-texto.html">Contador de Texto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Geradores</h4>
+                    <ul class="footer-links">
+                        <li><a href="tools/gerar-qr-code.html">Gerador QR Code</a></li>
+                        <li><a href="tools/gerador-md5.html">Gerador MD5</a></li>
+                        <li><a href="tools/codificador-base64.html">Base64</a></li>
+                        <li><a href="tools/timestamp-converter.html">Timestamp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Sobre Nós</a></li>
+                        <li><a href="contact.html">Contato</a></li>
+                        <li><a href="privacy.html">Privacidade</a></li>
+                        <li><a href="terms.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>My Tools</h4>
+                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 My Tools. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !subject || !message) {
+                showContactMessage('Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            // Simulate form submission
+            showContactMessage('Obrigado pela sua mensagem! Entraremos em contato em breve.', 'success');
+            
+            // Clear form
+            this.reset();
+        });
+
+        function showContactMessage(message, type) {
+            const resultDiv = document.getElementById('contactResult');
+            const messageP = document.getElementById('contactMessage');
+            
+            messageP.textContent = message;
+            resultDiv.className = type === 'success' ? 'text-success' : 'text-error';
+            resultDiv.style.display = 'block';
+            
+            if (type === 'success') {
+                resultDiv.style.backgroundColor = '#f0f9f4';
+                resultDiv.style.color = '#10b981';
+                resultDiv.style.border = '1px solid #10b981';
+            } else {
+                resultDiv.style.backgroundColor = '#fef2f2';
+                resultDiv.style.color = '#ef4444';
+                resultDiv.style.border = '1px solid #ef4444';
+            }
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                resultDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
