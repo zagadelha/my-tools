@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Timestamp - My Tools</title>
+    <meta name="description" content="Converta timestamps Unix para datas legíveis e vice-versa. Ferramenta gratuita para conversão de tempo Unix.">
+    <meta name="keywords" content="timestamp, unix time, conversor data, epoch, unix timestamp">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../" class="logo">My Tools</a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../" class="nav-link">Início</a></li>
+                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>⏰ Conversor de Timestamp</h1>
+            <p>Converta timestamps Unix para datas legíveis e vice-versa</p>
+        </div>
+
+        <div class="form-container">
+            <h3>Timestamp Atual</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                <div style="text-align: center; padding: 1rem; background: #f0f9f4; border-radius: 8px; border: 1px solid #10b981;">
+                    <div style="font-size: 1.2rem; font-weight: bold; color: #10b981;" id="currentTimestamp">0</div>
+                    <div style="font-size: 0.9rem; color: #065f46;">Timestamp Unix</div>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: #eff6ff; border-radius: 8px; border: 1px solid #2563eb;">
+                    <div style="font-size: 1.2rem; font-weight: bold; color: #2563eb;" id="currentDate">-</div>
+                    <div style="font-size: 0.9rem; color: #1e40af;">Data Atual</div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button onclick="copyCurrentTimestamp()" class="btn btn-secondary">Copiar Timestamp</button>
+                <button onclick="copyCurrentDate()" class="btn btn-secondary">Copiar Data</button>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Timestamp para Data</h3>
+            <div class="form-group">
+                <label for="timestampInput" class="form-label">Timestamp Unix:</label>
+                <input type="number" id="timestampInput" class="form-input" placeholder="Ex: 1641859200">
+            </div>
+            <div class="form-group">
+                <label for="timestampUnit" class="form-label">Unidade:</label>
+                <select id="timestampUnit" class="form-select">
+                    <option value="seconds">Segundos</option>
+                    <option value="milliseconds">Milissegundos</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button onclick="convertTimestamp()" class="btn btn-primary btn-full">Converter para Data</button>
+            </div>
+            <div id="timestampResult" class="result-area" style="display: none;">
+                <div id="timestampResultText"></div>
+                <div class="result-actions">
+                    <button onclick="copyTimestampResult()" class="btn btn-secondary">Copiar Resultado</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Data para Timestamp</h3>
+            <div class="form-group">
+                <label for="dateInput" class="form-label">Data e Hora:</label>
+                <input type="datetime-local" id="dateInput" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="timezoneSelect" class="form-label">Fuso Horário:</label>
+                <select id="timezoneSelect" class="form-select">
+                    <option value="local">Local</option>
+                    <option value="UTC">UTC</option>
+                    <option value="America/Sao_Paulo">São Paulo (GMT-3)</option>
+                    <option value="America/New_York">Nova York (GMT-5)</option>
+                    <option value="Europe/London">Londres (GMT+0)</option>
+                    <option value="Asia/Tokyo">Tóquio (GMT+9)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button onclick="convertDate()" class="btn btn-primary btn-full">Converter para Timestamp</button>
+            </div>
+            <div id="dateResult" class="result-area" style="display: none;">
+                <div id="dateResultText"></div>
+                <div class="result-actions">
+                    <button onclick="copyDateResult()" class="btn btn-secondary">Copiar Resultado</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Calculadora de Tempo</h3>
+            <div class="form-group">
+                <label for="timeCalc" class="form-label">Adicionar/Subtrair tempo:</label>
+                <div style="display: grid; grid-template-columns: 1fr auto 1fr auto; gap: 0.5rem; align-items: center;">
+                    <input type="number" id="timeValue" class="form-input" placeholder="Valor">
+                    <select id="timeUnit" class="form-select">
+                        <option value="seconds">Segundos</option>
+                        <option value="minutes">Minutos</option>
+                        <option value="hours">Horas</option>
+                        <option value="days">Dias</option>
+                        <option value="weeks">Semanas</option>
+                        <option value="months">Meses</option>
+                        <option value="years">Anos</option>
+                    </select>
+                    <select id="timeOperation" class="form-select">
+                        <option value="add">Adicionar</option>
+                        <option value="subtract">Subtrair</option>
+                    </select>
+                    <button onclick="calculateTime()" class="btn btn-primary">Calcular</button>
+                </div>
+            </div>
+            <div id="timeCalcResult" class="result-area" style="display: none;">
+                <div id="timeCalcResultText"></div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Formatos de Data Comuns</h3>
+            <div id="dateFormats" style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Sobre Timestamps</h3>
+            <p>Timestamp Unix é o número de segundos que se passaram desde 1º de janeiro de 1970, 00:00:00 UTC (também conhecido como Unix Epoch).</p>
+            
+            <h4>Características:</h4>
+            <ul>
+                <li><strong>Padrão universal:</strong> Usado em sistemas Unix, Linux, macOS e muitas linguagens de programação</li>
+                <li><strong>Independente de fuso horário:</strong> Sempre em UTC, facilitando cálculos globais</li>
+                <li><strong>Fácil de calcular:</strong> Diferenças de tempo são simples subtrações</li>
+                <li><strong>Formato compacto:</strong> Ocupa pouco espaço para armazenamento</li>
+            </ul>
+
+            <h4>Conversões Comuns:</h4>
+            <ul>
+                <li><strong>Segundos:</strong> Timestamp padrão (ex: 1641859200)</li>
+                <li><strong>Milissegundos:</strong> Usado em JavaScript (ex: 1641859200000)</li>
+                <li><strong>Microssegundos:</strong> Usado em alguns sistemas de alta precisão</li>
+            </ul>
+
+            <h4>Limitações:</h4>
+            <ul>
+                <li><strong>Problema do Ano 2038:</strong> Timestamps de 32 bits podem ter problemas em 2038</li>
+                <li><strong>Segundos bissextos:</strong> Não considera segundos bissextos</li>
+                <li><strong>Precisão:</strong> Limitado à precisão de segundos (ou milissegundos)</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Ferramentas</h4>
+                    <ul class="footer-links">
+                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Geradores</h4>
+                    <ul class="footer-links">
+                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html">Base64</a></li>
+                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">Sobre Nós</a></li>
+                        <li><a href="../contact.html">Contato</a></li>
+                        <li><a href="../privacy.html">Privacidade</a></li>
+                        <li><a href="../terms.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>My Tools</h4>
+                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 My Tools. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function updateCurrentTime() {
+            const now = new Date();
+            const timestamp = Math.floor(now.getTime() / 1000);
+            const dateString = now.toLocaleString('pt-BR', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                timeZoneName: 'short'
+            });
+            
+            document.getElementById('currentTimestamp').textContent = timestamp;
+            document.getElementById('currentDate').textContent = dateString;
+        }
+
+        function copyCurrentTimestamp() {
+            const timestamp = document.getElementById('currentTimestamp').textContent;
+            copyToClipboard(timestamp);
+        }
+
+        function copyCurrentDate() {
+            const date = document.getElementById('currentDate').textContent;
+            copyToClipboard(date);
+        }
+
+        function convertTimestamp() {
+            const timestampInput = document.getElementById('timestampInput').value;
+            const unit = document.getElementById('timestampUnit').value;
+            const resultDiv = document.getElementById('timestampResult');
+            const resultText = document.getElementById('timestampResultText');
+
+            if (!timestampInput) {
+                resultDiv.style.display = 'none';
+                return;
+            }
+
+            let timestamp = parseInt(timestampInput);
+            
+            if (unit === 'milliseconds') {
+                timestamp = timestamp / 1000;
+            }
+
+            if (isNaN(timestamp) || timestamp < 0) {
+                resultText.innerHTML = '<span style="color: #ef4444;">Timestamp inválido</span>';
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            const date = new Date(timestamp * 1000);
+            
+            if (date.getFullYear() > 9999 || date.getFullYear() < 1970) {
+                resultText.innerHTML = '<span style="color: #ef4444;">Data fora do intervalo válido</span>';
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            const formatted = {
+                local: date.toLocaleString('pt-BR'),
+                utc: date.toUTCString(),
+                iso: date.toISOString(),
+                relative: getRelativeTime(date)
+            };
+
+            resultText.innerHTML = `
+                <strong>Data Local:</strong> ${formatted.local}<br>
+                <strong>UTC:</strong> ${formatted.utc}<br>
+                <strong>ISO 8601:</strong> ${formatted.iso}<br>
+                <strong>Tempo Relativo:</strong> ${formatted.relative}
+            `;
+            
+            resultDiv.style.display = 'block';
+            updateDateFormats(date);
+        }
+
+        function convertDate() {
+            const dateInput = document.getElementById('dateInput').value;
+            const timezone = document.getElementById('timezoneSelect').value;
+            const resultDiv = document.getElementById('dateResult');
+            const resultText = document.getElementById('dateResultText');
+
+            if (!dateInput) {
+                resultDiv.style.display = 'none';
+                return;
+            }
+
+            let date;
+            
+            if (timezone === 'local') {
+                date = new Date(dateInput);
+            } else if (timezone === 'UTC') {
+                date = new Date(dateInput + 'Z');
+            } else {
+                // For other timezones, we'll use a simple approximation
+                date = new Date(dateInput);
+            }
+
+            if (isNaN(date.getTime())) {
+                resultText.innerHTML = '<span style="color: #ef4444;">Data inválida</span>';
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            const timestamp = Math.floor(date.getTime() / 1000);
+            const timestampMs = date.getTime();
+
+            resultText.innerHTML = `
+                <strong>Timestamp (segundos):</strong> ${timestamp}<br>
+                <strong>Timestamp (milissegundos):</strong> ${timestampMs}<br>
+                <strong>Data UTC:</strong> ${date.toUTCString()}<br>
+                <strong>ISO 8601:</strong> ${date.toISOString()}
+            `;
+            
+            resultDiv.style.display = 'block';
+        }
+
+        function calculateTime() {
+            const value = parseInt(document.getElementById('timeValue').value);
+            const unit = document.getElementById('timeUnit').value;
+            const operation = document.getElementById('timeOperation').value;
+            const resultDiv = document.getElementById('timeCalcResult');
+            const resultText = document.getElementById('timeCalcResultText');
+
+            if (!value || isNaN(value)) {
+                resultDiv.style.display = 'none';
+                return;
+            }
+
+            const now = new Date();
+            let multiplier = 1;
+
+            switch(unit) {
+                case 'seconds': multiplier = 1000; break;
+                case 'minutes': multiplier = 60 * 1000; break;
+                case 'hours': multiplier = 60 * 60 * 1000; break;
+                case 'days': multiplier = 24 * 60 * 60 * 1000; break;
+                case 'weeks': multiplier = 7 * 24 * 60 * 60 * 1000; break;
+                case 'months': multiplier = 30 * 24 * 60 * 60 * 1000; break;
+                case 'years': multiplier = 365 * 24 * 60 * 60 * 1000; break;
+            }
+
+            const offset = value * multiplier;
+            const newDate = new Date(now.getTime() + (operation === 'add' ? offset : -offset));
+            const newTimestamp = Math.floor(newDate.getTime() / 1000);
+
+            resultText.innerHTML = `
+                <strong>Nova Data:</strong> ${newDate.toLocaleString('pt-BR')}<br>
+                <strong>Novo Timestamp:</strong> ${newTimestamp}<br>
+                <strong>Diferença:</strong> ${operation === 'add' ? '+' : '-'}${value} ${unit}
+            `;
+            
+            resultDiv.style.display = 'block';
+        }
+
+        function updateDateFormats(date) {
+            const formats = {
+                'DD/MM/YYYY': date.toLocaleDateString('pt-BR'),
+                'MM/DD/YYYY': date.toLocaleDateString('en-US'),
+                'YYYY-MM-DD': date.toISOString().split('T')[0],
+                'DD-MM-YYYY': date.toLocaleDateString('pt-BR').replace(/\//g, '-'),
+                'YYYY/MM/DD': `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`,
+                'RFC 2822': date.toString(),
+                'ISO 8601': date.toISOString()
+            };
+
+            let html = '';
+            Object.entries(formats).forEach(([format, value]) => {
+                html += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: #f8f9fa; border-radius: 4px; margin-bottom: 0.25rem;">
+                        <span><strong>${format}:</strong> ${value}</span>
+                        <button onclick="copyToClipboard('${value}')" class="btn btn-secondary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Copiar</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById('dateFormats').innerHTML = html;
+        }
+
+        function getRelativeTime(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffSeconds = Math.floor(diffMs / 1000);
+            const diffMinutes = Math.floor(diffSeconds / 60);
+            const diffHours = Math.floor(diffMinutes / 60);
+            const diffDays = Math.floor(diffHours / 24);
+
+            if (diffSeconds < 60) {
+                return `${diffSeconds} segundo${diffSeconds !== 1 ? 's' : ''} atrás`;
+            } else if (diffMinutes < 60) {
+                return `${diffMinutes} minuto${diffMinutes !== 1 ? 's' : ''} atrás`;
+            } else if (diffHours < 24) {
+                return `${diffHours} hora${diffHours !== 1 ? 's' : ''} atrás`;
+            } else if (diffDays < 30) {
+                return `${diffDays} dia${diffDays !== 1 ? 's' : ''} atrás`;
+            } else {
+                return 'Há mais de um mês';
+            }
+        }
+
+        function copyTimestampResult() {
+            const resultText = document.getElementById('timestampResultText').textContent;
+            copyToClipboard(resultText);
+        }
+
+        function copyDateResult() {
+            const resultText = document.getElementById('dateResultText').textContent;
+            copyToClipboard(resultText);
+        }
+
+        // Auto convert when input changes
+        document.getElementById('timestampInput').addEventListener('input', function() {
+            if (this.value.trim()) {
+                convertTimestamp();
+            } else {
+                document.getElementById('timestampResult').style.display = 'none';
+            }
+        });
+
+        document.getElementById('timestampUnit').addEventListener('change', function() {
+            const input = document.getElementById('timestampInput').value;
+            if (input.trim()) {
+                convertTimestamp();
+            }
+        });
+
+        document.getElementById('dateInput').addEventListener('change', function() {
+            if (this.value) {
+                convertDate();
+            } else {
+                document.getElementById('dateResult').style.display = 'none';
+            }
+        });
+
+        // Update current time every second
+        setInterval(updateCurrentTime, 1000);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCurrentTime();
+            
+            // Set current date as default
+            const now = new Date();
+            const dateString = now.toISOString().slice(0, 16);
+            document.getElementById('dateInput').value = dateString;
+        });
+    </script>
+</body>
+</html>

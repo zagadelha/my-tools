@@ -20,7 +20,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
 }
 
 .header-content {
@@ -37,6 +37,21 @@ body {
     font-weight: bold;
     color: #2563eb;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 60px;
+    width: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-image {
+    transform: scale(1.05);
 }
 
 .nav-toggle {
@@ -316,6 +331,10 @@ body {
 
 /* Responsive Design - Mobile First */
 @media (max-width: 768px) {
+    .logo-image {
+        height: 60px;
+    }
+    
     .nav-toggle {
         display: block;
     }
