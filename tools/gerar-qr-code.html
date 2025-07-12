@@ -11,7 +11,9 @@
 <body>
     <header class="header">
         <div class="header-content">
-            <a href="../" class="logo">My Tools</a>
+            <a href="../index.html" class="logo">
+                <img src="../assets/img/logo.png" alt="Blue toolbox with a wrench symbol on the front, positioned to the left of the words My Tools written in large friendly letters. The logo conveys a helpful and approachable atmosphere for an online tools website." class="logo-image">
+            </a>
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
@@ -204,6 +206,19 @@
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script>
         let currentQRData = '';
+        let qrCodeLibraryLoaded = false;
+
+        // Wait for QRCode library to load
+        function waitForQRCode() {
+            return new Promise((resolve) => {
+                if (typeof QRCode !== 'undefined') {
+                    qrCodeLibraryLoaded = true;
+                    resolve();
+                } else {
+                    setTimeout(() => waitForQRCode().then(resolve), 100);
+                }
+            });
+        }
 
         function showInputSection() {
             const qrType = document.getElementById('qrType').value;
@@ -258,13 +273,23 @@
             }
         }
 
-        function generateQRCode() {
+        function generateQRCode(isAutoGenerate = false) {
             const content = getQRContent();
             const size = parseInt(document.getElementById('qrSize').value);
             const canvas = document.getElementById('qrCanvas');
             
             if (!content.trim()) {
-                alert('Por favor, preencha o conteúdo para o QR Code.');
+                if (!isAutoGenerate) {
+                    alert('Por favor, preencha o conteúdo para o QR Code.');
+                }
+                return;
+            }
+
+            // Check if QRCode library is available
+            if (!qrCodeLibraryLoaded || typeof QRCode === 'undefined') {
+                if (!isAutoGenerate) {
+                    alert('Biblioteca QR Code não carregada. Tente novamente em alguns segundos.');
+                }
                 return;
             }
 
@@ -281,7 +306,9 @@
             }, function (error) {
                 if (error) {
                     console.error(error);
-                    alert('Erro ao gerar QR Code. Verifique o conteúdo e tente novamente.');
+                    if (!isAutoGenerate) {
+                        alert('Erro ao gerar QR Code. Verifique o conteúdo e tente novamente.');
+                    }
                 } else {
                     document.getElementById('qrResult').style.display = 'block';
                 }
@@ -299,14 +326,23 @@
         function copyQRImage() {
             const canvas = document.getElementById('qrCanvas');
             
+            if (!canvas.width || !canvas.height) {
+                showNotification('Gere um QR Code primeiro!', 'error');
+                return;
+            }
+            
             canvas.toBlob(function(blob) {
-                const item = new ClipboardItem({ 'image/png': blob });
-                navigator.clipboard.write([item]).then(function() {
-                    showNotification('QR Code copiado para a área de transferência!', 'success');
-                }).catch(function(err) {
-                    console.error('Erro ao copiar imagem:', err);
-                    showNotification('Erro ao copiar imagem. Use o botão de download.', 'error');
-                });
+                if (navigator.clipboard && navigator.clipboard.write) {
+                    const item = new ClipboardItem({ 'image/png': blob });
+                    navigator.clipboard.write([item]).then(function() {
+                        showNotification('QR Code copiado para a área de transferência!', 'success');
+                    }).catch(function(err) {
+                        console.error('Erro ao copiar imagem:', err);
+                        showNotification('Erro ao copiar imagem. Use o botão de download.', 'error');
+                    });
+                } else {
+                    showNotification('Seu navegador não suporta copiar imagens. Use o botão de download.', 'error');
+                }
             });
         }
 
@@ -331,8 +367,10 @@
         document.addEventListener('input', function(e) {
             if (e.target.closest('.input-section') || e.target.id === 'qrSize') {
                 const content = getQRContent();
-                if (content.trim()) {
-                    generateQRCode();
+                if (content.trim() && qrCodeLibraryLoaded) {
+                    // Wait a bit to avoid too many calls
+                    clearTimeout(window.qrTimeout);
+                    window.qrTimeout = setTimeout(() => generateQRCode(true), 300);
                 }
             }
         });
@@ -340,6 +378,11 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             showInputSection();
+            
+            // Wait for QRCode library to load before enabling auto-generation
+            waitForQRCode().then(() => {
+                console.log('QRCode library loaded successfully');
+            });
         });
     </script>
 </body>

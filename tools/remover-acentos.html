@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remover Acentos - My Tools</title>
+    <meta name="description" content="Remova acentos e caracteres especiais de textos facilmente. Ferramenta gratuita para normalização de texto.">
+    <meta name="keywords" content="remover acentos, caracteres especiais, normalizar texto, limpar texto">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../assets/img/logo.png" alt="Blue toolbox with a wrench symbol on the front, positioned to the left of the words My Tools written in large friendly letters. The logo conveys a helpful and approachable atmosphere for an online tools website." class="logo-image">
+            </a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../" class="nav-link">Início</a></li>
+                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>✂️ Remover Acentos</h1>
+            <p>Remove acentos e caracteres especiais de textos</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label for="inputText" class="form-label">Texto com acentos:</label>
+                <textarea id="inputText" class="form-textarea" placeholder="Digite ou cole o texto com acentos aqui..." rows="8"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <button onclick="removeAccents()" class="btn btn-primary">Remover Acentos</button>
+                    <button onclick="removeSpecialChars()" class="btn btn-primary">Remover Especiais</button>
+                    <button onclick="removeAll()" class="btn btn-primary">Remover Tudo</button>
+                    <button onclick="slugify()" class="btn btn-primary">Criar Slug</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="outputText" class="form-label">Texto sem acentos:</label>
+                <textarea id="outputText" class="form-textarea" rows="8" readonly placeholder="O resultado aparecerá aqui..."></textarea>
+            </div>
+
+            <div class="result-actions">
+                <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
+                <button onclick="swapTexts()" class="btn btn-secondary">Trocar ⇅</button>
+                <button onclick="clearAll()" class="btn btn-secondary">Limpar Tudo</button>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Opções Avançadas</h3>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="preserveSpaces" checked> Preservar espaços
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="preserveNumbers" checked> Preservar números
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="toLowerCase"> Converter para minúsculas
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="removePunctuation"> Remover pontuação
+                </label>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Comparação Lado a Lado</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div>
+                    <h4>Antes:</h4>
+                    <div id="beforeText" style="padding: 1rem; background: #fef2f2; border-radius: 4px; border: 1px solid #fecaca; font-family: monospace; min-height: 100px; white-space: pre-wrap;"></div>
+                </div>
+                <div>
+                    <h4>Depois:</h4>
+                    <div id="afterText" style="padding: 1rem; background: #f0f9f4; border-radius: 4px; border: 1px solid #bbf7d0; font-family: monospace; min-height: 100px; white-space: pre-wrap;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Tipos de Remoção</h3>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>Remover Acentos</h4>
+                    <p>Remove apenas acentos, mantendo letras básicas.</p>
+                    <p><strong>Exemplo:</strong> "José, João e María" → "Jose, Joao e Maria"</p>
+                </div>
+
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>Remover Especiais</h4>
+                    <p>Remove caracteres especiais, mantendo letras, números e espaços.</p>
+                    <p><strong>Exemplo:</strong> "José@email.com!" → "Josemailcom"</p>
+                </div>
+
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>Remover Tudo</h4>
+                    <p>Remove acentos e caracteres especiais.</p>
+                    <p><strong>Exemplo:</strong> "José@email.com!" → "Josemailcom"</p>
+                </div>
+
+                <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                    <h4>Criar Slug</h4>
+                    <p>Cria um slug amigável para URLs (minúsculas, hífens no lugar de espaços).</p>
+                    <p><strong>Exemplo:</strong> "José da Silva" → "jose-da-silva"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Caracteres Suportados</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div>
+                    <h4>Acentos</h4>
+                    <p>á, à, ä, â, ã, é, è, ë, ê, í, ì, ï, î, ó, ò, ö, ô, õ, ú, ù, ü, û, ç, ñ</p>
+                </div>
+                <div>
+                    <h4>Especiais</h4>
+                    <p>@, #, $, %, &, *, (, ), [, ], {, }, |, \, /, ?, !, +, =, ~, ^</p>
+                </div>
+                <div>
+                    <h4>Pontuação</h4>
+                    <p>., ,, ;, :, ", ', `, -, _</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Ferramentas</h4>
+                    <ul class="footer-links">
+                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Geradores</h4>
+                    <ul class="footer-links">
+                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html">Base64</a></li>
+                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">Sobre Nós</a></li>
+                        <li><a href="../contact.html">Contato</a></li>
+                        <li><a href="../privacy.html">Privacidade</a></li>
+                        <li><a href="../terms.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>My Tools</h4>
+                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 My Tools. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        const accentMap = {
+            'á': 'a', 'à': 'a', 'ä': 'a', 'â': 'a', 'ã': 'a', 'å': 'a', 'æ': 'ae',
+            'é': 'e', 'è': 'e', 'ë': 'e', 'ê': 'e',
+            'í': 'i', 'ì': 'i', 'ï': 'i', 'î': 'i',
+            'ó': 'o', 'ò': 'o', 'ö': 'o', 'ô': 'o', 'õ': 'o', 'ø': 'o', 'œ': 'oe',
+            'ú': 'u', 'ù': 'u', 'ü': 'u', 'û': 'u',
+            'ç': 'c', 'ñ': 'n',
+            'ß': 'ss',
+            'Á': 'A', 'À': 'A', 'Ä': 'A', 'Â': 'A', 'Ã': 'A', 'Å': 'A', 'Æ': 'AE',
+            'É': 'E', 'È': 'E', 'Ë': 'E', 'Ê': 'E',
+            'Í': 'I', 'Ì': 'I', 'Ï': 'I', 'Î': 'I',
+            'Ó': 'O', 'Ò': 'O', 'Ö': 'O', 'Ô': 'O', 'Õ': 'O', 'Ø': 'O', 'Œ': 'OE',
+            'Ú': 'U', 'Ù': 'U', 'Ü': 'U', 'Û': 'U',
+            'Ç': 'C', 'Ñ': 'N'
+        };
+
+        function removeAccents() {
+            const inputText = document.getElementById('inputText').value;
+            const outputText = document.getElementById('outputText');
+            
+            if (!inputText.trim()) {
+                outputText.value = '';
+                return;
+            }
+
+            let result = inputText;
+            Object.entries(accentMap).forEach(([accented, plain]) => {
+                result = result.replace(new RegExp(accented, 'g'), plain);
+            });
+
+            outputText.value = result;
+            updateComparison(inputText, result);
+        }
+
+        function removeSpecialChars() {
+            const inputText = document.getElementById('inputText').value;
+            const outputText = document.getElementById('outputText');
+            
+            if (!inputText.trim()) {
+                outputText.value = '';
+                return;
+            }
+
+            let result = inputText;
+            
+            // Apply options
+            const preserveSpaces = document.getElementById('preserveSpaces').checked;
+            const preserveNumbers = document.getElementById('preserveNumbers').checked;
+            const toLowerCase = document.getElementById('toLowerCase').checked;
+            const removePunctuation = document.getElementById('removePunctuation').checked;
+
+            // Create regex pattern
+            let pattern = '[^a-zA-ZÀ-ÿ';
+            if (preserveNumbers) pattern += '0-9';
+            if (preserveSpaces) pattern += '\\s';
+            if (!removePunctuation) pattern += '.,;:!?';
+            pattern += ']';
+
+            result = result.replace(new RegExp(pattern, 'g'), '');
+
+            if (toLowerCase) {
+                result = result.toLowerCase();
+            }
+
+            outputText.value = result;
+            updateComparison(inputText, result);
+        }
+
+        function removeAll() {
+            const inputText = document.getElementById('inputText').value;
+            const outputText = document.getElementById('outputText');
+            
+            if (!inputText.trim()) {
+                outputText.value = '';
+                return;
+            }
+
+            let result = inputText;
+            
+            // Remove accents first
+            Object.entries(accentMap).forEach(([accented, plain]) => {
+                result = result.replace(new RegExp(accented, 'g'), plain);
+            });
+
+            // Apply options
+            const preserveSpaces = document.getElementById('preserveSpaces').checked;
+            const preserveNumbers = document.getElementById('preserveNumbers').checked;
+            const toLowerCase = document.getElementById('toLowerCase').checked;
+            const removePunctuation = document.getElementById('removePunctuation').checked;
+
+            // Create regex pattern
+            let pattern = '[^a-zA-Z';
+            if (preserveNumbers) pattern += '0-9';
+            if (preserveSpaces) pattern += '\\s';
+            if (!removePunctuation) pattern += '.,;:!?';
+            pattern += ']';
+
+            result = result.replace(new RegExp(pattern, 'g'), '');
+
+            if (toLowerCase) {
+                result = result.toLowerCase();
+            }
+
+            outputText.value = result;
+            updateComparison(inputText, result);
+        }
+
+        function slugify() {
+            const inputText = document.getElementById('inputText').value;
+            const outputText = document.getElementById('outputText');
+            
+            if (!inputText.trim()) {
+                outputText.value = '';
+                return;
+            }
+
+            let result = inputText;
+            
+            // Remove accents
+            Object.entries(accentMap).forEach(([accented, plain]) => {
+                result = result.replace(new RegExp(accented, 'g'), plain);
+            });
+
+            // Convert to lowercase
+            result = result.toLowerCase();
+
+            // Replace spaces and special characters with hyphens
+            result = result.replace(/[^a-z0-9]/g, '-');
+
+            // Remove multiple consecutive hyphens
+            result = result.replace(/-+/g, '-');
+
+            // Remove leading and trailing hyphens
+            result = result.replace(/^-+|-+$/g, '');
+
+            outputText.value = result;
+            updateComparison(inputText, result);
+        }
+
+        function updateComparison(before, after) {
+            document.getElementById('beforeText').textContent = before;
+            document.getElementById('afterText').textContent = after;
+        }
+
+        function copyResult() {
+            const outputText = document.getElementById('outputText').value;
+            if (outputText) {
+                copyToClipboard(outputText);
+            }
+        }
+
+        function swapTexts() {
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            
+            const temp = inputText.value;
+            inputText.value = outputText.value;
+            outputText.value = temp;
+            
+            updateComparison(inputText.value, outputText.value);
+        }
+
+        function clearAll() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('outputText').value = '';
+            document.getElementById('beforeText').textContent = '';
+            document.getElementById('afterText').textContent = '';
+            document.getElementById('inputText').focus();
+        }
+
+        // Auto process on input
+        document.getElementById('inputText').addEventListener('input', function() {
+            if (this.value.trim()) {
+                removeAccents(); // Default action
+            } else {
+                document.getElementById('outputText').value = '';
+                updateComparison('', '');
+            }
+        });
+
+        // Update when options change
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const inputText = document.getElementById('inputText').value;
+                if (inputText.trim()) {
+                    removeAccents(); // Re-process with new options
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('inputText').focus();
+        });
+    </script>
+</body>
+</html>

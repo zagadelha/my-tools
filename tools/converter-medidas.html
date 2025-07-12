@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Medidas - My Tools</title>
+    <meta name="description" content="Converta unidades de comprimento, peso, volume e área facilmente. Ferramenta gratuita e precisa para conversão de medidas.">
+    <meta name="keywords" content="conversor medidas, unidades, comprimento, peso, volume, área, metros, quilos">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../assets/img/logo.png" alt="Blue toolbox with a wrench symbol on the front, positioned to the left of the words My Tools written in large friendly letters. The logo conveys a helpful and approachable atmosphere for an online tools website." class="logo-image">
+            </a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../" class="nav-link">Início</a></li>
+                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>📏 Conversor de Medidas</h1>
+            <p>Converta unidades de comprimento, peso, volume e área</p>
+        </div>
+
+        <div class="form-container">
+            <div class="form-group">
+                <label for="category" class="form-label">Categoria:</label>
+                <select id="category" class="form-select">
+                    <option value="length">Comprimento</option>
+                    <option value="weight">Peso</option>
+                    <option value="volume">Volume</option>
+                    <option value="area">Área</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="value" class="form-label">Valor:</label>
+                <input type="number" id="value" class="form-input" placeholder="Digite o valor" step="any">
+            </div>
+
+            <div class="form-group">
+                <label for="fromUnit" class="form-label">De:</label>
+                <select id="fromUnit" class="form-select">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="toUnit" class="form-label">Para:</label>
+                <select id="toUnit" class="form-select">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <button onclick="convertUnits()" class="btn btn-primary btn-full">Converter</button>
+
+            <div id="result" class="result-area" style="display: none;">
+                <div id="resultText"></div>
+                <div class="result-actions">
+                    <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
+                    <button onclick="clearAll()" class="btn btn-secondary">Limpar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Conversões Rápidas</h3>
+            <div id="quickConversions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <!-- Quick conversions will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h3>Unidades Suportadas</h3>
+            
+            <h4>Comprimento</h4>
+            <p>Milímetros, Centímetros, Metros, Quilômetros, Polegadas, Pés, Jardas, Milhas</p>
+            
+            <h4>Peso</h4>
+            <p>Gramas, Quilogramas, Toneladas, Onças, Libras, Pedras</p>
+            
+            <h4>Volume</h4>
+            <p>Mililitros, Litros, Galões, Xícaras, Colheres de sopa, Colheres de chá</p>
+            
+            <h4>Área</h4>
+            <p>Metros quadrados, Quilômetros quadrados, Hectares, Pés quadrados, Acres</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Ferramentas</h4>
+                    <ul class="footer-links">
+                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Geradores</h4>
+                    <ul class="footer-links">
+                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html">Base64</a></li>
+                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sobre</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">Sobre Nós</a></li>
+                        <li><a href="../contact.html">Contato</a></li>
+                        <li><a href="../privacy.html">Privacidade</a></li>
+                        <li><a href="../terms.html">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>My Tools</h4>
+                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 My Tools. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        const units = {
+            length: {
+                name: 'Comprimento',
+                units: {
+                    'mm': { name: 'Milímetros', factor: 1 },
+                    'cm': { name: 'Centímetros', factor: 10 },
+                    'm': { name: 'Metros', factor: 1000 },
+                    'km': { name: 'Quilômetros', factor: 1000000 },
+                    'in': { name: 'Polegadas', factor: 25.4 },
+                    'ft': { name: 'Pés', factor: 304.8 },
+                    'yd': { name: 'Jardas', factor: 914.4 },
+                    'mi': { name: 'Milhas', factor: 1609344 }
+                }
+            },
+            weight: {
+                name: 'Peso',
+                units: {
+                    'g': { name: 'Gramas', factor: 1 },
+                    'kg': { name: 'Quilogramas', factor: 1000 },
+                    't': { name: 'Toneladas', factor: 1000000 },
+                    'oz': { name: 'Onças', factor: 28.3495 },
+                    'lb': { name: 'Libras', factor: 453.592 },
+                    'st': { name: 'Pedras', factor: 6350.29 }
+                }
+            },
+            volume: {
+                name: 'Volume',
+                units: {
+                    'ml': { name: 'Mililitros', factor: 1 },
+                    'l': { name: 'Litros', factor: 1000 },
+                    'gal': { name: 'Galões', factor: 3785.41 },
+                    'cup': { name: 'Xícaras', factor: 240 },
+                    'tbsp': { name: 'Colheres de sopa', factor: 15 },
+                    'tsp': { name: 'Colheres de chá', factor: 5 }
+                }
+            },
+            area: {
+                name: 'Área',
+                units: {
+                    'm2': { name: 'Metros quadrados', factor: 1 },
+                    'km2': { name: 'Quilômetros quadrados', factor: 1000000 },
+                    'ha': { name: 'Hectares', factor: 10000 },
+                    'ft2': { name: 'Pés quadrados', factor: 0.092903 },
+                    'acre': { name: 'Acres', factor: 4046.86 }
+                }
+            }
+        };
+
+        function populateUnits() {
+            const category = document.getElementById('category').value;
+            const fromUnit = document.getElementById('fromUnit');
+            const toUnit = document.getElementById('toUnit');
+            
+            // Clear existing options
+            fromUnit.innerHTML = '';
+            toUnit.innerHTML = '';
+            
+            // Populate with new options
+            Object.entries(units[category].units).forEach(([key, unit]) => {
+                const option1 = new Option(unit.name, key);
+                const option2 = new Option(unit.name, key);
+                fromUnit.add(option1);
+                toUnit.add(option2);
+            });
+            
+            // Set different default selections
+            if (toUnit.options.length > 1) {
+                toUnit.selectedIndex = 1;
+            }
+        }
+
+        function convertUnits() {
+            const value = parseFloat(document.getElementById('value').value);
+            const category = document.getElementById('category').value;
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+            const resultDiv = document.getElementById('result');
+            const resultText = document.getElementById('resultText');
+
+            if (isNaN(value)) {
+                alert('Por favor, digite um valor numérico válido.');
+                return;
+            }
+
+            if (fromUnit === toUnit) {
+                resultText.textContent = `${value} ${units[category].units[fromUnit].name}`;
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            // Convert to base unit first, then to target unit
+            const fromFactor = units[category].units[fromUnit].factor;
+            const toFactor = units[category].units[toUnit].factor;
+            const result = (value * fromFactor) / toFactor;
+
+            resultText.textContent = `${value} ${units[category].units[fromUnit].name} = ${result.toFixed(6)} ${units[category].units[toUnit].name}`;
+            resultDiv.style.display = 'block';
+            
+            updateQuickConversions();
+        }
+
+        function updateQuickConversions() {
+            const value = parseFloat(document.getElementById('value').value);
+            const category = document.getElementById('category').value;
+            const fromUnit = document.getElementById('fromUnit').value;
+            const quickDiv = document.getElementById('quickConversions');
+            
+            if (isNaN(value)) {
+                quickDiv.innerHTML = '';
+                return;
+            }
+
+            const fromFactor = units[category].units[fromUnit].factor;
+            let html = '';
+            
+            Object.entries(units[category].units).forEach(([key, unit]) => {
+                if (key !== fromUnit) {
+                    const result = (value * fromFactor) / unit.factor;
+                    html += `
+                        <div style="padding: 0.5rem; background: #f8f9fa; border-radius: 4px; text-align: center;">
+                            <div style="font-weight: bold; color: #2563eb;">${result.toFixed(4)}</div>
+                            <div style="font-size: 0.8rem; color: #6b7280;">${unit.name}</div>
+                        </div>
+                    `;
+                }
+            });
+            
+            quickDiv.innerHTML = html;
+        }
+
+        function copyResult() {
+            const resultText = document.getElementById('resultText').textContent;
+            copyToClipboard(resultText);
+        }
+
+        function clearAll() {
+            document.getElementById('value').value = '';
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('quickConversions').innerHTML = '';
+            document.getElementById('value').focus();
+        }
+
+        // Event listeners
+        document.getElementById('category').addEventListener('change', populateUnits);
+        document.getElementById('value').addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                convertUnits();
+            } else {
+                document.getElementById('result').style.display = 'none';
+                document.getElementById('quickConversions').innerHTML = '';
+            }
+        });
+        document.getElementById('fromUnit').addEventListener('change', function() {
+            const value = document.getElementById('value').value;
+            if (value.trim() !== '') {
+                convertUnits();
+            }
+        });
+        document.getElementById('toUnit').addEventListener('change', function() {
+            const value = document.getElementById('value').value;
+            if (value.trim() !== '') {
+                convertUnits();
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            populateUnits();
+            document.getElementById('value').focus();
+        });
+    </script>
+</body>
+</html>
