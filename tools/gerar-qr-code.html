@@ -203,22 +203,12 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="../assets/js/qrcode.js"></script>
+    <script>
+        console.log('QRCode library loaded:', typeof QRCode);
+    </script>
     <script>
         let currentQRData = '';
-        let qrCodeLibraryLoaded = false;
-
-        // Wait for QRCode library to load
-        function waitForQRCode() {
-            return new Promise((resolve) => {
-                if (typeof QRCode !== 'undefined') {
-                    qrCodeLibraryLoaded = true;
-                    resolve();
-                } else {
-                    setTimeout(() => waitForQRCode().then(resolve), 100);
-                }
-            });
-        }
 
         function showInputSection() {
             const qrType = document.getElementById('qrType').value;
@@ -274,90 +264,239 @@
         }
 
         function generateQRCode(isAutoGenerate = false) {
-            const content = getQRContent();
-            const size = parseInt(document.getElementById('qrSize').value);
-            const canvas = document.getElementById('qrCanvas');
-            
-            if (!content.trim()) {
-                if (!isAutoGenerate) {
-                    alert('Por favor, preencha o conteúdo para o QR Code.');
+            try {
+                const content = getQRContent();
+                const size = parseInt(document.getElementById('qrSize').value);
+                const canvas = document.getElementById('qrCanvas');
+                
+                if (!canvas) {
+                    console.error('Canvas element not found');
+                    if (!isAutoGenerate) {
+                        alert('Erro: elemento canvas não encontrado.');
+                    }
+                    return;
                 }
-                return;
-            }
-
-            // Check if QRCode library is available
-            if (!qrCodeLibraryLoaded || typeof QRCode === 'undefined') {
-                if (!isAutoGenerate) {
-                    alert('Biblioteca QR Code não carregada. Tente novamente em alguns segundos.');
+                
+                if (!content.trim()) {
+                    if (!isAutoGenerate) {
+                        alert('Por favor, preencha o conteúdo para o QR Code.');
+                    }
+                    return;
                 }
-                return;
-            }
 
-            currentQRData = content;
-
-            QRCode.toCanvas(canvas, content, {
-                width: size,
-                height: size,
-                margin: 2,
-                color: {
-                    dark: '#000000',
-                    light: '#FFFFFF'
+                // Library check
+                if (typeof QRCode === 'undefined') {
+                    if (!isAutoGenerate) {
+                        alert('Erro interno: Biblioteca QR Code não disponível.');
+                    }
+                    return;
                 }
-            }, function (error) {
-                if (error) {
-                    console.error(error);
+
+                currentQRData = content;
+
+                // Clear canvas before generating new QR code
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Create a temporary div for the QRCode library
+                const tempDiv = document.createElement('div');
+                tempDiv.style.position = 'absolute';
+                tempDiv.style.left = '-9999px';
+                tempDiv.style.width = size + 'px';
+                tempDiv.style.height = size + 'px';
+                document.body.appendChild(tempDiv);
+
+                try {
+                    // Generate QR Code using the professional library
+                    const qr = new QRCode(tempDiv, {
+                        text: content,
+                        width: size,
+                        height: size,
+                        colorDark: '#000000',
+                        colorLight: '#ffffff',
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+
+                    // Wait for QR code generation
+                    setTimeout(() => {
+                        try {
+                            // Find the generated canvas or image
+                            const qrCanvas = tempDiv.querySelector('canvas');
+                            const qrImg = tempDiv.querySelector('img');
+                            
+                            if (qrCanvas) {
+                                // Copy from generated canvas to our canvas
+                                canvas.width = size;
+                                canvas.height = size;
+                                ctx.drawImage(qrCanvas, 0, 0);
+                                
+                                const qrResult = document.getElementById('qrResult');
+                                if (qrResult) {
+                                    qrResult.style.display = 'block';
+                                }
+                                console.log('QR Code generated successfully');
+                            } else if (qrImg && qrImg.src) {
+                                // If it's an image, load it into canvas
+                                const img = new Image();
+                                img.onload = function() {
+                                    canvas.width = size;
+                                    canvas.height = size;
+                                    ctx.drawImage(img, 0, 0);
+                                    
+                                    const qrResult = document.getElementById('qrResult');
+                                    if (qrResult) {
+                                        qrResult.style.display = 'block';
+                                    }
+                                    console.log('QR Code generated successfully from image');
+                                };
+                                img.src = qrImg.src;
+                            } else {
+                                throw new Error('Could not find generated QR Code');
+                            }
+                        } catch (error) {
+                            console.error('Error processing QR Code:', error);
+                            if (!isAutoGenerate) {
+                                alert('Erro ao processar QR Code. Tente novamente.');
+                            }
+                        } finally {
+                            // Clean up temporary div
+                            document.body.removeChild(tempDiv);
+                        }
+                    }, 100);
+
+                } catch (error) {
+                    console.error('QR Code library error:', error);
+                    document.body.removeChild(tempDiv);
                     if (!isAutoGenerate) {
                         alert('Erro ao gerar QR Code. Verifique o conteúdo e tente novamente.');
                     }
-                } else {
-                    document.getElementById('qrResult').style.display = 'block';
                 }
-            });
+            } catch (error) {
+                console.error('QR Code generation exception:', error);
+                if (!isAutoGenerate) {
+                    alert('Erro inesperado ao gerar QR Code. Recarregue a página e tente novamente.');
+                }
+            }
         }
 
         function downloadQR() {
             const canvas = document.getElementById('qrCanvas');
-            const link = document.createElement('a');
-            link.download = 'qrcode.png';
-            link.href = canvas.toDataURL();
-            link.click();
+            
+            if (!canvas || !canvas.width || !canvas.height) {
+                alert('Gere um QR Code primeiro!');
+                return;
+            }
+            
+            try {
+                const link = document.createElement('a');
+                link.download = 'qrcode.png';
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (error) {
+                console.error('Erro ao fazer download:', error);
+                alert('Erro ao fazer download da imagem. Tente novamente.');
+            }
         }
 
         function copyQRImage() {
             const canvas = document.getElementById('qrCanvas');
             
-            if (!canvas.width || !canvas.height) {
-                showNotification('Gere um QR Code primeiro!', 'error');
+            if (!canvas || !canvas.width || !canvas.height) {
+                if (typeof showNotification === 'function') {
+                    showNotification('Gere um QR Code primeiro!', 'error');
+                } else {
+                    alert('Gere um QR Code primeiro!');
+                }
                 return;
             }
             
-            canvas.toBlob(function(blob) {
-                if (navigator.clipboard && navigator.clipboard.write) {
-                    const item = new ClipboardItem({ 'image/png': blob });
-                    navigator.clipboard.write([item]).then(function() {
-                        showNotification('QR Code copiado para a área de transferência!', 'success');
-                    }).catch(function(err) {
-                        console.error('Erro ao copiar imagem:', err);
-                        showNotification('Erro ao copiar imagem. Use o botão de download.', 'error');
-                    });
+            try {
+                canvas.toBlob(function(blob) {
+                    if (!blob) {
+                        throw new Error('Falha ao criar blob da imagem');
+                    }
+                    
+                    if (navigator.clipboard && navigator.clipboard.write) {
+                        const item = new ClipboardItem({ 'image/png': blob });
+                        navigator.clipboard.write([item]).then(function() {
+                            if (typeof showNotification === 'function') {
+                                showNotification('QR Code copiado para a área de transferência!', 'success');
+                            } else {
+                                alert('QR Code copiado para a área de transferência!');
+                            }
+                        }).catch(function(err) {
+                            console.error('Erro ao copiar imagem:', err);
+                            if (typeof showNotification === 'function') {
+                                showNotification('Erro ao copiar imagem. Use o botão de download.', 'error');
+                            } else {
+                                alert('Erro ao copiar imagem. Use o botão de download.');
+                            }
+                        });
+                    } else {
+                        if (typeof showNotification === 'function') {
+                            showNotification('Seu navegador não suporta copiar imagens. Use o botão de download.', 'error');
+                        } else {
+                            alert('Seu navegador não suporta copiar imagens. Use o botão de download.');
+                        }
+                    }
+                }, 'image/png');
+            } catch (error) {
+                console.error('Erro ao processar imagem:', error);
+                if (typeof showNotification === 'function') {
+                    showNotification('Erro ao processar imagem. Tente novamente.', 'error');
                 } else {
-                    showNotification('Seu navegador não suporta copiar imagens. Use o botão de download.', 'error');
+                    alert('Erro ao processar imagem. Tente novamente.');
                 }
-            });
+            }
         }
 
         function clearQR() {
-            const inputs = document.querySelectorAll('input, textarea, select');
-            inputs.forEach(input => {
-                if (input.type === 'checkbox') {
-                    input.checked = false;
-                } else if (input.id !== 'qrType' && input.id !== 'qrSize') {
-                    input.value = '';
+            try {
+                // Clear all inputs
+                const inputs = document.querySelectorAll('input, textarea, select');
+                inputs.forEach(input => {
+                    if (input.type === 'checkbox') {
+                        input.checked = false;
+                    } else if (input.id !== 'qrType' && input.id !== 'qrSize') {
+                        input.value = '';
+                    }
+                });
+                
+                // Reset selects to default values
+                document.getElementById('qrType').value = 'text';
+                document.getElementById('qrSize').value = '300';
+                
+                // Hide result area and clear canvas
+                const qrResult = document.getElementById('qrResult');
+                if (qrResult) {
+                    qrResult.style.display = 'none';
                 }
-            });
-            
-            document.getElementById('qrResult').style.display = 'none';
-            currentQRData = '';
+                
+                const canvas = document.getElementById('qrCanvas');
+                if (canvas) {
+                    const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    canvas.width = 0;
+                    canvas.height = 0;
+                }
+                
+                // Reset current data
+                currentQRData = '';
+                
+                // Show correct input section
+                showInputSection();
+                
+                // Clear any timeouts
+                if (window.qrTimeout) {
+                    clearTimeout(window.qrTimeout);
+                }
+                
+            } catch (error) {
+                console.error('Erro ao limpar formulário:', error);
+                alert('Erro ao limpar formulário. Recarregue a página se necessário.');
+            }
         }
 
         // Event listeners
@@ -367,7 +506,7 @@
         document.addEventListener('input', function(e) {
             if (e.target.closest('.input-section') || e.target.id === 'qrSize') {
                 const content = getQRContent();
-                if (content.trim() && qrCodeLibraryLoaded) {
+                if (content.trim() && isQRCodeReady()) {
                     // Wait a bit to avoid too many calls
                     clearTimeout(window.qrTimeout);
                     window.qrTimeout = setTimeout(() => generateQRCode(true), 300);
@@ -378,11 +517,7 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             showInputSection();
-            
-            // Wait for QRCode library to load before enabling auto-generation
-            waitForQRCode().then(() => {
-                console.log('QRCode library loaded successfully');
-            });
+            console.log('QRCode library ready:', isQRCodeReady());
         });
     </script>
 </body>
