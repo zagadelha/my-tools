@@ -180,7 +180,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📞 Contato
 
-- Website: [MyTools](https://seu-usuario.github.io/my-tools/)
+- Website: [MyTools](https://mytools.guru/)
 - GitHub: [Issues](https://github.com/seu-usuario/my-tools/issues)
 
 ---
