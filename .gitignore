@@ -28,6 +28,11 @@ pids
 
 # dotenv environment variables file
 .env
+
+# GitHub Workflows (ignore CI/CD)
+.github/workflows/
+
+# GitHub Templates (opcional)
 .env.local
 .env.development.local
 .env.test.local

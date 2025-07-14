@@ -114,7 +114,7 @@
 
             <details style="margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
                 <summary style="cursor: pointer; font-weight: 500;">O formulário de contato não está funcionando?</summary>
-                <p style="margin-top: 1rem;">Se o formulário não enviar automaticamente, ele abrirá seu cliente de email padrão. Como alternativa, você pode enviar diretamente para: <strong>contato@mytools.com</strong></p>
+                <p style="margin-top: 1rem;">Se o formulário não enviar automaticamente, ele abrirá seu cliente de email padrão. Como alternativa, você pode enviar diretamente para: <strong>mytoolsguru@gmail.com</strong></p>
             </details>
 
         </div>
@@ -243,18 +243,18 @@
         function sendViaMailto(name, email, subject, message) {
             const subjectText = getSubjectText(subject);
             const body = `Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
-            const mailtoLink = `mailto:contato@mytools.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
+            const mailtoLink = `mailto:mytoolsguru@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
             
             // Try to open mailto
             const link = document.createElement('a');
             link.href = mailtoLink;
             link.click();
             
-            showContactMessage('Seu cliente de email foi aberto. Se não funcionou, copie estas informações e envie para: contato@mytools.com', 'info');
+            showContactMessage('Seu cliente de email foi aberto. Se não funcionou, copie estas informações e envie para: mytoolsguru@gmail.com', 'info');
             
             // Show copy-friendly format
             setTimeout(() => {
-                const copyText = `Email: contato@mytools.com\nAssunto: ${getSubjectText(subject)}\n\nNome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
+                const copyText = `Email: mytoolsguru@gmail.com\nAssunto: ${getSubjectText(subject)}\n\nNome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
                 showContactMessage(`Informações para envio manual:\n\n${copyText}`, 'info');
             }, 2000);
         }
