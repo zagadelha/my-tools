@@ -30,7 +30,7 @@ pids
 .env
 
 # GitHub Workflows (ignore CI/CD)
-.github/workflows/
+.github/workflows/*
 
 # GitHub Templates (opcional)
 .env.local
