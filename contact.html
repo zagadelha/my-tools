@@ -11,6 +11,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="assets/js/email.min.js"></script>
 </head>
 <body>
     <header class="header">
@@ -54,11 +57,11 @@
                 <div class="form-group">
                     <label for="subject" class="form-label">Assunto *</label>
                     <select id="subject" class="form-select" required>
-                        <option value="">Selecione um assunto</option>
+                        <option value="">Selecione um assunto...</option>
+                        <option value="question">Dúvida</option>
+                        <option value="improvement">Melhoria</option>
                         <option value="bug">Reportar Bug</option>
                         <option value="suggestion">Sugestão de Ferramenta</option>
-                        <option value="improvement">Melhoria</option>
-                        <option value="question">Dúvida</option>
                         <option value="other">Outro</option>
                     </select>
                 </div>
@@ -98,6 +101,11 @@
             <details style="margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
                 <summary style="cursor: pointer; font-weight: 500;">Como posso sugerir uma nova ferramenta?</summary>
                 <p style="margin-top: 1rem;">Use o formulário acima selecionando "Sugestão de Ferramenta" ou abra uma issue no nosso GitHub.</p>
+            </details>
+
+            <details style="margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
+                <summary style="cursor: pointer; font-weight: 500;">O formulário de contato não está funcionando?</summary>
+                <p style="margin-top: 1rem;">Se o formulário não enviar automaticamente, ele abrirá seu cliente de email padrão. Como alternativa, você pode enviar diretamente para: <strong>contato@mytools.com</strong></p>
             </details>
 
         </div>
@@ -146,6 +154,11 @@
 
     <script src="assets/js/main.js"></script>
     <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("NBUvI3VB-URAk0juT"); 
+        })();
+
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -158,36 +171,129 @@
                 showContactMessage('Por favor, preencha todos os campos obrigatórios.', 'error');
                 return;
             }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showContactMessage('Por favor, insira um email válido.', 'error');
+                return;
+            }
             
-            // Simulate form submission
-            showContactMessage('Obrigado pela sua mensagem! Entraremos em contato em breve.', 'success');
+            // Show loading state
+            const submitBtn = document.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
             
-            // Clear form
-            this.reset();
+            // Prepare email parameters
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                subject: getSubjectText(subject),
+                message: message,
+                to_name: 'MyTools Team'
+            };
+            
+            // Try to send email using EmailJS
+            if (typeof emailjs !== 'undefined') {
+                emailjs.send('service_4pccgum', 'template_h7cyfus', templateParams)
+                    .then(function(response) {
+                        console.log('Email sent successfully:', response);
+                        showContactMessage('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+                        document.getElementById('contactForm').reset();
+                    })
+                    .catch(function(error) {
+                        console.error('Email sending failed:', error);
+                        // Fallback to mailto
+                        sendViaMailto(name, email, subject, message);
+                    })
+                    .finally(function() {
+                        // Reset button state
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    });
+            } else {
+                // Fallback if EmailJS is not available
+                sendViaMailto(name, email, subject, message);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         });
+
+        function getSubjectText(value) {
+            const subjects = {
+                'bug': 'Reportar Bug',
+                'suggestion': 'Sugestão de Ferramenta',
+                'improvement': 'Melhoria',
+                'question': 'Dúvida',
+                'other': 'Outro'
+            };
+            return subjects[value] || 'Contato';
+        }
+
+        function sendViaMailto(name, email, subject, message) {
+            const subjectText = getSubjectText(subject);
+            const body = `Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
+            const mailtoLink = `mailto:contato@mytools.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
+            
+            // Try to open mailto
+            const link = document.createElement('a');
+            link.href = mailtoLink;
+            link.click();
+            
+            showContactMessage('Seu cliente de email foi aberto. Se não funcionou, copie estas informações e envie para: contato@mytools.com', 'info');
+            
+            // Show copy-friendly format
+            setTimeout(() => {
+                const copyText = `Email: contato@mytools.com\nAssunto: ${getSubjectText(subject)}\n\nNome: ${name}\nEmail: ${email}\n\nMensagem:\n${message}`;
+                showContactMessage(`Informações para envio manual:\n\n${copyText}`, 'info');
+            }, 2000);
+        }
 
         function showContactMessage(message, type) {
             const resultDiv = document.getElementById('contactResult');
             const messageP = document.getElementById('contactMessage');
             
             messageP.textContent = message;
-            resultDiv.className = type === 'success' ? 'text-success' : 'text-error';
+            messageP.style.whiteSpace = 'pre-line'; // Preserve line breaks
+            resultDiv.className = type === 'success' ? 'text-success' : (type === 'info' ? 'text-info' : 'text-error');
             resultDiv.style.display = 'block';
             
             if (type === 'success') {
                 resultDiv.style.backgroundColor = '#f0f9f4';
                 resultDiv.style.color = '#10b981';
                 resultDiv.style.border = '1px solid #10b981';
+            } else if (type === 'info') {
+                resultDiv.style.backgroundColor = '#f0f9ff';
+                resultDiv.style.color = '#3b82f6';
+                resultDiv.style.border = '1px solid #3b82f6';
             } else {
                 resultDiv.style.backgroundColor = '#fef2f2';
                 resultDiv.style.color = '#ef4444';
                 resultDiv.style.border = '1px solid #ef4444';
             }
             
-            // Auto hide after 5 seconds
+            // Auto hide after 10 seconds for info messages, 5 for others
+            const hideDelay = type === 'info' ? 10000 : 5000;
             setTimeout(() => {
                 resultDiv.style.display = 'none';
-            }, 5000);
+            }, hideDelay);
+        }
+
+        // Copy to clipboard functionality
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showContactMessage('Informações copiadas para a área de transferência!', 'success');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showContactMessage('Informações copiadas para a área de transferência!', 'success');
+            });
         }
     </script>
 </body>
