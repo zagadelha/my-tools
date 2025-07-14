@@ -1,6 +1,6 @@
-# My Tools - Ferramentas Úteis Online
+# MyTools - Ferramentas Úteis Online
 
-![My Tools](https://img.shields.io/badge/My%20Tools-Ferramentas%20Úteis-blue)
+![MyTools](https://img.shields.io/badge/My%20Tools-Ferramentas%20Úteis-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
@@ -180,7 +180,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📞 Contato
 
-- Website: [My Tools](https://seu-usuario.github.io/my-tools/)
+- Website: [MyTools](https://seu-usuario.github.io/my-tools/)
 - GitHub: [Issues](https://github.com/seu-usuario/my-tools/issues)
 
 ---
