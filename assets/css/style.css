@@ -438,8 +438,23 @@ body {
 }
 
 .language-flag {
-    font-size: 1.1rem;
-    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    width: 24px;
+    height: 20px;
+}
+
+.language-flag svg {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.language-flag span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .language-code {
@@ -506,8 +521,24 @@ body {
 }
 
 .language-option-flag {
-    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    width: 24px;
+    height: 20px;
     flex-shrink: 0;
+}
+
+.language-option-flag svg {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.language-option-flag span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .language-option-text {

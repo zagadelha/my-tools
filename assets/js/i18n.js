@@ -1,4 +1,4 @@
-// Sistema de Internacionalização - MyTools
+// Sistema de Internacionalizacao - MyTools
 class I18n {
     constructor() {
         this.currentLang = this.getStoredLanguage() || this.detectBrowserLanguage();
@@ -329,9 +329,21 @@ class I18n {
 
     createLanguageSelector() {
         const languages = {
-            'pt-BR': { name: 'Português', flag: '🇧🇷', native: 'Português' },
-            'en': { name: 'English', flag: '🇺🇸', native: 'English' },
-            'es': { name: 'Español', flag: '🇪🇸', native: 'Español' }
+            'pt-BR': { 
+                name: 'Português', 
+                flag: '🇧🇷', // Bandeira do Brasil
+                native: 'Português' 
+            },
+            'en': { 
+                name: 'English', 
+                flag: '🇺🇸', // Bandeira dos EUA
+                native: 'English' 
+            },
+            'es': { 
+                name: 'Español', 
+                flag: '🇪🇸', // Bandeira da Espanha
+                native: 'Español' 
+            }
         };
 
         const selector = document.createElement('div');
@@ -343,7 +355,7 @@ class I18n {
         
         const currentLang = languages[this.currentLang];
         button.innerHTML = `
-            <span class="language-flag">${currentLang.flag}</span>
+            <span class="language-flag">${this.createFlag(currentLang, this.currentLang)}</span>
             <span class="language-code">${this.currentLang}</span>
             <span class="language-arrow">▼</span>
         `;
@@ -356,7 +368,7 @@ class I18n {
             option.className = `language-option ${code === this.currentLang ? 'active' : ''}`;
             option.href = '#';
             option.innerHTML = `
-                <span class="language-option-flag">${lang.flag}</span>
+                <span class="language-option-flag">${this.createFlag(lang, code)}</span>
                 <div class="language-option-text">
                     <span class="language-option-name">${lang.name}</span>
                     <span class="language-option-native">${lang.native}</span>
@@ -391,9 +403,44 @@ class I18n {
         return selector;
     }
 
+    testEmojiSupport() {
+        // Testa se o navegador consegue renderizar emojis de bandeira
+        const canvas = document.createElement('canvas');
+        canvas.width = 20;
+        canvas.height = 20;
+        const ctx = canvas.getContext('2d');
+        
+        // Define fonte e desenha emoji de teste
+        ctx.font = '16px Arial';
+        ctx.fillText('🇺🇸', 0, 16);
+        
+        // Verifica se algo foi renderizado
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        return imageData.data.some(pixel => pixel !== 0);
+    }
+
+    createFlag(lang, code) {
+        // Primeiro tenta usar a bandeira emoji
+        if (lang.flag) {
+            // Testa se o emoji será renderizado corretamente
+            if (this.testEmojiSupport()) {
+                return `<span style="font-size: 16px;">${lang.flag}</span>`;
+            }
+        }
+        
+        // Fallback para círculos coloridos apenas se emoji não funcionar
+        const colors = {
+            'pt-BR': { bg: '#009639', text: 'BR' },
+            'en': { bg: '#B22234', text: 'US' },
+            'es': { bg: '#AA151B', text: 'ES' }
+        };
+        const color = colors[code];
+        return `<span style="background: ${color.bg}; color: white; border-radius: 50%; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: bold; line-height: 1;">${color.text}</span>`;
+    }
+
     updateLanguageButton(button, langInfo, code) {
         button.innerHTML = `
-            <span class="language-flag">${langInfo.flag}</span>
+            <span class="language-flag">${this.createFlag(langInfo, code)}</span>
             <span class="language-code">${code}</span>
             <span class="language-arrow">▼</span>
         `;
