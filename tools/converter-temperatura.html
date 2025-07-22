@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Temperatura - MyTools</title>
+    <title data-i18n="temperatureConverter.title">Conversor de Temperatura - MyTools</title>
     <meta name="description" content="Converta temperaturas entre Celsius, Fahrenheit e Kelvin de forma rápida e precisa. Ferramenta gratuita e fácil de usar.">
     <meta name="keywords" content="conversor temperatura, celsius fahrenheit, kelvin, conversão temperatura">
     
@@ -31,66 +31,69 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../" class="nav-link">Início</a></li>
-                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>🌡️ Conversor de Temperatura</h1>
-            <p>Converta facilmente entre Celsius, Fahrenheit e Kelvin</p>
+            <h1 data-i18n="temperatureConverter.title">🌡️ Conversor de Temperatura</h1>
+            <p data-i18n="temperatureConverter.subtitle">Converta facilmente entre Celsius, Fahrenheit e Kelvin</p>
         </div>
 
         <div class="form-container">
             <div class="form-group">
-                <label for="temperature" class="form-label">Temperatura:</label>
-                <input type="number" id="temperature" class="form-input" placeholder="Digite a temperatura" step="any">
+                <label for="temperature" class="form-label" data-i18n="temperatureConverter.temperature">Temperatura:</label>
+                <input type="number" id="temperature" class="form-input" data-i18n-placeholder="temperatureConverter.temperaturePlaceholder" placeholder="Digite a temperatura" step="any">
             </div>
 
             <div class="form-group">
-                <label for="fromUnit" class="form-label">De:</label>
+                <label for="fromUnit" class="form-label" data-i18n="temperatureConverter.from">De:</label>
                 <select id="fromUnit" class="form-select">
-                    <option value="celsius">Celsius (°C)</option>
-                    <option value="fahrenheit">Fahrenheit (°F)</option>
-                    <option value="kelvin">Kelvin (K)</option>
+                    <option value="celsius" data-i18n="temperatureConverter.celsius">Celsius (°C)</option>
+                    <option value="fahrenheit" data-i18n="temperatureConverter.fahrenheit">Fahrenheit (°F)</option>
+                    <option value="kelvin" data-i18n="temperatureConverter.kelvin">Kelvin (K)</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="toUnit" class="form-label">Para:</label>
+                <label for="toUnit" class="form-label" data-i18n="temperatureConverter.to">Para:</label>
                 <select id="toUnit" class="form-select">
-                    <option value="fahrenheit">Fahrenheit (°F)</option>
-                    <option value="celsius">Celsius (°C)</option>
-                    <option value="kelvin">Kelvin (K)</option>
+                    <option value="fahrenheit" data-i18n="temperatureConverter.fahrenheit">Fahrenheit (°F)</option>
+                    <option value="celsius" data-i18n="temperatureConverter.celsius">Celsius (°C)</option>
+                    <option value="kelvin" data-i18n="temperatureConverter.kelvin">Kelvin (K)</option>
                 </select>
             </div>
 
-            <button onclick="convertTemperature()" class="btn btn-primary btn-full">Converter</button>
+            <button onclick="convertTemperature()" class="btn btn-primary btn-full" data-i18n="temperatureConverter.convert">Converter</button>
 
             <div id="result" class="result-area" style="display: none;">
                 <div id="resultText"></div>
                 <div class="result-actions">
-                    <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
-                    <button onclick="clearAll()" class="btn btn-secondary">Limpar</button>
+                    <button onclick="copyResult()" class="btn btn-secondary" data-i18n="temperatureConverter.copyResult">Copiar Resultado</button>
+                    <button onclick="clearAll()" class="btn btn-secondary" data-i18n="temperatureConverter.clear">Limpar</button>
                 </div>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Como usar o Conversor de Temperatura</h3>
-            <ol>
+            <h3 data-i18n="temperatureConverter.howToUse">Como usar o Conversor de Temperatura</h3>
+            <ol id="howToUseList">
                 <li>Digite o valor da temperatura que deseja converter</li>
                 <li>Selecione a unidade de origem (Celsius, Fahrenheit ou Kelvin)</li>
                 <li>Selecione a unidade de destino</li>
                 <li>Clique em "Converter" para ver o resultado</li>
             </ol>
 
-            <h3>Fórmulas de Conversão</h3>
-            <ul>
+            <h3 data-i18n="temperatureConverter.formulas">Fórmulas de Conversão</h3>
+            <ul id="formulasList">
                 <li><strong>Celsius para Fahrenheit:</strong> °F = (°C × 9/5) + 32</li>
                 <li><strong>Celsius para Kelvin:</strong> K = °C + 273.15</li>
                 <li><strong>Fahrenheit para Celsius:</strong> °C = (°F - 32) × 5/9</li>
@@ -105,7 +108,7 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Ferramentas</h4>
+                    <h4 data-i18n="footer.tools">Ferramentas</h4>
                     <ul class="footer-links">
                         <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
                         <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
@@ -114,7 +117,7 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Geradores</h4>
+                    <h4 data-i18n="footer.generators">Geradores</h4>
                     <ul class="footer-links">
                         <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
                         <li><a href="gerador-md5.html">Gerador MD5</a></li>
@@ -123,26 +126,27 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Sobre</h4>
+                    <h4 data-i18n="footer.about">Sobre</h4>
                     <ul class="footer-links">
-                        <li><a href="../about.html">Sobre Nós</a></li>
-                        <li><a href="../contact.html">Contato</a></li>
-                        <li><a href="../privacy.html">Privacidade</a></li>
-                        <li><a href="../terms.html">Termos de Uso</a></li>
+                        <li><a href="../about.html" data-i18n="nav.about">Sobre Nós</a></li>
+                        <li><a href="../contact.html" data-i18n="nav.contact">Contato</a></li>
+                        <li><a href="../privacy.html" data-i18n="footer.privacy">Privacidade</a></li>
+                        <li><a href="../terms.html" data-i18n="footer.terms">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>MyTools</h4>
-                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                    <p data-i18n="footer.description">Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MyTools. Todos os direitos reservados.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
     <script>
         function convertTemperature() {
             const temperature = parseFloat(document.getElementById('temperature').value);
@@ -152,12 +156,14 @@
             const resultText = document.getElementById('resultText');
 
             if (isNaN(temperature)) {
-                alert('Por favor, digite um valor numérico válido.');
+                const errorMsg = window.i18n ? window.i18n.t('temperatureConverter.errorInvalid') : 'Por favor, digite um valor numérico válido.';
+                alert(errorMsg);
                 return;
             }
 
             if (fromUnit === toUnit) {
-                resultText.textContent = `${temperature}° (mesma unidade)`;
+                const sameUnitMsg = window.i18n ? window.i18n.t('temperatureConverter.sameUnit') : 'mesma unidade';
+                resultText.textContent = `${temperature}° (${sameUnitMsg})`;
                 resultDiv.style.display = 'block';
                 return;
             }
@@ -230,8 +236,37 @@
 
         // Focus on input when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize i18n
+            const i18n = new I18n();
+            i18n.init();
+            
+            // Handle dynamic content updates on language change
+            document.addEventListener('languageChanged', () => {
+                updateDynamicContent(i18n);
+            });
+            
+            // Initialize dynamic content
+            updateDynamicContent(i18n);
+            
+            // Focus on temperature input
             document.getElementById('temperature').focus();
         });
+        
+        function updateDynamicContent(i18n) {
+            // Update how to use list
+            const howToUseList = document.getElementById('howToUseList');
+            if (howToUseList && i18n) {
+                const steps = i18n.t('temperatureConverter.howToUseSteps');
+                howToUseList.innerHTML = steps.map(step => `<li>${step}</li>`).join('');
+            }
+            
+            // Update formulas list
+            const formulasList = document.getElementById('formulasList');
+            if (formulasList && i18n) {
+                const formulas = i18n.t('temperatureConverter.formulasList');
+                formulasList.innerHTML = formulas.map(formula => `<li>${formula}</li>`).join('');
+            }
+        }
     </script>
 </body>
 </html>

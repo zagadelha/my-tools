@@ -31,44 +31,47 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../" class="nav-link">Início</a></li>
-                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>✂️ Remover Acentos</h1>
-            <p>Remove acentos e caracteres especiais de textos</p>
+            <h1 data-i18n="removeAccents.title">✂️ Remover Acentos</h1>
+            <p data-i18n="removeAccents.subtitle">Remove acentos e caracteres especiais de textos</p>
         </div>
 
         <div class="form-container">
             <div class="form-group">
-                <label for="inputText" class="form-label">Texto com acentos:</label>
-                <textarea id="inputText" class="form-textarea" placeholder="Digite ou cole o texto com acentos aqui..." rows="8"></textarea>
+                <label for="inputText" class="form-label" data-i18n="removeAccents.inputText">Texto com acentos:</label>
+                <textarea id="inputText" class="form-textarea" data-i18n-placeholder="removeAccents.inputPlaceholder" placeholder="Digite ou cole o texto com acentos aqui..." rows="8"></textarea>
             </div>
 
             <div class="form-group">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    <button onclick="removeAccents()" class="btn btn-primary">Remover Acentos</button>
-                    <button onclick="removeSpecialChars()" class="btn btn-primary">Remover Especiais</button>
-                    <button onclick="removeAll()" class="btn btn-primary">Remover Tudo</button>
-                    <button onclick="slugify()" class="btn btn-primary">Criar Slug</button>
+                    <button onclick="removeAccents()" class="btn btn-primary" data-i18n="removeAccents.remove">Remover Acentos</button>
+                    <button onclick="removeSpecialChars()" class="btn btn-primary" data-i18n="removeAccents.removeSpecial">Remover Especiais</button>
+                    <button onclick="removeAll()" class="btn btn-primary" data-i18n="removeAccents.removeAll">Remover Tudo</button>
+                    <button onclick="slugify()" class="btn btn-primary" data-i18n="removeAccents.createSlug">Criar Slug</button>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="outputText" class="form-label">Texto sem acentos:</label>
-                <textarea id="outputText" class="form-textarea" rows="8" readonly placeholder="O resultado aparecerá aqui..."></textarea>
+                <label for="outputText" class="form-label" data-i18n="removeAccents.outputText">Texto sem acentos:</label>
+                <textarea id="outputText" class="form-textarea" rows="8" readonly data-i18n-placeholder="removeAccents.outputPlaceholder" placeholder="O resultado aparecerá aqui..."></textarea>
             </div>
 
             <div class="result-actions">
-                <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
-                <button onclick="swapTexts()" class="btn btn-secondary">Trocar ⇅</button>
-                <button onclick="clearAll()" class="btn btn-secondary">Limpar Tudo</button>
+                <button onclick="copyResult()" class="btn btn-secondary" data-i18n="removeAccents.copyResult">Copiar Resultado</button>
+                <button onclick="swapTexts()" class="btn btn-secondary" data-i18n="removeAccents.swap">Trocar ⇅</button>
+                <button onclick="clearAll()" class="btn btn-secondary" data-i18n="removeAccents.clear">Limpar Tudo</button>
             </div>
         </div>
 
@@ -200,6 +203,7 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
     <script>
         const accentMap = {
             'á': 'a', 'à': 'a', 'ä': 'a', 'â': 'a', 'ã': 'a', 'å': 'a', 'æ': 'ae',
@@ -393,7 +397,12 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize i18n
+            const i18n = new I18n();
+            i18n.init();
+            
             document.getElementById('inputText').focus();
+        
         });
     </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - MyTools</title>
+    <title data-i18n="about.title">Sobre - MyTools</title>
     <meta name="description" content="Conheça mais sobre o MyTools, nossa missão de fornecer ferramentas úteis e gratuitas para facilitar seu dia a dia.">
     
     <!-- Favicon -->
@@ -30,48 +30,51 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Início</a></li>
-                    <li><a href="about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>Sobre o MyTools</h1>
-            <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia</p>
+            <h1 data-i18n="about.title">Sobre o MyTools</h1>
+            <p data-i18n="about.subtitle">Ferramentas úteis e gratuitas para facilitar seu dia a dia</p>
         </div>
 
         <div class="form-container">
-            <h2>Nossa Missão</h2>
-            <p>O MyTools foi criado com o objetivo de fornecer ferramentas úteis, simples e gratuitas para facilitar tarefas do dia a dia. Acreditamos que tecnologia deve ser acessível e fácil de usar, sem complicações desnecessárias.</p>
+            <h2 data-i18n="about.mission">Nossa Missão</h2>
+            <p data-i18n="about.missionText">O MyTools foi criado com o objetivo de fornecer ferramentas úteis, simples e gratuitas para facilitar tarefas do dia a dia. Acreditamos que tecnologia deve ser acessível e fácil de usar, sem complicações desnecessárias.</p>
             <br/>
 
-            <h2>Por que MyTools?</h2>
+            <h2 data-i18n="about.whyTitle">Por que MyTools?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
                 <div>
-                    <h3>⚡ Simplicidade</h3>
-                    <p>Todas as nossas ferramentas são projetadas para serem intuitivas e fáceis de usar. Sem cadastros, sem complicações.</p>
+                    <h3 data-i18n="about.simplicity">⚡ Simplicidade</h3>
+                    <p data-i18n="about.simplicityText">Todas as nossas ferramentas são projetadas para serem intuitivas e fáceis de usar. Sem cadastros, sem complicações.</p>
                 </div>
                 <div>
-                    <h3>🔒 Privacidade</h3>
-                    <p>Todos os dados são processados localmente no seu navegador. Nada é enviado para nossos servidores.</p>
+                    <h3 data-i18n="about.privacy">🔒 Privacidade</h3>
+                    <p data-i18n="about.privacyText">Todos os dados são processados localmente no seu navegador. Nada é enviado para nossos servidores.</p>
                 </div>
                 <div>
-                    <h3>📱 Responsivo</h3>
-                    <p>Nossas ferramentas funcionam perfeitamente em qualquer dispositivo: celular, tablet ou desktop.</p>
+                    <h3 data-i18n="about.responsive">📱 Responsivo</h3>
+                    <p data-i18n="about.responsiveText">Nossas ferramentas funcionam perfeitamente em qualquer dispositivo: celular, tablet ou desktop.</p>
                 </div>
                 <div>
-                    <h3>🆓 Gratuito</h3>
-                    <p>Todas as ferramentas são 100% gratuitas e sempre serão. Sem taxas ocultas, sem limitações.</p>
+                    <h3 data-i18n="about.free">🆓 Gratuito</h3>
+                    <p data-i18n="about.freeText">Todas as ferramentas são 100% gratuitas e sempre serão. Sem taxas ocultas, sem limitações.</p>
                 </div>
             </div>
 
-            <h2>Como Funciona</h2>
-            <p>Todas as nossas ferramentas funcionam 100% no seu navegador. Isso significa que:</p>
-            <ul>
+            <h2 data-i18n="about.howTitle">Como Funciona</h2>
+            <p data-i18n="about.howText">Todas as nossas ferramentas funcionam 100% no seu navegador. Isso significa que:</p>
+            <ul id="howList">
                 <li>Seus dados nunca saem do seu dispositivo</li>
                 <li>Você pode usar as ferramentas mesmo offline (após carregar a página)</li>
                 <li>Não há necessidade de cadastro ou login</li>
@@ -79,9 +82,9 @@
             </ul>
             <br/>
 
-            <h2>Tecnologias Utilizadas</h2>
-            <p>O MyTools é desenvolvido com tecnologias web modernas e seguras:</p>
-            <ul>
+            <h2 data-i18n="about.techTitle">Tecnologias Utilizadas</h2>
+            <p data-i18n="about.techText">O MyTools é desenvolvido com tecnologias web modernas e seguras:</p>
+            <ul id="techList">
                 <li><strong>HTML5:</strong> Estrutura semântica e acessível</li>
                 <li><strong>CSS3:</strong> Design responsivo e moderno</li>
                 <li><strong>JavaScript:</strong> Funcionalidades interativas no cliente</li>
@@ -89,10 +92,10 @@
             </ul>
             <br/>
 
-            <h2>Suporte e Contribuições</h2>
-            <p>Se você encontrou um bug, tem uma sugestão de melhoria ou quer contribuir com uma nova ferramenta, ficaremos felizes em ouvir você!</p>
+            <h2 data-i18n="about.supportTitle">Suporte e Contribuições</h2>
+            <p data-i18n="about.supportText">Se você encontrou um bug, tem uma sugestão de melhoria ou quer contribuir com uma nova ferramenta, ficaremos felizes em ouvir você!</p>
             <br/>
-            <p><a href="contact.html" class="btn btn-primary">Entre em Contato</a></p>
+            <p><a href="contact.html" class="btn btn-primary" data-i18n="about.contactButton">Entre em Contato</a></p>
         </div>
     </main>
 
@@ -100,7 +103,7 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Ferramentas</h4>
+                    <h4 data-i18n="footer.tools">Ferramentas</h4>
                     <ul class="footer-links">
                         <li><a href="tools/converter-temperatura.html">Conversor de Temperatura</a></li>
                         <li><a href="tools/converter-medidas.html">Conversor de Medidas</a></li>
@@ -109,7 +112,7 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Geradores</h4>
+                    <h4 data-i18n="footer.generators">Geradores</h4>
                     <ul class="footer-links">
                         <li><a href="tools/gerar-qr-code.html">Gerador QR Code</a></li>
                         <li><a href="tools/gerador-md5.html">Gerador MD5</a></li>
@@ -118,25 +121,56 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Sobre</h4>
+                    <h4 data-i18n="footer.about">Sobre</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">Sobre Nós</a></li>
-                        <li><a href="contact.html">Contato</a></li>
-                        <li><a href="privacy.html">Privacidade</a></li>
-                        <li><a href="terms.html">Termos de Uso</a></li>
+                        <li><a href="about.html" data-i18n="nav.about">Sobre Nós</a></li>
+                        <li><a href="contact.html" data-i18n="nav.contact">Contato</a></li>
+                        <li><a href="privacy.html" data-i18n="footer.privacy">Privacidade</a></li>
+                        <li><a href="terms.html" data-i18n="footer.terms">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>MyTools</h4>
-                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                    <p data-i18n="footer.description">Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MyTools. Todos os direitos reservados.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const i18n = new I18n();
+            i18n.init();
+            
+            // Handle dynamic list content
+            document.addEventListener('languageChanged', () => {
+                updateDynamicLists(i18n);
+            });
+            
+            function updateDynamicLists(i18n) {
+                // Update how it works list
+                const howList = document.getElementById('howList');
+                if (howList) {
+                    const items = i18n.t('about.howList');
+                    howList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+                }
+                
+                // Update tech list
+                const techList = document.getElementById('techList');
+                if (techList) {
+                    const items = i18n.t('about.techList');
+                    techList.innerHTML = items.map(item => `<li><strong>${item.split(':')[0]}:</strong>${item.split(':')[1]}</li>`).join('');
+                }
+            }
+            
+            // Initialize lists
+            updateDynamicLists(i18n);
+        });
+    </script>
 </body>
 </html>

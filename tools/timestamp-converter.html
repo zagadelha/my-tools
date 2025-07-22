@@ -31,18 +31,21 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../" class="nav-link">Início</a></li>
-                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>⏰ Conversor de Timestamp</h1>
-            <p>Converta timestamps Unix para datas legíveis e vice-versa</p>
+            <h1 data-i18n="timestamp.title">⏰ Conversor de Timestamp</h1>
+            <p data-i18n="timestamp.subtitle">Converta timestamps Unix para datas legíveis e vice-versa</p>
         </div>
 
         <div class="form-container">
@@ -219,6 +222,7 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
     <script>
         function updateCurrentTime() {
             const now = new Date();
@@ -459,12 +463,17 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize i18n
+            const i18n = new I18n();
+            i18n.init();
+            
             updateCurrentTime();
             
             // Set current date as default
             const now = new Date();
             const dateString = now.toISOString().slice(0, 16);
             document.getElementById('dateInput').value = dateString;
+        
         });
     </script>
 </body>

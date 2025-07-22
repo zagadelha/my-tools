@@ -31,18 +31,21 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../" class="nav-link">Início</a></li>
-                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>🔒 Gerador MD5</h1>
-            <p>Gere hashes MD5 para verificação de integridade e segurança</p>
+            <h1 data-i18n="md5.title">🔒 Gerador MD5</h1>
+            <p data-i18n="md5.subtitle">Gere hashes MD5 para verificação de integridade e segurança</p>
         </div>
 
         <div class="form-container">
@@ -313,7 +316,12 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize i18n
+            const i18n = new I18n();
+            i18n.init();
+            
             document.getElementById('inputText').focus();
+        
         });
     </script>
 </body>

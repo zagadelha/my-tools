@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de QR Code - MyTools</title>
+    <title data-i18n="qrCode.title">Gerador de QR Code - MyTools</title>
     <meta name="description" content="Gere QR codes gratuitos para textos, URLs, emails e mais. Rápido, fácil e sem cadastro necessário.">
     <meta name="keywords" content="gerador qr code, criar qr code, qr code gratuito, código qr">
     
@@ -31,51 +31,54 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../" class="nav-link">Início</a></li>
-                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="../" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>📱 Gerador de QR Code</h1>
-            <p>Crie QR codes para textos, URLs, emails e muito mais</p>
+            <h1 data-i18n="qrCode.title">📱 Gerador de QR Code</h1>
+            <p data-i18n="qrCode.subtitle">Crie QR codes para textos, URLs, emails e muito mais</p>
         </div>
 
         <div class="form-container">
             <div class="form-group">
-                <label for="qrType" class="form-label">Tipo de QR Code:</label>
+                <label for="qrType" class="form-label" data-i18n="qrCode.type">Tipo de QR Code:</label>
                 <select id="qrType" class="form-select">
-                    <option value="text">Texto</option>
-                    <option value="url">URL/Link</option>
-                    <option value="email">Email</option>
-                    <option value="phone">Telefone</option>
-                    <option value="sms">SMS</option>
-                    <option value="wifi">WiFi</option>
+                    <option value="text" data-i18n="qrCode.typeText">Texto</option>
+                    <option value="url" data-i18n="qrCode.typeUrl">URL/Link</option>
+                    <option value="email" data-i18n="qrCode.typeEmail">Email</option>
+                    <option value="phone" data-i18n="qrCode.typePhone">Telefone</option>
+                    <option value="sms" data-i18n="qrCode.typeSms">SMS</option>
+                    <option value="wifi" data-i18n="qrCode.typeWifi">WiFi</option>
                 </select>
             </div>
 
             <div id="textInput" class="input-section">
                 <div class="form-group">
-                    <label for="textContent" class="form-label">Texto:</label>
-                    <textarea id="textContent" class="form-textarea" placeholder="Digite o texto para o QR Code" rows="4"></textarea>
+                    <label for="textContent" class="form-label" data-i18n="qrCode.content">Texto:</label>
+                    <textarea id="textContent" class="form-textarea" data-i18n-placeholder="qrCode.placeholder.text" placeholder="Digite o texto para o QR Code" rows="4"></textarea>
                 </div>
             </div>
 
             <div id="urlInput" class="input-section" style="display: none;">
                 <div class="form-group">
                     <label for="urlContent" class="form-label">URL:</label>
-                    <input type="url" id="urlContent" class="form-input" placeholder="https://exemplo.com">
+                    <input type="url" id="urlContent" class="form-input" data-i18n-placeholder="qrCode.placeholder.url" placeholder="https://exemplo.com">
                 </div>
             </div>
 
             <div id="emailInput" class="input-section" style="display: none;">
                 <div class="form-group">
-                    <label for="emailContent" class="form-label">Email:</label>
-                    <input type="email" id="emailContent" class="form-input" placeholder="exemplo@email.com">
+                    <label for="emailContent" class="form-label" data-i18n="qrCode.typeEmail">Email:</label>
+                    <input type="email" id="emailContent" class="form-input" data-i18n-placeholder="qrCode.placeholder.email" placeholder="exemplo@email.com">
                 </div>
                 <div class="form-group">
                     <label for="emailSubject" class="form-label">Assunto (opcional):</label>
@@ -89,42 +92,42 @@
 
             <div id="phoneInput" class="input-section" style="display: none;">
                 <div class="form-group">
-                    <label for="phoneContent" class="form-label">Telefone:</label>
-                    <input type="tel" id="phoneContent" class="form-input" placeholder="+55 11 99999-9999">
+                    <label for="phoneContent" class="form-label" data-i18n="qrCode.typePhone">Telefone:</label>
+                    <input type="tel" id="phoneContent" class="form-input" data-i18n-placeholder="qrCode.placeholder.phone" placeholder="+55 11 99999-9999">
                 </div>
             </div>
 
             <div id="smsInput" class="input-section" style="display: none;">
                 <div class="form-group">
-                    <label for="smsPhone" class="form-label">Telefone:</label>
-                    <input type="tel" id="smsPhone" class="form-input" placeholder="+55 11 99999-9999">
+                    <label for="smsPhone" class="form-label" data-i18n="qrCode.sms.number">Telefone:</label>
+                    <input type="tel" id="smsPhone" class="form-input" data-i18n-placeholder="qrCode.placeholder.phone" placeholder="+55 11 99999-9999">
                 </div>
                 <div class="form-group">
-                    <label for="smsMessage" class="form-label">Mensagem:</label>
-                    <textarea id="smsMessage" class="form-textarea" placeholder="Mensagem do SMS" rows="3"></textarea>
+                    <label for="smsMessage" class="form-label" data-i18n="qrCode.sms.message">Mensagem:</label>
+                    <textarea id="smsMessage" class="form-textarea" data-i18n-placeholder="qrCode.placeholder.sms" placeholder="Mensagem do SMS" rows="3"></textarea>
                 </div>
             </div>
 
             <div id="wifiInput" class="input-section" style="display: none;">
                 <div class="form-group">
-                    <label for="wifiSSID" class="form-label">Nome da Rede (SSID):</label>
-                    <input type="text" id="wifiSSID" class="form-input" placeholder="Nome da rede WiFi">
+                    <label for="wifiSSID" class="form-label" data-i18n="qrCode.wifi.network">Nome da Rede (SSID):</label>
+                    <input type="text" id="wifiSSID" class="form-input" data-i18n-placeholder="qrCode.placeholder.wifi" placeholder="Nome da rede WiFi">
                 </div>
                 <div class="form-group">
-                    <label for="wifiPassword" class="form-label">Senha:</label>
+                    <label for="wifiPassword" class="form-label" data-i18n="qrCode.wifi.password">Senha:</label>
                     <input type="text" id="wifiPassword" class="form-input" placeholder="Senha da rede">
                 </div>
                 <div class="form-group">
-                    <label for="wifiSecurity" class="form-label">Tipo de Segurança:</label>
+                    <label for="wifiSecurity" class="form-label" data-i18n="qrCode.wifi.security">Tipo de Segurança:</label>
                     <select id="wifiSecurity" class="form-select">
-                        <option value="WPA">WPA/WPA2</option>
-                        <option value="WEP">WEP</option>
-                        <option value="nopass">Sem senha</option>
+                        <option value="WPA" data-i18n="qrCode.wifi.securityWpa">WPA/WPA2</option>
+                        <option value="WEP" data-i18n="qrCode.wifi.securityWep">WEP</option>
+                        <option value="nopass" data-i18n="qrCode.wifi.securityNone">Sem senha</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>
-                        <input type="checkbox" id="wifiHidden"> Rede oculta
+                        <input type="checkbox" id="wifiHidden"> <span data-i18n="qrCode.wifi.hidden">Rede oculta</span>
                     </label>
                 </div>
             </div>
@@ -139,15 +142,15 @@
                 </select>
             </div>
 
-            <button onclick="generateQRCode()" class="btn btn-primary btn-full">Gerar QR Code</button>
+            <button onclick="generateQRCode()" class="btn btn-primary btn-full" data-i18n="qrCode.generate">Gerar QR Code</button>
 
             <div id="qrResult" class="result-area" style="display: none;">
                 <div style="text-align: center; margin-bottom: 1rem;">
                     <canvas id="qrCanvas"></canvas>
                 </div>
                 <div class="result-actions">
-                    <button onclick="downloadQR()" class="btn btn-primary">Download PNG</button>
-                    <button onclick="copyQRImage()" class="btn btn-secondary">Copiar Imagem</button>
+                    <button onclick="downloadQR()" class="btn btn-primary" data-i18n="qrCode.download">Download PNG</button>
+                    <button onclick="copyQRImage()" class="btn btn-secondary" data-i18n="qrCode.copy">Copiar Imagem</button>
                     <button onclick="clearQR()" class="btn btn-secondary">Limpar</button>
                 </div>
             </div>
@@ -532,6 +535,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             showInputSection();
             console.log('QRCode library ready:', isQRCodeReady());
+        });
+    </script>
+    <script src="../assets/js/i18n.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const i18n = new I18n();
+            i18n.init();
         });
     </script>
 </body>

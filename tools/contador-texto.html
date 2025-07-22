@@ -31,24 +31,27 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../" class="nav-link">Início</a></li>
-                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>🔢 Contador de Texto</h1>
-            <p>Conte palavras, caracteres, parágrafos e linhas de qualquer texto</p>
+            <h1 data-i18n="textCounter.title">🔢 Contador de Texto</h1>
+            <p data-i18n="textCounter.subtitle">Conte palavras, caracteres, parágrafos e linhas de qualquer texto</p>
         </div>
 
         <div class="form-container">
             <div class="form-group">
-                <label for="textInput" class="form-label">Digite ou cole seu texto:</label>
-                <textarea id="textInput" class="form-textarea" placeholder="Digite ou cole seu texto aqui..." rows="10"></textarea>
+                <label for="textInput" class="form-label" data-i18n="textCounter.inputText">Digite ou cole seu texto:</label>
+                <textarea id="textInput" class="form-textarea" data-i18n-placeholder="textCounter.inputPlaceholder" placeholder="Digite ou cole seu texto aqui..." rows="10"></textarea>
             </div>
 
             <div class="result-area" style="display: block;">
@@ -157,6 +160,7 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
     <script>
         function countText() {
             const text = document.getElementById('textInput').value;
@@ -244,8 +248,13 @@ Tempo de leitura: ${readingTime} min`;
 
         // Initialize counts
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize i18n
+            const i18n = new I18n();
+            i18n.init();
+            
             countText();
             document.getElementById('textInput').focus();
+        
         });
     </script>
 </body>

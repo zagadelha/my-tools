@@ -31,82 +31,85 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../" class="nav-link">Início</a></li>
-                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>📏 Conversor de Medidas</h1>
-            <p>Converta unidades de comprimento, peso, volume e área</p>
+            <h1 data-i18n="unitConverter.title">📏 Conversor de Medidas</h1>
+            <p data-i18n="unitConverter.subtitle">Converta unidades de comprimento, peso, volume e área</p>
         </div>
 
         <div class="form-container">
             <div class="form-group">
-                <label for="category" class="form-label">Categoria:</label>
+                <label for="category" class="form-label" data-i18n="unitConverter.categories.title">Categoria:</label>
                 <select id="category" class="form-select">
-                    <option value="length">Comprimento</option>
-                    <option value="weight">Peso</option>
-                    <option value="volume">Volume</option>
-                    <option value="area">Área</option>
+                    <option value="length" data-i18n="unitConverter.categories.length">Comprimento</option>
+                    <option value="weight" data-i18n="unitConverter.categories.weight">Peso</option>
+                    <option value="volume" data-i18n="unitConverter.categories.volume">Volume</option>
+                    <option value="area" data-i18n="unitConverter.categories.area">Área</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="value" class="form-label">Valor:</label>
-                <input type="number" id="value" class="form-input" placeholder="Digite o valor" step="any">
+                <label for="value" class="form-label" data-i18n="unitConverter.value">Valor:</label>
+                <input type="number" id="value" class="form-input" data-i18n-placeholder="unitConverter.valuePlaceholder" placeholder="Digite o valor" step="any">
             </div>
 
             <div class="form-group">
-                <label for="fromUnit" class="form-label">De:</label>
+                <label for="fromUnit" class="form-label" data-i18n="unitConverter.from">De:</label>
                 <select id="fromUnit" class="form-select">
                     <!-- Options will be populated by JavaScript -->
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="toUnit" class="form-label">Para:</label>
+                <label for="toUnit" class="form-label" data-i18n="unitConverter.to">Para:</label>
                 <select id="toUnit" class="form-select">
                     <!-- Options will be populated by JavaScript -->
                 </select>
             </div>
 
-            <button onclick="convertUnits()" class="btn btn-primary btn-full">Converter</button>
+            <button onclick="convertUnits()" class="btn btn-primary btn-full" data-i18n="unitConverter.convert">Converter</button>
 
             <div id="result" class="result-area" style="display: none;">
                 <div id="resultText"></div>
                 <div class="result-actions">
-                    <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
-                    <button onclick="clearAll()" class="btn btn-secondary">Limpar</button>
+                    <button onclick="copyResult()" class="btn btn-secondary" data-i18n="unitConverter.copyResult">Copiar Resultado</button>
+                    <button onclick="clearAll()" class="btn btn-secondary" data-i18n="unitConverter.clear">Limpar</button>
                 </div>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Conversões Rápidas</h3>
+            <h3 data-i18n="unitConverter.quickConversions">Conversões Rápidas</h3>
             <div id="quickConversions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <!-- Quick conversions will be populated by JavaScript -->
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Unidades Suportadas</h3>
+            <h3 data-i18n="unitConverter.supportedUnits">Unidades Suportadas</h3>
             
-            <h4>Comprimento</h4>
-            <p>Milímetros, Centímetros, Metros, Quilômetros, Polegadas, Pés, Jardas, Milhas</p>
+            <h4 data-i18n="unitConverter.categories.length">Comprimento</h4>
+            <p data-i18n="unitConverter.lengthUnits">Milímetros, Centímetros, Metros, Quilômetros, Polegadas, Pés, Jardas, Milhas</p>
             
-            <h4>Peso</h4>
-            <p>Gramas, Quilogramas, Toneladas, Onças, Libras, Pedras</p>
+            <h4 data-i18n="unitConverter.categories.weight">Peso</h4>
+            <p data-i18n="unitConverter.weightUnits">Gramas, Quilogramas, Toneladas, Onças, Libras, Pedras</p>
             
-            <h4>Volume</h4>
-            <p>Mililitros, Litros, Galões, Xícaras, Colheres de sopa, Colheres de chá</p>
+            <h4 data-i18n="unitConverter.categories.volume">Volume</h4>
+            <p data-i18n="unitConverter.volumeUnits">Mililitros, Litros, Galões, Xícaras, Colheres de sopa, Colheres de chá</p>
             
-            <h4>Área</h4>
-            <p>Metros quadrados, Quilômetros quadrados, Hectares, Pés quadrados, Acres</p>
+            <h4 data-i18n="unitConverter.categories.area">Área</h4>
+            <p data-i18n="unitConverter.areaUnits">Metros quadrados, Quilômetros quadrados, Hectares, Pés quadrados, Acres</p>
         </div>
     </main>
 
@@ -152,6 +155,7 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
     <script>
         const units = {
             length: {
@@ -233,12 +237,14 @@
             const resultText = document.getElementById('resultText');
 
             if (isNaN(value)) {
-                alert('Por favor, digite um valor numérico válido.');
+                const errorMsg = window.i18n ? window.i18n.get('unitConverter.errorInvalid') : 'Por favor, digite um valor numérico válido.';
+                alert(errorMsg);
                 return;
             }
 
             if (fromUnit === toUnit) {
-                resultText.textContent = `${value} ${units[category].units[fromUnit].name}`;
+                const sameUnitMsg = window.i18n ? window.i18n.get('unitConverter.sameUnit') : 'mesma unidade';
+                resultText.textContent = `${value} ${units[category].units[fromUnit].name} (${sameUnitMsg})`;
                 resultDiv.style.display = 'block';
                 return;
             }
@@ -295,6 +301,37 @@
             document.getElementById('value').focus();
         }
 
+        function updateDynamicContent() {
+            if (!window.i18n) return;
+            
+            // Update category options
+            const categoryOptions = document.querySelectorAll('#category option');
+            categoryOptions.forEach(option => {
+                const i18nKey = option.getAttribute('data-i18n');
+                if (i18nKey) {
+                    option.textContent = window.i18n.get(i18nKey);
+                }
+            });
+            
+            // Update placeholders
+            const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+            placeholderElements.forEach(element => {
+                const i18nKey = element.getAttribute('data-i18n-placeholder');
+                if (i18nKey) {
+                    element.placeholder = window.i18n.get(i18nKey);
+                }
+            });
+            
+            // Re-populate units with current language
+            populateUnits();
+            
+            // Update any visible results
+            const value = document.getElementById('value').value;
+            if (value.trim() !== '') {
+                convertUnits();
+            }
+        }
+
         // Event listeners
         document.getElementById('category').addEventListener('change', populateUnits);
         document.getElementById('value').addEventListener('input', function() {
@@ -320,6 +357,14 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize i18n
+            const i18n = new I18n();
+            i18n.init();
+            
+            // Listen for language changes
+            document.addEventListener('languageChanged', updateDynamicContent);
+            
+            // Initialize page functionality
             populateUnits();
             document.getElementById('value').focus();
         });

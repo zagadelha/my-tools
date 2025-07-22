@@ -31,71 +31,74 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../" class="nav-link">Início</a></li>
-                    <li><a href="../about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="../contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="main">
         <div class="hero">
-            <h1>🔤 Conversor Maiúsculas/Minúsculas</h1>
-            <p>Transforme texto em diferentes formatações rapidamente</p>
+            <h1 data-i18n="textCase.title">🔤 Conversor Maiúsculas/Minúsculas</h1>
+            <p data-i18n="textCase.subtitle">Transforme texto em diferentes formatações rapidamente</p>
         </div>
 
         <div class="form-container">
             <div class="form-group">
-                <label for="inputText" class="form-label">Digite seu texto:</label>
-                <textarea id="inputText" class="form-textarea" placeholder="Digite ou cole seu texto aqui..." rows="8"></textarea>
+                <label for="inputText" class="form-label" data-i18n="textCase.inputText">Digite seu texto:</label>
+                <textarea id="inputText" class="form-textarea" data-i18n-placeholder="textCase.inputPlaceholder" placeholder="Digite ou cole seu texto aqui..." rows="8"></textarea>
             </div>
 
             <div class="form-group">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    <button onclick="convertText('uppercase')" class="btn btn-primary">MAIÚSCULAS</button>
-                    <button onclick="convertText('lowercase')" class="btn btn-primary">minúsculas</button>
-                    <button onclick="convertText('capitalize')" class="btn btn-primary">Capitalizar</button>
-                    <button onclick="convertText('title')" class="btn btn-primary">Título</button>
-                    <button onclick="convertText('sentence')" class="btn btn-primary">Sentença</button>
-                    <button onclick="convertText('alternating')" class="btn btn-primary">AlTeRnAdO</button>
+                    <button onclick="convertText('uppercase')" class="btn btn-primary" data-i18n="textCase.uppercase">MAIÚSCULAS</button>
+                    <button onclick="convertText('lowercase')" class="btn btn-primary" data-i18n="textCase.lowercase">minúsculas</button>
+                    <button onclick="convertText('capitalize')" class="btn btn-primary" data-i18n="textCase.capitalize">Capitalizar</button>
+                    <button onclick="convertText('title')" class="btn btn-primary" data-i18n="textCase.titleCase">Título</button>
+                    <button onclick="convertText('sentence')" class="btn btn-primary" data-i18n="textCase.sentence">Sentença</button>
+                    <button onclick="convertText('alternating')" class="btn btn-primary" data-i18n="textCase.alternating">AlTeRnAdO</button>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="outputText" class="form-label">Resultado:</label>
-                <textarea id="outputText" class="form-textarea" rows="8" readonly placeholder="O resultado aparecerá aqui..."></textarea>
+                <label for="outputText" class="form-label" data-i18n="textCase.outputText">Resultado:</label>
+                <textarea id="outputText" class="form-textarea" rows="8" readonly data-i18n-placeholder="textCase.outputPlaceholder" placeholder="O resultado aparecerá aqui..."></textarea>
             </div>
 
             <div class="result-actions">
-                <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
-                <button onclick="swapTexts()" class="btn btn-secondary">Trocar ⇅</button>
-                <button onclick="clearAll()" class="btn btn-secondary">Limpar Tudo</button>
+                <button onclick="copyResult()" class="btn btn-secondary" data-i18n="textCase.copyResult">Copiar Resultado</button>
+                <button onclick="swapTexts()" class="btn btn-secondary" data-i18n="textCase.swap">Trocar ⇅</button>
+                <button onclick="clearAll()" class="btn btn-secondary" data-i18n="textCase.clear">Limpar Tudo</button>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Estatísticas do Texto</h3>
+            <h3 data-i18n="textCase.stats">Estatísticas do Texto</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
                 <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                     <div style="font-size: 1.5rem; font-weight: bold; color: #2563eb;" id="charCount">0</div>
-                    <div style="font-size: 0.8rem; color: #6b7280;">Caracteres</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;" data-i18n="textCase.characters">Caracteres</div>
                 </div>
                 <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                     <div style="font-size: 1.5rem; font-weight: bold; color: #10b981;" id="wordCount">0</div>
-                    <div style="font-size: 0.8rem; color: #6b7280;">Palavras</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;" data-i18n="textCase.words">Palavras</div>
                 </div>
                 <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                     <div style="font-size: 1.5rem; font-weight: bold; color: #f59e0b;" id="lineCount">0</div>
-                    <div style="font-size: 0.8rem; color: #6b7280;">Linhas</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;" data-i18n="textCase.lines">Linhas</div>
                 </div>
                 <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                     <div style="font-size: 1.5rem; font-weight: bold; color: #ef4444;" id="upperCount">0</div>
-                    <div style="font-size: 0.8rem; color: #6b7280;">Maiúsculas</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;" data-i18n="textCase.uppercaseLetters">Maiúsculas</div>
                 </div>
                 <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                     <div style="font-size: 1.5rem; font-weight: bold; color: #8b5cf6;" id="lowerCount">0</div>
-                    <div style="font-size: 0.8rem; color: #6b7280;">Minúsculas</div>
+                    <div style="font-size: 0.8rem; color: #6b7280;" data-i18n="textCase.lowercaseLetters">Minúsculas</div>
                 </div>
             </div>
         </div>
@@ -184,6 +187,7 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
     <script>
         function convertText(type) {
             const inputText = document.getElementById('inputText').value;
@@ -282,11 +286,31 @@
             document.getElementById('inputText').focus();
         }
 
+        function updateDynamicContent() {
+            if (!window.i18n) return;
+            
+            // Update placeholders
+            const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+            placeholderElements.forEach(element => {
+                const i18nKey = element.getAttribute('data-i18n-placeholder');
+                if (i18nKey) {
+                    element.placeholder = window.i18n.get(i18nKey);
+                }
+            });
+        }
+
         // Event listeners
         document.getElementById('inputText').addEventListener('input', updateStats);
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize i18n
+            const i18n = new I18n();
+            i18n.init();
+            
+            // Listen for language changes
+            document.addEventListener('languageChanged', updateDynamicContent);
+            
             updateStats();
             document.getElementById('inputText').focus();
         });
