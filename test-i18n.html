@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste i18n - MyTools</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="assets/img/logo.png" alt="MyTools" class="logo-image">
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
+                </ul>
+                <div class="search-container">
+                    <input type="text" class="search-input" data-i18n-placeholder="hero.searchPlaceholder" placeholder="Buscar ferramentas...">
+                </div>
+                <!-- Language Selector will be added here by JavaScript -->
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <h1 data-i18n="hero.title">Ferramentas Úteis Online</h1>
+            <p data-i18n="hero.subtitle">Uma coleção de ferramentas simples e eficientes para o seu dia a dia.</p>
+        </section>
+
+        <section>
+            <h2 data-i18n="features.title">Por que usar nossas ferramentas?</h2>
+            <div style="margin-top: 2rem;">
+                <div>
+                    <h3 data-i18n="features.fast.title">Rápido e Simples</h3>
+                    <p data-i18n="features.fast.description">Sem cadastros, sem instalações.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, starting i18n...');
+            try {
+                const i18n = new I18n();
+                console.log('I18n created, current language:', i18n.getCurrentLanguage());
+                i18n.init();
+                console.log('I18n initialized successfully');
+                
+                // Test translation
+                console.log('Test translation nav.home:', i18n.t('nav.home'));
+                console.log('Test translation hero.title:', i18n.t('hero.title'));
+                
+                // Check if selector was added
+                setTimeout(() => {
+                    const selector = document.querySelector('.language-selector');
+                    console.log('Language selector found:', !!selector);
+                    if (selector) {
+                        console.log('Selector HTML:', selector.outerHTML);
+                    }
+                }, 100);
+                
+            } catch (error) {
+                console.error('Error initializing i18n:', error);
+            }
+        });
+    </script>
+</body>
+</html>

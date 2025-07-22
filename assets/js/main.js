@@ -39,13 +39,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // Close mobile menu on language selector click
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.language-selector')) {
+            if (nav && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+        }
+    });
 });
 
 // Utility functions
 function copyToClipboard(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
         return navigator.clipboard.writeText(text).then(() => {
-            showNotification('Copiado para a área de transferência!', 'success');
+            const message = window.i18n ? window.i18n.t('messages.copied') : 'Copiado para a área de transferência!';
+            showNotification(message, 'success');
         }).catch(err => {
             fallbackCopyTextToClipboard(text);
         });
@@ -73,9 +83,11 @@ function fallbackCopyTextToClipboard(text) {
     
     try {
         document.execCommand('copy');
-        showNotification('Copiado para a área de transferência!', 'success');
+        const message = window.i18n ? window.i18n.t('messages.copied') : 'Copiado para a área de transferência!';
+        showNotification(message, 'success');
     } catch (err) {
-        showNotification('Erro ao copiar texto', 'error');
+        const message = window.i18n ? window.i18n.t('messages.copyError') : 'Erro ao copiar texto';
+        showNotification(message, 'error');
     }
     
     document.body.removeChild(textArea);

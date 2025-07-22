@@ -404,3 +404,145 @@ body {
         flex-direction: row;
     }
 }
+
+/* Language Selector Styles */
+.language-selector {
+    position: relative;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.language-button {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #333;
+    transition: all 0.3s ease;
+    min-width: 70px;
+}
+
+.language-button:hover {
+    background-color: #f8f9fa;
+    border-color: #2563eb;
+}
+
+.language-button:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.language-flag {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.language-code {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.language-arrow {
+    transition: transform 0.3s ease;
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.language-selector.open .language-arrow {
+    transform: rotate(180deg);
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 160px;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.language-selector.open .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+    text-decoration: none;
+    color: #333;
+}
+
+.language-option:last-child {
+    border-bottom: none;
+}
+
+.language-option:hover {
+    background-color: #f8f9fa;
+}
+
+.language-option.active {
+    background-color: #e3f2fd;
+    color: #2563eb;
+}
+
+.language-option-flag {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.language-option-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.language-option-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.language-option-native {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Mobile Responsive Adjustments for Language Selector */
+@media (max-width: 768px) {
+    .language-selector {
+        margin-left: 0.5rem;
+    }
+    
+    .language-button {
+        padding: 0.4rem 0.6rem;
+        min-width: 60px;
+    }
+    
+    .language-dropdown {
+        min-width: 140px;
+        right: -10px;
+    }
+    
+    .language-option {
+        padding: 0.6rem;
+    }
+}

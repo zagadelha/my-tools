@@ -44,87 +44,88 @@
             <button class="nav-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Início</a></li>
-                    <li><a href="about.html" class="nav-link">Sobre</a></li>
-                    <li><a href="contact.html" class="nav-link">Contato</a></li>
+                    <li><a href="index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
                 </ul>
                 <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Buscar ferramentas...">
+                    <input type="text" class="search-input" data-i18n-placeholder="hero.searchPlaceholder" placeholder="Buscar ferramentas...">
                 </div>
+                <!-- Language Selector will be added here by JavaScript -->
             </nav>
         </div>
     </header>
 
     <main class="main">
         <section class="hero">
-            <h1>Ferramentas Úteis Online</h1>
-            <p>Uma coleção de ferramentas simples e eficientes para o seu dia a dia. Todas funcionam 100% no seu navegador, sem necessidade de cadastro ou instalação.</p>
+            <h1 data-i18n="hero.title">Ferramentas Úteis Online</h1>
+            <p data-i18n="hero.subtitle">Uma coleção de ferramentas simples e eficientes para o seu dia a dia. Todas funcionam 100% no seu navegador, sem necessidade de cadastro ou instalação.</p>
         </section>
 
         <section class="tools-grid">
             <a href="tools/converter-temperatura.html" class="tool-card">
-                <h3>🌡️ Conversor de Temperatura</h3>
-                <p>Converta facilmente entre Celsius, Fahrenheit e Kelvin</p>
+                <h3 data-i18n="tools.temperature.title">🌡️ Conversor de Temperatura</h3>
+                <p data-i18n="tools.temperature.description">Converta facilmente entre Celsius, Fahrenheit e Kelvin</p>
             </a>
 
             <a href="tools/converter-medidas.html" class="tool-card">
-                <h3>📏 Conversor de Medidas</h3>
-                <p>Converta unidades de comprimento, peso, volume e área</p>
+                <h3 data-i18n="tools.units.title">📏 Conversor de Medidas</h3>
+                <p data-i18n="tools.units.description">Converta unidades de comprimento, peso, volume e área</p>
             </a>
 
             <a href="tools/texto-maiusculas-minusculas.html" class="tool-card">
-                <h3>🔤 Texto Maiúsculas/Minúsculas</h3>
-                <p>Transforme texto em maiúsculas, minúsculas ou capitalize</p>
+                <h3 data-i18n="tools.textCase.title">🔤 Texto Maiúsculas/Minúsculas</h3>
+                <p data-i18n="tools.textCase.description">Transforme texto em maiúsculas, minúsculas ou capitalize</p>
             </a>
 
             <a href="tools/remover-acentos.html" class="tool-card">
-                <h3>✂️ Remover Acentos</h3>
-                <p>Remove acentos e caracteres especiais de textos</p>
+                <h3 data-i18n="tools.removeAccents.title">✂️ Remover Acentos</h3>
+                <p data-i18n="tools.removeAccents.description">Remove acentos e caracteres especiais de textos</p>
             </a>
 
             <a href="tools/contador-texto.html" class="tool-card">
-                <h3>🔢 Contador de Texto</h3>
-                <p>Conte palavras, caracteres, parágrafos e linhas</p>
+                <h3 data-i18n="tools.textCounter.title">🔢 Contador de Texto</h3>
+                <p data-i18n="tools.textCounter.description">Conte palavras, caracteres, parágrafos e linhas</p>
             </a>
 
             <a href="tools/gerar-qr-code.html" class="tool-card">
-                <h3>📱 Gerador de QR Code</h3>
-                <p>Crie QR codes para textos, URLs, emails e mais</p>
+                <h3 data-i18n="tools.qrCode.title">📱 Gerador de QR Code</h3>
+                <p data-i18n="tools.qrCode.description">Crie QR codes para textos, URLs, emails e mais</p>
             </a>
 
             <a href="tools/codificador-base64.html" class="tool-card">
-                <h3>🔐 Codificador Base64</h3>
-                <p>Codifique e decodifique textos em Base64</p>
+                <h3 data-i18n="tools.base64.title">🔐 Codificador Base64</h3>
+                <p data-i18n="tools.base64.description">Codifique e decodifique textos em Base64</p>
             </a>
 
             <a href="tools/gerador-md5.html" class="tool-card">
-                <h3>🔒 Gerador MD5</h3>
-                <p>Gere hashes MD5 para verificação de integridade</p>
+                <h3 data-i18n="tools.md5.title">🔒 Gerador MD5</h3>
+                <p data-i18n="tools.md5.description">Gere hashes MD5 para verificação de integridade</p>
             </a>
 
             <a href="tools/timestamp-converter.html" class="tool-card">
-                <h3>⏰ Conversor de Timestamp</h3>
-                <p>Converta timestamps Unix para datas legíveis</p>
+                <h3 data-i18n="tools.timestamp.title">⏰ Conversor de Timestamp</h3>
+                <p data-i18n="tools.timestamp.description">Converta timestamps Unix para datas legíveis</p>
             </a>
         </section>
 
         <section class="hero">
-            <h2>Por que usar nossas ferramentas?</h2>
+            <h2 data-i18n="features.title">Por que usar nossas ferramentas?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
                 <div style="text-align: center;">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
-                    <h3>Rápido e Simples</h3>
-                    <p>Sem cadastros, sem instalações. Use diretamente no seu navegador.</p>
+                    <h3 data-i18n="features.fast.title">Rápido e Simples</h3>
+                    <p data-i18n="features.fast.description">Sem cadastros, sem instalações. Use diretamente no seu navegador.</p>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
-                    <h3>Seguro e Privado</h3>
-                    <p>Todos os dados são processados localmente no seu dispositivo.</p>
+                    <h3 data-i18n="features.secure.title">Seguro e Privado</h3>
+                    <p data-i18n="features.secure.description">Todos os dados são processados localmente no seu dispositivo.</p>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
-                    <h3>Responsivo</h3>
-                    <p>Funciona perfeitamente em celulares, tablets e desktop.</p>
+                    <h3 data-i18n="features.responsive.title">Responsivo</h3>
+                    <p data-i18n="features.responsive.description">Funciona perfeitamente em celulares, tablets e desktop.</p>
                 </div>
             </div>
         </section>
@@ -134,43 +135,51 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Ferramentas</h4>
+                    <h4 data-i18n="footer.tools">Ferramentas</h4>
                     <ul class="footer-links">
-                        <li><a href="tools/converter-temperatura.html">Conversor de Temperatura</a></li>
-                        <li><a href="tools/converter-medidas.html">Conversor de Medidas</a></li>
-                        <li><a href="tools/texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
-                        <li><a href="tools/contador-texto.html">Contador de Texto</a></li>
+                        <li><a href="tools/converter-temperatura.html" data-i18n="tools.temperature.title">Conversor de Temperatura</a></li>
+                        <li><a href="tools/converter-medidas.html" data-i18n="tools.units.title">Conversor de Medidas</a></li>
+                        <li><a href="tools/texto-maiusculas-minusculas.html" data-i18n="tools.textCase.title">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="tools/contador-texto.html" data-i18n="tools.textCounter.title">Contador de Texto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Geradores</h4>
+                    <h4 data-i18n="footer.generators">Geradores</h4>
                     <ul class="footer-links">
-                        <li><a href="tools/gerar-qr-code.html">Gerador QR Code</a></li>
-                        <li><a href="tools/gerador-md5.html">Gerador MD5</a></li>
-                        <li><a href="tools/codificador-base64.html">Base64</a></li>
-                        <li><a href="tools/timestamp-converter.html">Timestamp</a></li>
+                        <li><a href="tools/gerar-qr-code.html" data-i18n="tools.qrCode.title">Gerador QR Code</a></li>
+                        <li><a href="tools/gerador-md5.html" data-i18n="tools.md5.title">Gerador MD5</a></li>
+                        <li><a href="tools/codificador-base64.html" data-i18n="tools.base64.title">Base64</a></li>
+                        <li><a href="tools/timestamp-converter.html" data-i18n="tools.timestamp.title">Timestamp</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Sobre</h4>
+                    <h4 data-i18n="footer.about">Sobre</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">Sobre Nós</a></li>
-                        <li><a href="contact.html">Contato</a></li>
-                        <li><a href="privacy.html">Privacidade</a></li>
-                        <li><a href="terms.html">Termos de Uso</a></li>
+                        <li><a href="about.html" data-i18n="nav.about">Sobre Nós</a></li>
+                        <li><a href="contact.html" data-i18n="nav.contact">Contato</a></li>
+                        <li><a href="privacy.html" data-i18n="footer.privacy">Privacidade</a></li>
+                        <li><a href="terms.html" data-i18n="footer.terms">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>MyTools</h4>
-                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia. Simples, rápido e seguro.</p>
+                    <p data-i18n="footer.description">Ferramentas úteis e gratuitas para facilitar seu dia a dia. Simples, rápido e seguro.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MyTools. Todos os direitos reservados.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
+    <script src="assets/js/i18n.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Initialize i18n system
+        document.addEventListener('DOMContentLoaded', function() {
+            const i18n = new I18n();
+            i18n.init();
+        });
+    </script>
 </body>
 </html>
