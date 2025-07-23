@@ -50,41 +50,41 @@
 
         <div class="form-container">
             <div class="form-group">
-                <label for="inputText" class="form-label">Texto para gerar MD5:</label>
-                <textarea id="inputText" class="form-textarea" placeholder="Digite o texto aqui..." rows="6"></textarea>
+                <label for="inputText" class="form-label" data-i18n="md5.inputText">Texto para gerar MD5:</label>
+                <textarea id="inputText" class="form-textarea" data-i18n-placeholder="md5.inputPlaceholder" placeholder="Digite o texto aqui..." rows="6"></textarea>
             </div>
 
             <div class="form-group">
-                <button onclick="generateMD5()" class="btn btn-primary btn-full">Gerar MD5</button>
+                <button onclick="generateMD5()" class="btn btn-primary btn-full" data-i18n="md5.generate">Gerar MD5</button>
             </div>
 
             <div class="form-group">
-                <label for="md5Result" class="form-label">Hash MD5:</label>
-                <input type="text" id="md5Result" class="form-input" readonly placeholder="O hash MD5 aparecerá aqui...">
+                <label for="md5Result" class="form-label" data-i18n="md5.outputText">Hash MD5:</label>
+                <input type="text" id="md5Result" class="form-input" readonly data-i18n-placeholder="md5.outputPlaceholder" placeholder="O hash MD5 aparecerá aqui...">
             </div>
 
             <div class="result-actions">
-                <button onclick="copyMD5()" class="btn btn-secondary">Copiar MD5</button>
-                <button onclick="clearAll()" class="btn btn-secondary">Limpar</button>
+                <button onclick="copyMD5()" class="btn btn-secondary" data-i18n="md5.copyResult">Copiar MD5</button>
+                <button onclick="clearAll()" class="btn btn-secondary" data-i18n="md5.clear">Limpar</button>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Verificador MD5</h3>
-            <p>Compare dois hashes MD5 para verificar se são iguais:</p>
+            <h3 data-i18n="md5.verifier">Verificador MD5</h3>
+            <p data-i18n="md5.verifierDescription">Compare dois hashes MD5 para verificar se são iguais:</p>
             
             <div class="form-group">
-                <label for="hash1" class="form-label">Hash 1:</label>
-                <input type="text" id="hash1" class="form-input" placeholder="Cole o primeiro hash MD5 aqui...">
+                <label for="hash1" class="form-label" data-i18n="md5.hash1">Hash 1:</label>
+                <input type="text" id="hash1" class="form-input" data-i18n-placeholder="md5.hash1Placeholder" placeholder="Cole o primeiro hash MD5 aqui...">
             </div>
 
             <div class="form-group">
-                <label for="hash2" class="form-label">Hash 2:</label>
-                <input type="text" id="hash2" class="form-input" placeholder="Cole o segundo hash MD5 aqui...">
+                <label for="hash2" class="form-label" data-i18n="md5.hash2">Hash 2:</label>
+                <input type="text" id="hash2" class="form-input" data-i18n-placeholder="md5.hash2Placeholder" placeholder="Cole o segundo hash MD5 aqui...">
             </div>
 
             <div class="form-group">
-                <button onclick="compareHashes()" class="btn btn-primary btn-full">Comparar Hashes</button>
+                <button onclick="compareHashes()" class="btn btn-primary btn-full" data-i18n="md5.compareHashes">Comparar Hashes</button>
             </div>
 
             <div id="compareResult" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 4px; text-align: center; font-weight: bold;">
@@ -92,56 +92,56 @@
         </div>
 
         <div class="form-container">
-            <h3>Geração de MD5 para Arquivos</h3>
+            <h3 data-i18n="md5.fileGeneration">Geração de MD5 para Arquivos</h3>
             <div class="form-group">
-                <label for="fileInput" class="form-label">Selecionar arquivo:</label>
+                <label for="fileInput" class="form-label" data-i18n="md5.selectFile">Selecionar arquivo:</label>
                 <input type="file" id="fileInput" class="form-input">
             </div>
             
             <div class="form-group">
-                <button onclick="generateFileMD5()" class="btn btn-primary btn-full">Gerar MD5 do Arquivo</button>
+                <button onclick="generateFileMD5()" class="btn btn-primary btn-full" data-i18n="md5.generateFileMD5">Gerar MD5 do Arquivo</button>
             </div>
 
             <div class="form-group">
-                <label for="fileMD5Result" class="form-label">MD5 do arquivo:</label>
-                <input type="text" id="fileMD5Result" class="form-input" readonly placeholder="O MD5 do arquivo aparecerá aqui...">
+                <label for="fileMD5Result" class="form-label" data-i18n="md5.fileMD5Result">MD5 do arquivo:</label>
+                <input type="text" id="fileMD5Result" class="form-input" readonly data-i18n-placeholder="md5.fileMD5Placeholder" placeholder="O MD5 do arquivo aparecerá aqui...">
             </div>
 
             <div class="result-actions">
-                <button onclick="copyFileMD5()" class="btn btn-secondary">Copiar MD5</button>
+                <button onclick="copyFileMD5()" class="btn btn-secondary" data-i18n="md5.copyFileMD5">Copiar MD5</button>
             </div>
 
             <div id="fileInfo" style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 4px; display: none;">
-                <h4>Informações do Arquivo:</h4>
-                <p><strong>Nome:</strong> <span id="fileName"></span></p>
-                <p><strong>Tamanho:</strong> <span id="fileSize"></span></p>
-                <p><strong>Tipo:</strong> <span id="fileType"></span></p>
+                <h4 data-i18n="md5.fileInfo">Informações do Arquivo:</h4>
+                <p><strong data-i18n="md5.fileName">Nome:</strong> <span id="fileName"></span></p>
+                <p><strong data-i18n="md5.fileSize">Tamanho:</strong> <span id="fileSize"></span></p>
+                <p><strong data-i18n="md5.fileType">Tipo:</strong> <span id="fileType"></span></p>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Sobre MD5</h3>
-            <p>MD5 (Message Digest Algorithm 5) é uma função de hash criptográfica que produz um valor hash de 128 bits (32 caracteres hexadecimais).</p>
+            <h3 data-i18n="md5.aboutMD5">Sobre MD5</h3>
+            <p data-i18n="md5.md5Description">MD5 (Message Digest Algorithm 5) é uma função de hash criptográfica que produz um valor hash de 128 bits (32 caracteres hexadecimais).</p>
             
-            <h4>Usos Comuns do MD5:</h4>
+            <h4 data-i18n="md5.commonUses">Usos Comuns do MD5:</h4>
             <ul>
-                <li><strong>Verificação de integridade:</strong> Verificar se um arquivo não foi corrompido durante a transferência</li>
-                <li><strong>Checksums:</strong> Validar downloads e backups</li>
-                <li><strong>Identificação única:</strong> Criar identificadores únicos para dados</li>
-                <li><strong>Cache e deduplicação:</strong> Identificar conteúdo duplicado</li>
+                <li><strong data-i18n="md5.integrityVerification">Verificação de integridade:</strong> <span data-i18n="md5.integrityDescription">Verificar se um arquivo não foi corrompido durante a transferência</span></li>
+                <li><strong data-i18n="md5.checksums">Checksums:</strong> <span data-i18n="md5.checksumsDescription">Validar downloads e backups</span></li>
+                <li><strong data-i18n="md5.uniqueIdentification">Identificação única:</strong> <span data-i18n="md5.uniqueDescription">Criar identificadores únicos para dados</span></li>
+                <li><strong data-i18n="md5.cacheDeduplication">Cache e deduplicação:</strong> <span data-i18n="md5.cacheDescription">Identificar conteúdo duplicado</span></li>
             </ul>
 
-            <h4>Características do MD5:</h4>
+            <h4 data-i18n="md5.characteristics">Características do MD5:</h4>
             <ul>
-                <li>Sempre produz um hash de 32 caracteres</li>
-                <li>É unidirecional - não pode ser "descriptografado"</li>
-                <li>Pequenas mudanças no input resultam em hashes completamente diferentes</li>
-                <li>O mesmo input sempre produz o mesmo hash</li>
+                <li data-i18n="md5.char1">Sempre produz um hash de 32 caracteres</li>
+                <li data-i18n="md5.char2">É unidirecional - não pode ser "descriptografado"</li>
+                <li data-i18n="md5.char3">Pequenas mudanças no input resultam em hashes completamente diferentes</li>
+                <li data-i18n="md5.char4">O mesmo input sempre produz o mesmo hash</li>
             </ul>
 
             <div style="background: #fef3cd; border: 1px solid #facc15; border-radius: 4px; padding: 1rem; margin-top: 1rem;">
-                <h4 style="color: #92400e;">⚠️ Importante sobre Segurança:</h4>
-                <p style="color: #92400e; margin-bottom: 0;">MD5 não é mais considerado seguro para uso criptográfico devido a vulnerabilidades conhecidas. Para aplicações de segurança, use SHA-256 ou algoritmos mais modernos. MD5 ainda é útil para verificação de integridade básica e checksums.</p>
+                <h4 style="color: #92400e;" data-i18n="md5.securityWarningTitle">⚠️ Importante sobre Segurança:</h4>
+                <p style="color: #92400e; margin-bottom: 0;" data-i18n="md5.securityWarningDescription">MD5 não é mais considerado seguro para uso criptográfico devido a vulnerabilidades conhecidas. Para aplicações de segurança, use SHA-256 ou algoritmos mais modernos. MD5 ainda é útil para verificação de integridade básica e checksums.</p>
             </div>
         </div>
     </main>
@@ -150,44 +150,45 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Ferramentas</h4>
+                    <h4 data-i18n="footer.tools">Ferramentas</h4>
                     <ul class="footer-links">
-                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
-                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
-                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
-                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                        <li><a href="converter-temperatura.html" data-i18n="tools.temperature.title">🌡️ Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html" data-i18n="tools.units.title">📏 Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html" data-i18n="tools.textCase.title">🔤 Texto Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html" data-i18n="tools.textCounter.title">🔢 Contador de Texto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Geradores</h4>
+                    <h4 data-i18n="footer.generators">Geradores</h4>
                     <ul class="footer-links">
-                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
-                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
-                        <li><a href="codificador-base64.html">Base64</a></li>
-                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                        <li><a href="gerar-qr-code.html" data-i18n="tools.qrCode.title">📱 Gerador de QR Code</a></li>
+                        <li><a href="gerador-md5.html" data-i18n="tools.md5.title">🔒 Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html" data-i18n="tools.base64.title">🔐 Codificador Base64</a></li>
+                        <li><a href="timestamp-converter.html" data-i18n="tools.timestamp.title">⏰ Conversor de Timestamp</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Sobre</h4>
+                    <h4 data-i18n="footer.about">Sobre</h4>
                     <ul class="footer-links">
-                        <li><a href="../about.html">Sobre Nós</a></li>
-                        <li><a href="../contact.html">Contato</a></li>
-                        <li><a href="../privacy.html">Privacidade</a></li>
-                        <li><a href="../terms.html">Termos de Uso</a></li>
+                        <li><a href="../about.html" data-i18n="footer.aboutUs">Sobre Nós</a></li>
+                        <li><a href="../contact.html" data-i18n="nav.contact">Contato</a></li>
+                        <li><a href="../privacy.html" data-i18n="footer.privacy">Privacidade</a></li>
+                        <li><a href="../terms.html" data-i18n="footer.terms">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>MyTools</h4>
-                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                    <p data-i18n="footer.description">Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MyTools. Todos os direitos reservados.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
     <script>
         function generateMD5() {

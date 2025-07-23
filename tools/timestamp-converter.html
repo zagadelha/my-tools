@@ -49,95 +49,95 @@
         </div>
 
         <div class="form-container">
-            <h3>Timestamp Atual</h3>
+            <h3 data-i18n="timestamp.currentTime">Timestamp Atual</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
                 <div style="text-align: center; padding: 1rem; background: #f0f9f4; border-radius: 8px; border: 1px solid #10b981;">
                     <div style="font-size: 1.2rem; font-weight: bold; color: #10b981;" id="currentTimestamp">0</div>
-                    <div style="font-size: 0.9rem; color: #065f46;">Timestamp Unix</div>
+                    <div style="font-size: 0.9rem; color: #065f46;" data-i18n="timestamp.unixTimestamp">Timestamp Unix</div>
                 </div>
                 <div style="text-align: center; padding: 1rem; background: #eff6ff; border-radius: 8px; border: 1px solid #2563eb;">
                     <div style="font-size: 1.2rem; font-weight: bold; color: #2563eb;" id="currentDate">-</div>
-                    <div style="font-size: 0.9rem; color: #1e40af;">Data Atual</div>
+                    <div style="font-size: 0.9rem; color: #1e40af;" data-i18n="timestamp.currentDate">Data Atual</div>
                 </div>
             </div>
             <div style="text-align: center;">
-                <button onclick="copyCurrentTimestamp()" class="btn btn-secondary">Copiar Timestamp</button>
-                <button onclick="copyCurrentDate()" class="btn btn-secondary">Copiar Data</button>
+                <button onclick="copyCurrentTimestamp()" class="btn btn-secondary" data-i18n="timestamp.copyTimestamp">Copiar Timestamp</button>
+                <button onclick="copyCurrentDate()" class="btn btn-secondary" data-i18n="timestamp.copyDate">Copiar Data</button>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Timestamp para Data</h3>
+            <h3 data-i18n="timestamp.timestampToDate">Timestamp para Data</h3>
             <div class="form-group">
-                <label for="timestampInput" class="form-label">Timestamp Unix:</label>
-                <input type="number" id="timestampInput" class="form-input" placeholder="Ex: 1641859200">
+                <label for="timestampInput" class="form-label" data-i18n="timestamp.timestamp">Timestamp Unix:</label>
+                <input type="number" id="timestampInput" class="form-input" data-i18n-placeholder="timestamp.timestampPlaceholder" placeholder="Ex: 1641859200">
             </div>
             <div class="form-group">
-                <label for="timestampUnit" class="form-label">Unidade:</label>
+                <label for="timestampUnit" class="form-label" data-i18n="timestamp.unit">Unidade:</label>
                 <select id="timestampUnit" class="form-select">
-                    <option value="seconds">Segundos</option>
-                    <option value="milliseconds">Milissegundos</option>
+                    <option value="seconds" data-i18n="timestamp.seconds">Segundos</option>
+                    <option value="milliseconds" data-i18n="timestamp.milliseconds">Milissegundos</option>
                 </select>
             </div>
             <div class="form-group">
-                <button onclick="convertTimestamp()" class="btn btn-primary btn-full">Converter para Data</button>
+                <button onclick="convertTimestamp()" class="btn btn-primary btn-full" data-i18n="timestamp.convertToDate">Converter para Data</button>
             </div>
             <div id="timestampResult" class="result-area" style="display: none;">
                 <div id="timestampResultText"></div>
                 <div class="result-actions">
-                    <button onclick="copyTimestampResult()" class="btn btn-secondary">Copiar Resultado</button>
+                    <button onclick="copyTimestampResult()" class="btn btn-secondary" data-i18n="timestamp.copyResult">Copiar Resultado</button>
                 </div>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Data para Timestamp</h3>
+            <h3 data-i18n="timestamp.dateToTimestamp">Data para Timestamp</h3>
             <div class="form-group">
-                <label for="dateInput" class="form-label">Data e Hora:</label>
+                <label for="dateInput" class="form-label" data-i18n="timestamp.datetime">Data e Hora:</label>
                 <input type="datetime-local" id="dateInput" class="form-input">
             </div>
             <div class="form-group">
-                <label for="timezoneSelect" class="form-label">Fuso Horário:</label>
+                <label for="timezoneSelect" class="form-label" data-i18n="timestamp.timezone">Fuso Horário:</label>
                 <select id="timezoneSelect" class="form-select">
-                    <option value="local">Local</option>
-                    <option value="UTC">UTC</option>
-                    <option value="America/Sao_Paulo">São Paulo (GMT-3)</option>
-                    <option value="America/New_York">Nova York (GMT-5)</option>
-                    <option value="Europe/London">Londres (GMT+0)</option>
-                    <option value="Asia/Tokyo">Tóquio (GMT+9)</option>
+                    <option value="local" data-i18n="timestamp.local">Local</option>
+                    <option value="UTC" data-i18n="timestamp.utc">UTC</option>
+                    <option value="America/Sao_Paulo" data-i18n="timestamp.saoPaulo">São Paulo (GMT-3)</option>
+                    <option value="America/New_York" data-i18n="timestamp.newYork">Nova York (GMT-5)</option>
+                    <option value="Europe/London" data-i18n="timestamp.london">Londres (GMT+0)</option>
+                    <option value="Asia/Tokyo" data-i18n="timestamp.tokyo">Tóquio (GMT+9)</option>
                 </select>
             </div>
             <div class="form-group">
-                <button onclick="convertDate()" class="btn btn-primary btn-full">Converter para Timestamp</button>
+                <button onclick="convertDate()" class="btn btn-primary btn-full" data-i18n="timestamp.convertToTimestamp">Converter para Timestamp</button>
             </div>
             <div id="dateResult" class="result-area" style="display: none;">
                 <div id="dateResultText"></div>
                 <div class="result-actions">
-                    <button onclick="copyDateResult()" class="btn btn-secondary">Copiar Resultado</button>
+                    <button onclick="copyDateResult()" class="btn btn-secondary" data-i18n="timestamp.copyResult">Copiar Resultado</button>
                 </div>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Calculadora de Tempo</h3>
+            <h3 data-i18n="timestamp.timeCalculator">Calculadora de Tempo</h3>
             <div class="form-group">
-                <label for="timeCalc" class="form-label">Adicionar/Subtrair tempo:</label>
+                <label for="timeCalc" class="form-label" data-i18n="timestamp.addSubtractTime">Adicionar/Subtrair tempo:</label>
                 <div style="display: grid; grid-template-columns: 1fr auto 1fr auto; gap: 0.5rem; align-items: center;">
-                    <input type="number" id="timeValue" class="form-input" placeholder="Valor">
+                    <input type="number" id="timeValue" class="form-input" data-i18n-placeholder="timestamp.valuePlaceholder" placeholder="Valor">
                     <select id="timeUnit" class="form-select">
-                        <option value="seconds">Segundos</option>
-                        <option value="minutes">Minutos</option>
-                        <option value="hours">Horas</option>
-                        <option value="days">Dias</option>
-                        <option value="weeks">Semanas</option>
-                        <option value="months">Meses</option>
-                        <option value="years">Anos</option>
+                        <option value="seconds" data-i18n="timestamp.seconds">Segundos</option>
+                        <option value="minutes" data-i18n="timestamp.minutes">Minutos</option>
+                        <option value="hours" data-i18n="timestamp.hours">Horas</option>
+                        <option value="days" data-i18n="timestamp.days">Dias</option>
+                        <option value="weeks" data-i18n="timestamp.weeks">Semanas</option>
+                        <option value="months" data-i18n="timestamp.months">Meses</option>
+                        <option value="years" data-i18n="timestamp.years">Anos</option>
                     </select>
                     <select id="timeOperation" class="form-select">
-                        <option value="add">Adicionar</option>
-                        <option value="subtract">Subtrair</option>
+                        <option value="add" data-i18n="timestamp.add">Adicionar</option>
+                        <option value="subtract" data-i18n="timestamp.subtract">Subtrair</option>
                     </select>
-                    <button onclick="calculateTime()" class="btn btn-primary">Calcular</button>
+                    <button onclick="calculateTime()" class="btn btn-primary" data-i18n="timestamp.calculate">Calcular</button>
                 </div>
             </div>
             <div id="timeCalcResult" class="result-area" style="display: none;">
@@ -146,36 +146,36 @@
         </div>
 
         <div class="form-container">
-            <h3>Formatos de Data Comuns</h3>
+            <h3 data-i18n="timestamp.commonDateFormats">Formatos de Data Comuns</h3>
             <div id="dateFormats" style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
                 <!-- Will be populated by JavaScript -->
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Sobre Timestamps</h3>
-            <p>Timestamp Unix é o número de segundos que se passaram desde 1º de janeiro de 1970, 00:00:00 UTC (também conhecido como Unix Epoch).</p>
+            <h3 data-i18n="timestamp.aboutTimestamps">Sobre Timestamps</h3>
+            <p data-i18n="timestamp.timestampDefinition">Timestamp Unix é o número de segundos que se passaram desde 1º de janeiro de 1970, 00:00:00 UTC (também conhecido como Unix Epoch).</p>
             
-            <h4>Características:</h4>
+            <h4 data-i18n="timestamp.characteristics">Características:</h4>
             <ul>
-                <li><strong>Padrão universal:</strong> Usado em sistemas Unix, Linux, macOS e muitas linguagens de programação</li>
-                <li><strong>Independente de fuso horário:</strong> Sempre em UTC, facilitando cálculos globais</li>
-                <li><strong>Fácil de calcular:</strong> Diferenças de tempo são simples subtrações</li>
-                <li><strong>Formato compacto:</strong> Ocupa pouco espaço para armazenamento</li>
+                <li><strong data-i18n="timestamp.universalStandard">Padrão universal:</strong> <span data-i18n="timestamp.universalStandardDesc">Usado em sistemas Unix, Linux, macOS e muitas linguagens de programação</span></li>
+                <li><strong data-i18n="timestamp.timezoneIndependent">Independente de fuso horário:</strong> <span data-i18n="timestamp.timezoneIndependentDesc">Sempre em UTC, facilitando cálculos globais</span></li>
+                <li><strong data-i18n="timestamp.easyCalculation">Fácil de calcular:</strong> <span data-i18n="timestamp.easyCalculationDesc">Diferenças de tempo são simples subtrações</span></li>
+                <li><strong data-i18n="timestamp.compactFormat">Formato compacto:</strong> <span data-i18n="timestamp.compactFormatDesc">Ocupa pouco espaço para armazenamento</span></li>
             </ul>
 
-            <h4>Conversões Comuns:</h4>
+            <h4 data-i18n="timestamp.commonConversions">Conversões Comuns:</h4>
             <ul>
-                <li><strong>Segundos:</strong> Timestamp padrão (ex: 1641859200)</li>
-                <li><strong>Milissegundos:</strong> Usado em JavaScript (ex: 1641859200000)</li>
-                <li><strong>Microssegundos:</strong> Usado em alguns sistemas de alta precisão</li>
+                <li><strong data-i18n="timestamp.seconds">Segundos:</strong> <span data-i18n="timestamp.secondsDesc">Timestamp padrão (ex: 1641859200)</span></li>
+                <li><strong data-i18n="timestamp.milliseconds">Milissegundos:</strong> <span data-i18n="timestamp.millisecondsDesc">Usado em JavaScript (ex: 1641859200000)</span></li>
+                <li><strong data-i18n="timestamp.microseconds">Microssegundos:</strong> <span data-i18n="timestamp.microsecondsDesc">Usado em alguns sistemas de alta precisão</span></li>
             </ul>
 
-            <h4>Limitações:</h4>
+            <h4 data-i18n="timestamp.limitations">Limitações:</h4>
             <ul>
-                <li><strong>Problema do Ano 2038:</strong> Timestamps de 32 bits podem ter problemas em 2038</li>
-                <li><strong>Segundos bissextos:</strong> Não considera segundos bissextos</li>
-                <li><strong>Precisão:</strong> Limitado à precisão de segundos (ou milissegundos)</li>
+                <li><strong data-i18n="timestamp.year2038Problem">Problema do Ano 2038:</strong> <span data-i18n="timestamp.year2038ProblemDesc">Timestamps de 32 bits podem ter problemas em 2038</span></li>
+                <li><strong data-i18n="timestamp.leapSeconds">Segundos bissextos:</strong> <span data-i18n="timestamp.leapSecondsDesc">Não considera segundos bissextos</span></li>
+                <li><strong data-i18n="timestamp.precision">Precisão:</strong> <span data-i18n="timestamp.precisionDesc">Limitado à precisão de segundos (ou milissegundos)</span></li>
             </ul>
         </div>
     </main>
@@ -184,39 +184,39 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Ferramentas</h4>
+                    <h4 data-i18n="footer.tools">Ferramentas</h4>
                     <ul class="footer-links">
-                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
-                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
-                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
-                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                        <li><a href="converter-temperatura.html" data-i18n="tools.temperature.title">🌡️ Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html" data-i18n="tools.units.title">📏 Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html" data-i18n="tools.textCase.title">🔤 Texto Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html" data-i18n="tools.textCounter.title">🔢 Contador de Texto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Geradores</h4>
+                    <h4 data-i18n="footer.generators">Geradores</h4>
                     <ul class="footer-links">
-                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
-                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
-                        <li><a href="codificador-base64.html">Base64</a></li>
-                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                        <li><a href="gerar-qr-code.html" data-i18n="tools.qrCode.title">📱 Gerador de QR Code</a></li>
+                        <li><a href="gerador-md5.html" data-i18n="tools.md5.title">🔒 Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html" data-i18n="tools.base64.title">🔐 Codificador Base64</a></li>
+                        <li><a href="timestamp-converter.html" data-i18n="tools.timestamp.title">⏰ Conversor de Timestamp</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Sobre</h4>
+                    <h4 data-i18n="footer.about">Sobre</h4>
                     <ul class="footer-links">
-                        <li><a href="../about.html">Sobre Nós</a></li>
-                        <li><a href="../contact.html">Contato</a></li>
-                        <li><a href="../privacy.html">Privacidade</a></li>
-                        <li><a href="../terms.html">Termos de Uso</a></li>
+                        <li><a href="../about.html" data-i18n="footer.aboutUs">Sobre Nós</a></li>
+                        <li><a href="../contact.html" data-i18n="nav.contact">Contato</a></li>
+                        <li><a href="../privacy.html" data-i18n="footer.privacy">Privacidade</a></li>
+                        <li><a href="../terms.html" data-i18n="footer.terms">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>MyTools</h4>
-                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                    <p data-i18n="footer.description">Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MyTools. Todos os direitos reservados.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

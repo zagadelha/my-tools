@@ -76,85 +76,85 @@
         </div>
 
         <div class="form-container">
-            <h3>Opções Avançadas</h3>
+            <h3 data-i18n="removeAccents.advancedOptions">Opções Avançadas</h3>
             <div class="form-group">
                 <label>
-                    <input type="checkbox" id="preserveSpaces" checked> Preservar espaços
+                    <input type="checkbox" id="preserveSpaces" checked> <span data-i18n="removeAccents.preserveSpaces">Preservar espaços</span>
                 </label>
             </div>
             <div class="form-group">
                 <label>
-                    <input type="checkbox" id="preserveNumbers" checked> Preservar números
+                    <input type="checkbox" id="preserveNumbers" checked> <span data-i18n="removeAccents.preserveNumbers">Preservar números</span>
                 </label>
             </div>
             <div class="form-group">
                 <label>
-                    <input type="checkbox" id="toLowerCase"> Converter para minúsculas
+                    <input type="checkbox" id="toLowerCase"> <span data-i18n="removeAccents.convertToLower">Converter para minúsculas</span>
                 </label>
             </div>
             <div class="form-group">
                 <label>
-                    <input type="checkbox" id="removePunctuation"> Remover pontuação
+                    <input type="checkbox" id="removePunctuation"> <span data-i18n="removeAccents.removePunctuation">Remover pontuação</span>
                 </label>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Comparação Lado a Lado</h3>
+            <h3 data-i18n="removeAccents.comparison">Comparação Lado a Lado</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div>
-                    <h4>Antes:</h4>
+                    <h4 data-i18n="removeAccents.before">Antes:</h4>
                     <div id="beforeText" style="padding: 1rem; background: #fef2f2; border-radius: 4px; border: 1px solid #fecaca; font-family: monospace; min-height: 100px; white-space: pre-wrap;"></div>
                 </div>
                 <div>
-                    <h4>Depois:</h4>
+                    <h4 data-i18n="removeAccents.after">Depois:</h4>
                     <div id="afterText" style="padding: 1rem; background: #f0f9f4; border-radius: 4px; border: 1px solid #bbf7d0; font-family: monospace; min-height: 100px; white-space: pre-wrap;"></div>
                 </div>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Tipos de Remoção</h3>
+            <h3 data-i18n="removeAccents.removalTypes">Tipos de Remoção</h3>
             <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
                 <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
-                    <h4>Remover Acentos</h4>
-                    <p>Remove apenas acentos, mantendo letras básicas.</p>
-                    <p><strong>Exemplo:</strong> "José, João e María" → "Jose, Joao e Maria"</p>
+                    <h4 data-i18n="removeAccents.remove">Remover Acentos</h4>
+                    <p data-i18n="removeAccents.removeDescription">Remove apenas acentos, mantendo letras básicas.</p>
+                    <p><strong data-i18n="removeAccents.example">Exemplo:</strong> <span data-i18n="removeAccents.removeExample">"José, João e María" → "Jose, Joao e Maria"</span></p>
                 </div>
 
                 <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
-                    <h4>Remover Especiais</h4>
-                    <p>Remove caracteres especiais, mantendo letras, números e espaços.</p>
-                    <p><strong>Exemplo:</strong> "José@email.com!" → "Josemailcom"</p>
+                    <h4 data-i18n="removeAccents.removeSpecial">Remover Especiais</h4>
+                    <p data-i18n="removeAccents.removeSpecialDescription">Remove caracteres especiais, mantendo letras, números e espaços.</p>
+                    <p><strong data-i18n="removeAccents.example">Exemplo:</strong> <span data-i18n="removeAccents.removeSpecialExample">"José@email.com!" → "Josemailcom"</span></p>
                 </div>
 
                 <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
-                    <h4>Remover Tudo</h4>
-                    <p>Remove acentos e caracteres especiais.</p>
-                    <p><strong>Exemplo:</strong> "José@email.com!" → "Josemailcom"</p>
+                    <h4 data-i18n="removeAccents.removeAll">Remover Tudo</h4>
+                    <p data-i18n="removeAccents.removeAllDescription">Remove acentos e caracteres especiais.</p>
+                    <p><strong data-i18n="removeAccents.example">Exemplo:</strong> <span data-i18n="removeAccents.removeAllExample">"José@email.com!" → "Josemailcom"</span></p>
                 </div>
 
                 <div style="border: 1px solid #e5e7eb; border-radius: 4px; padding: 1rem;">
-                    <h4>Criar Slug</h4>
-                    <p>Cria um slug amigável para URLs (minúsculas, hífens no lugar de espaços).</p>
-                    <p><strong>Exemplo:</strong> "José da Silva" → "jose-da-silva"</p>
+                    <h4 data-i18n="removeAccents.createSlug">Criar Slug</h4>
+                    <p data-i18n="removeAccents.createSlugDescription">Cria um slug amigável para URLs (minúsculas, hífens no lugar de espaços).</p>
+                    <p><strong data-i18n="removeAccents.example">Exemplo:</strong> <span data-i18n="removeAccents.createSlugExample">"José da Silva" → "jose-da-silva"</span></p>
                 </div>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Caracteres Suportados</h3>
+            <h3 data-i18n="removeAccents.supportedChars">Caracteres Suportados</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                 <div>
-                    <h4>Acentos</h4>
+                    <h4 data-i18n="removeAccents.accents">Acentos</h4>
                     <p>á, à, ä, â, ã, é, è, ë, ê, í, ì, ï, î, ó, ò, ö, ô, õ, ú, ù, ü, û, ç, ñ</p>
                 </div>
                 <div>
-                    <h4>Especiais</h4>
+                    <h4 data-i18n="removeAccents.specials">Especiais</h4>
                     <p>@, #, $, %, &, *, (, ), [, ], {, }, |, \, /, ?, !, +, =, ~, ^</p>
                 </div>
                 <div>
-                    <h4>Pontuação</h4>
+                    <h4 data-i18n="removeAccents.punctuation">Pontuação</h4>
                     <p>., ,, ;, :, ", ', `, -, _</p>
                 </div>
             </div>
@@ -165,39 +165,39 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Ferramentas</h4>
+                    <h4 data-i18n="footer.tools">Ferramentas</h4>
                     <ul class="footer-links">
-                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
-                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
-                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
-                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                        <li><a href="converter-temperatura.html" data-i18n="footer.temperatureConverter">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html" data-i18n="footer.unitConverter">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html" data-i18n="footer.textCase">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html" data-i18n="footer.textCounter">Contador de Texto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Geradores</h4>
+                    <h4 data-i18n="footer.generators">Geradores</h4>
                     <ul class="footer-links">
-                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
-                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
-                        <li><a href="codificador-base64.html">Base64</a></li>
-                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                        <li><a href="gerar-qr-code.html" data-i18n="footer.qrGenerator">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html" data-i18n="footer.md5Generator">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html" data-i18n="footer.base64">Base64</a></li>
+                        <li><a href="timestamp-converter.html" data-i18n="footer.timestamp">Timestamp</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Sobre</h4>
+                    <h4 data-i18n="footer.about">Sobre</h4>
                     <ul class="footer-links">
-                        <li><a href="../about.html">Sobre Nós</a></li>
-                        <li><a href="../contact.html">Contato</a></li>
-                        <li><a href="../privacy.html">Privacidade</a></li>
-                        <li><a href="../terms.html">Termos de Uso</a></li>
+                        <li><a href="../about.html" data-i18n="footer.aboutUs">Sobre Nós</a></li>
+                        <li><a href="../contact.html" data-i18n="footer.contact">Contato</a></li>
+                        <li><a href="../privacy.html" data-i18n="footer.privacy">Privacidade</a></li>
+                        <li><a href="../terms.html" data-i18n="footer.terms">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>MyTools</h4>
-                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                    <h4 data-i18n="footer.mytools">MyTools</h4>
+                    <p data-i18n="footer.description">Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MyTools. Todos os direitos reservados.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

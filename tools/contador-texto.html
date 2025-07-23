@@ -58,62 +58,62 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
                     <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                         <div style="font-size: 2rem; font-weight: bold; color: #2563eb;" id="charCount">0</div>
-                        <div style="font-size: 0.9rem; color: #6b7280;">Caracteres</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;" data-i18n="textCounter.characters">Caracteres</div>
                     </div>
                     <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                         <div style="font-size: 2rem; font-weight: bold; color: #10b981;" id="charCountNoSpaces">0</div>
-                        <div style="font-size: 0.9rem; color: #6b7280;">Sem espaços</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;" data-i18n="textCounter.charactersNoSpaces">Sem espaços</div>
                     </div>
                     <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                         <div style="font-size: 2rem; font-weight: bold; color: #f59e0b;" id="wordCount">0</div>
-                        <div style="font-size: 0.9rem; color: #6b7280;">Palavras</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;" data-i18n="textCounter.words">Palavras</div>
                     </div>
                     <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                         <div style="font-size: 2rem; font-weight: bold; color: #ef4444;" id="lineCount">0</div>
-                        <div style="font-size: 0.9rem; color: #6b7280;">Linhas</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;" data-i18n="textCounter.lines">Linhas</div>
                     </div>
                     <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                         <div style="font-size: 2rem; font-weight: bold; color: #8b5cf6;" id="paragraphCount">0</div>
-                        <div style="font-size: 0.9rem; color: #6b7280;">Parágrafos</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;" data-i18n="textCounter.paragraphs">Parágrafos</div>
                     </div>
                     <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
                         <div style="font-size: 2rem; font-weight: bold; color: #06b6d4;" id="readingTime">0</div>
-                        <div style="font-size: 0.9rem; color: #6b7280;">Min. leitura</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;" data-i18n="textCounter.readingTime">Min. leitura</div>
                     </div>
                 </div>
 
                 <div class="result-actions">
-                    <button onclick="copyStats()" class="btn btn-secondary">Copiar Estatísticas</button>
-                    <button onclick="clearText()" class="btn btn-secondary">Limpar Texto</button>
+                    <button onclick="copyStats()" class="btn btn-secondary" data-i18n="textCounter.copyStats">Copiar Estatísticas</button>
+                    <button onclick="clearText()" class="btn btn-secondary" data-i18n="textCounter.clear">Limpar Texto</button>
                 </div>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Análise Detalhada</h3>
+            <h3 data-i18n="textCounter.detailedAnalysis">Análise Detalhada</h3>
             <div id="detailedStats">
-                <p><strong>Densidade de palavras:</strong> <span id="wordDensity">0</span> palavras por linha</p>
-                <p><strong>Tamanho médio das palavras:</strong> <span id="avgWordLength">0</span> caracteres</p>
-                <p><strong>Palavras mais comuns:</strong> <span id="commonWords">-</span></p>
+                <p><strong data-i18n="textCounter.wordDensity">Densidade de palavras:</strong> <span id="wordDensity">0</span> <span data-i18n="textCounter.wordsPerLine">palavras por linha</span></p>
+                <p><strong data-i18n="textCounter.avgWordLength">Tamanho médio das palavras:</strong> <span id="avgWordLength">0</span> <span data-i18n="textCounter.characters2">caracteres</span></p>
+                <p><strong data-i18n="textCounter.commonWords">Palavras mais comuns:</strong> <span id="commonWords">-</span></p>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Como usar o Contador de Texto</h3>
+            <h3 data-i18n="textCounter.howToUse">Como usar o Contador de Texto</h3>
             <ul>
-                <li>Digite ou cole seu texto na área de texto acima</li>
-                <li>As estatísticas são atualizadas automaticamente em tempo real</li>
-                <li>Use o botão "Copiar Estatísticas" para copiar um resumo das contagens</li>
-                <li>O tempo de leitura é calculado baseado em 200 palavras por minuto</li>
+                <li data-i18n="textCounter.howTo1">Digite ou cole seu texto na área de texto acima</li>
+                <li data-i18n="textCounter.howTo2">As estatísticas são atualizadas automaticamente em tempo real</li>
+                <li data-i18n="textCounter.howTo3">Use o botão "Copiar Estatísticas" para copiar um resumo das contagens</li>
+                <li data-i18n="textCounter.howTo4">O tempo de leitura é calculado baseado em 200 palavras por minuto</li>
             </ul>
 
-            <h3>Informações sobre as Métricas</h3>
+            <h3 data-i18n="textCounter.metricsInfo">Informações sobre as Métricas</h3>
             <ul>
-                <li><strong>Caracteres:</strong> Total de caracteres incluindo espaços e pontuação</li>
-                <li><strong>Sem espaços:</strong> Caracteres excluindo espaços em branco</li>
-                <li><strong>Palavras:</strong> Sequências de caracteres separadas por espaços</li>
-                <li><strong>Linhas:</strong> Número de quebras de linha no texto</li>
-                <li><strong>Parágrafos:</strong> Blocos de texto separados por linhas em branco</li>
+                <li><strong data-i18n="textCounter.charactersInfo">Caracteres:</strong> <span data-i18n="textCounter.charactersDesc">Total de caracteres incluindo espaços e pontuação</span></li>
+                <li><strong data-i18n="textCounter.noSpacesInfo">Sem espaços:</strong> <span data-i18n="textCounter.noSpacesDesc">Caracteres excluindo espaços em branco</span></li>
+                <li><strong data-i18n="textCounter.wordsInfo">Palavras:</strong> <span data-i18n="textCounter.wordsDesc">Sequências de caracteres separadas por espaços</span></li>
+                <li><strong data-i18n="textCounter.linesInfo">Linhas:</strong> <span data-i18n="textCounter.linesDesc">Número de quebras de linha no texto</span></li>
+                <li><strong data-i18n="textCounter.paragraphsInfo">Parágrafos:</strong> <span data-i18n="textCounter.paragraphsDesc">Blocos de texto separados por linhas em branco</span></li>
             </ul>
         </div>
     </main>
@@ -122,39 +122,39 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Ferramentas</h4>
+                    <h4 data-i18n="footer.tools">Ferramentas</h4>
                     <ul class="footer-links">
-                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
-                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
-                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
-                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                        <li><a href="converter-temperatura.html" data-i18n="footer.temperatureConverter">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html" data-i18n="footer.unitConverter">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html" data-i18n="footer.textCase">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html" data-i18n="footer.textCounter">Contador de Texto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Geradores</h4>
+                    <h4 data-i18n="footer.generators">Geradores</h4>
                     <ul class="footer-links">
-                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
-                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
-                        <li><a href="codificador-base64.html">Base64</a></li>
-                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                        <li><a href="gerar-qr-code.html" data-i18n="footer.qrGenerator">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html" data-i18n="footer.md5Generator">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html" data-i18n="footer.base64">Base64</a></li>
+                        <li><a href="timestamp-converter.html" data-i18n="footer.timestamp">Timestamp</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Sobre</h4>
+                    <h4 data-i18n="footer.about">Sobre</h4>
                     <ul class="footer-links">
-                        <li><a href="../about.html">Sobre Nós</a></li>
-                        <li><a href="../contact.html">Contato</a></li>
-                        <li><a href="../privacy.html">Privacidade</a></li>
-                        <li><a href="../terms.html">Termos de Uso</a></li>
+                        <li><a href="../about.html" data-i18n="footer.aboutUs">Sobre Nós</a></li>
+                        <li><a href="../contact.html" data-i18n="footer.contact">Contato</a></li>
+                        <li><a href="../privacy.html" data-i18n="footer.privacy">Privacidade</a></li>
+                        <li><a href="../terms.html" data-i18n="footer.terms">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>MyTools</h4>
-                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                    <h4 data-i18n="footer.mytools">MyTools</h4>
+                    <p data-i18n="footer.description">Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MyTools. Todos os direitos reservados.</p>
+                <p>&copy; 2025 MyTools. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
             </div>
         </div>
     </footer>

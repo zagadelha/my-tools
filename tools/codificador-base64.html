@@ -51,69 +51,69 @@
         <div class="form-container">
             <div class="form-group">
                 <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-                    <button id="encodeBtn" class="btn btn-primary" onclick="setMode('encode')">Codificar</button>
-                    <button id="decodeBtn" class="btn btn-secondary" onclick="setMode('decode')">Decodificar</button>
+                    <button id="encodeBtn" class="btn btn-primary" onclick="setMode('encode')" data-i18n="base64.encode">Codificar</button>
+                    <button id="decodeBtn" class="btn btn-secondary" onclick="setMode('decode')" data-i18n="base64.decode">Decodificar</button>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inputText" class="form-label" id="inputLabel">Texto para codificar:</label>
-                <textarea id="inputText" class="form-textarea" placeholder="Digite o texto aqui..." rows="6"></textarea>
+                <label for="inputText" class="form-label" id="inputLabel" data-i18n="base64.inputText">Texto para codificar:</label>
+                <textarea id="inputText" class="form-textarea" data-i18n-placeholder="base64.inputPlaceholder" placeholder="Digite o texto aqui..." rows="6"></textarea>
             </div>
 
             <div class="form-group">
-                <button onclick="processText()" class="btn btn-primary btn-full" id="processBtn">Codificar</button>
+                <button onclick="processText()" class="btn btn-primary btn-full" id="processBtn" data-i18n="base64.encode">Codificar</button>
             </div>
 
             <div class="form-group">
-                <label for="outputText" class="form-label" id="outputLabel">Resultado:</label>
-                <textarea id="outputText" class="form-textarea" placeholder="O resultado aparecerá aqui..." rows="6" readonly></textarea>
+                <label for="outputText" class="form-label" id="outputLabel" data-i18n="base64.outputText">Resultado:</label>
+                <textarea id="outputText" class="form-textarea" data-i18n-placeholder="base64.outputPlaceholder" placeholder="O resultado aparecerá aqui..." rows="6" readonly></textarea>
             </div>
 
             <div class="result-actions">
-                <button onclick="copyResult()" class="btn btn-secondary">Copiar Resultado</button>
-                <button onclick="swapTextAreas()" class="btn btn-secondary">Trocar ⇅</button>
-                <button onclick="clearAll()" class="btn btn-secondary">Limpar Tudo</button>
+                <button onclick="copyResult()" class="btn btn-secondary" data-i18n="base64.copyResult">Copiar Resultado</button>
+                <button onclick="swapTextAreas()" class="btn btn-secondary" data-i18n="base64.swap">Trocar ⇅</button>
+                <button onclick="clearAll()" class="btn btn-secondary" data-i18n="base64.clear">Limpar Tudo</button>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Codificação/Decodificação de Arquivos</h3>
+            <h3 data-i18n="base64.fileSection">Codificação/Decodificação de Arquivos</h3>
             <div class="form-group">
-                <label for="fileInput" class="form-label">Selecionar arquivo:</label>
+                <label for="fileInput" class="form-label" data-i18n="base64.selectFile">Selecionar arquivo:</label>
                 <input type="file" id="fileInput" class="form-input" accept=".txt,.json,.xml,.csv,.log">
             </div>
             <div class="form-group">
-                <button onclick="processFile()" class="btn btn-primary btn-full">Processar Arquivo</button>
+                <button onclick="processFile()" class="btn btn-primary btn-full" data-i18n="base64.processFile">Processar Arquivo</button>
             </div>
             <div class="form-group">
-                <label for="fileOutput" class="form-label">Resultado do arquivo:</label>
-                <textarea id="fileOutput" class="form-textarea" rows="4" readonly placeholder="O resultado do arquivo aparecerá aqui..."></textarea>
+                <label for="fileOutput" class="form-label" data-i18n="base64.fileResult">Resultado do arquivo:</label>
+                <textarea id="fileOutput" class="form-textarea" rows="4" readonly data-i18n-placeholder="base64.fileResultPlaceholder" placeholder="O resultado do arquivo aparecerá aqui..."></textarea>
             </div>
             <div class="result-actions">
-                <button onclick="copyFileResult()" class="btn btn-secondary">Copiar</button>
-                <button onclick="downloadResult()" class="btn btn-secondary">Download</button>
+                <button onclick="copyFileResult()" class="btn btn-secondary" data-i18n="base64.copy">Copiar</button>
+                <button onclick="downloadResult()" class="btn btn-secondary" data-i18n="base64.download">Download</button>
             </div>
         </div>
 
         <div class="form-container">
-            <h3>Sobre Base64</h3>
-            <p>Base64 é um método de codificação que converte dados binários em texto ASCII usando 64 caracteres específicos (A-Z, a-z, 0-9, +, /).</p>
+            <h3 data-i18n="base64.aboutSection">Sobre Base64</h3>
+            <p data-i18n="base64.aboutDescription">Base64 é um método de codificação que converte dados binários em texto ASCII usando 64 caracteres específicos (A-Z, a-z, 0-9, +, /).</p>
             
-            <h4>Quando usar Base64:</h4>
+            <h4 data-i18n="base64.whenToUse">Quando usar Base64:</h4>
             <ul>
-                <li><strong>Transmissão de dados:</strong> Para enviar dados binários por protocolos que só aceitam texto</li>
-                <li><strong>URLs e emails:</strong> Para incluir dados em URLs ou emails sem quebrar a formatação</li>
-                <li><strong>Armazenamento:</strong> Para salvar dados binários em bancos de dados que só aceitam texto</li>
-                <li><strong>APIs:</strong> Muitas APIs usam Base64 para transmitir imagens e outros arquivos</li>
+                <li><strong data-i18n="base64.dataTransmission">Transmissão de dados:</strong> <span data-i18n="base64.dataTransmissionDesc">Para enviar dados binários por protocolos que só aceitam texto</span></li>
+                <li><strong data-i18n="base64.urlsEmails">URLs e emails:</strong> <span data-i18n="base64.urlsEmailsDesc">Para incluir dados em URLs ou emails sem quebrar a formatação</span></li>
+                <li><strong data-i18n="base64.storage">Armazenamento:</strong> <span data-i18n="base64.storageDesc">Para salvar dados binários em bancos de dados que só aceitam texto</span></li>
+                <li><strong data-i18n="base64.apis">APIs:</strong> <span data-i18n="base64.apisDesc">Muitas APIs usam Base64 para transmitir imagens e outros arquivos</span></li>
             </ul>
 
-            <h4>Características:</h4>
+            <h4 data-i18n="base64.characteristics">Características:</h4>
             <ul>
-                <li>Não é criptografia - é apenas codificação</li>
-                <li>Aumenta o tamanho do dados em aproximadamente 33%</li>
-                <li>É reversível - você pode sempre decodificar de volta</li>
-                <li>É seguro para URLs e sistemas que não suportam caracteres especiais</li>
+                <li data-i18n="base64.notEncryption">Não é criptografia - é apenas codificação</li>
+                <li data-i18n="base64.sizeIncrease">Aumenta o tamanho do dados em aproximadamente 33%</li>
+                <li data-i18n="base64.reversible">É reversível - você pode sempre decodificar de volta</li>
+                <li data-i18n="base64.urlSafe">É seguro para URLs e sistemas que não suportam caracteres especiais</li>
             </ul>
         </div>
     </main>
@@ -122,39 +122,39 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>Ferramentas</h4>
+                    <h4 data-i18n="footer.tools">Ferramentas</h4>
                     <ul class="footer-links">
-                        <li><a href="converter-temperatura.html">Conversor de Temperatura</a></li>
-                        <li><a href="converter-medidas.html">Conversor de Medidas</a></li>
-                        <li><a href="texto-maiusculas-minusculas.html">Maiúsculas/Minúsculas</a></li>
-                        <li><a href="contador-texto.html">Contador de Texto</a></li>
+                        <li><a href="converter-temperatura.html" data-i18n="footer.temperatureConverter">Conversor de Temperatura</a></li>
+                        <li><a href="converter-medidas.html" data-i18n="footer.unitConverter">Conversor de Medidas</a></li>
+                        <li><a href="texto-maiusculas-minusculas.html" data-i18n="footer.textCase">Maiúsculas/Minúsculas</a></li>
+                        <li><a href="contador-texto.html" data-i18n="footer.textCounter">Contador de Texto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Geradores</h4>
+                    <h4 data-i18n="footer.generators">Geradores</h4>
                     <ul class="footer-links">
-                        <li><a href="gerar-qr-code.html">Gerador QR Code</a></li>
-                        <li><a href="gerador-md5.html">Gerador MD5</a></li>
-                        <li><a href="codificador-base64.html">Base64</a></li>
-                        <li><a href="timestamp-converter.html">Timestamp</a></li>
+                        <li><a href="gerar-qr-code.html" data-i18n="footer.qrGenerator">Gerador QR Code</a></li>
+                        <li><a href="gerador-md5.html" data-i18n="footer.md5Generator">Gerador MD5</a></li>
+                        <li><a href="codificador-base64.html" data-i18n="footer.base64">Base64</a></li>
+                        <li><a href="timestamp-converter.html" data-i18n="footer.timestamp">Timestamp</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Sobre</h4>
+                    <h4 data-i18n="footer.about">Sobre</h4>
                     <ul class="footer-links">
-                        <li><a href="../about.html">Sobre Nós</a></li>
-                        <li><a href="../contact.html">Contato</a></li>
-                        <li><a href="../privacy.html">Privacidade</a></li>
-                        <li><a href="../terms.html">Termos de Uso</a></li>
+                        <li><a href="../about.html" data-i18n="footer.aboutUs">Sobre Nós</a></li>
+                        <li><a href="../contact.html" data-i18n="footer.contact">Contato</a></li>
+                        <li><a href="../privacy.html" data-i18n="footer.privacy">Privacidade</a></li>
+                        <li><a href="../terms.html" data-i18n="footer.terms">Termos de Uso</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>MyTools</h4>
-                    <p>Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
+                    <h4 data-i18n="footer.mytools">MyTools</h4>
+                    <p data-i18n="footer.description">Ferramentas úteis e gratuitas para facilitar seu dia a dia.</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MyTools. Todos os direitos reservados.</p>
+                <p>&copy; 2025 MyTools. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
             </div>
         </div>
     </footer>
@@ -171,26 +171,45 @@
             const inputLabel = document.getElementById('inputLabel');
             const outputLabel = document.getElementById('outputLabel');
             const processBtn = document.getElementById('processBtn');
+            const inputText = document.getElementById('inputText');
 
             if (mode === 'encode') {
                 encodeBtn.className = 'btn btn-primary';
                 decodeBtn.className = 'btn btn-secondary';
-                inputLabel.textContent = 'Texto para codificar:';
-                outputLabel.textContent = 'Base64 codificado:';
-                processBtn.textContent = 'Codificar';
-                document.getElementById('inputText').placeholder = 'Digite o texto aqui...';
+                
+                // Use translations if available
+                if (window.i18nInstance) {
+                    inputLabel.textContent = window.i18nInstance.t('base64.inputTextEncode');
+                    outputLabel.textContent = window.i18nInstance.t('base64.outputTextEncode');
+                    processBtn.textContent = window.i18nInstance.t('base64.encode');
+                    inputText.placeholder = window.i18nInstance.t('base64.inputPlaceholderEncode');
+                } else {
+                    inputLabel.textContent = 'Texto para codificar:';
+                    outputLabel.textContent = 'Base64 codificado:';
+                    processBtn.textContent = 'Codificar';
+                    inputText.placeholder = 'Digite o texto aqui...';
+                }
             } else {
                 encodeBtn.className = 'btn btn-secondary';
                 decodeBtn.className = 'btn btn-primary';
-                inputLabel.textContent = 'Base64 para decodificar:';
-                outputLabel.textContent = 'Texto decodificado:';
-                processBtn.textContent = 'Decodificar';
-                document.getElementById('inputText').placeholder = 'Cole o Base64 aqui...';
+                
+                // Use translations if available
+                if (window.i18nInstance) {
+                    inputLabel.textContent = window.i18nInstance.t('base64.inputTextDecode');
+                    outputLabel.textContent = window.i18nInstance.t('base64.outputTextDecode');
+                    processBtn.textContent = window.i18nInstance.t('base64.decode');
+                    inputText.placeholder = window.i18nInstance.t('base64.inputPlaceholderDecode');
+                } else {
+                    inputLabel.textContent = 'Base64 para decodificar:';
+                    outputLabel.textContent = 'Texto decodificado:';
+                    processBtn.textContent = 'Decodificar';
+                    inputText.placeholder = 'Cole o Base64 aqui...';
+                }
             }
 
             // Auto process if there's content
-            const inputText = document.getElementById('inputText').value;
-            if (inputText.trim()) {
+            const inputValue = inputText.value;
+            if (inputValue.trim()) {
                 processText();
             }
         }
@@ -316,11 +335,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize i18n
             const i18n = new I18n();
+            window.i18nInstance = i18n;
             i18n.init();
+            
+            // Listen for language changes
+            document.addEventListener('languageChanged', function() {
+                setMode(currentMode); // Refresh labels when language changes
+            });
             
             setMode('encode');
             document.getElementById('inputText').focus();
-        
         });
     </script>
 </body>
