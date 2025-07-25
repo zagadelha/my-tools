@@ -21,6 +21,17 @@
     </script>
     
     <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Detecção imediata do navegador para CSS -->
+    <script>
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        window.isChrome = isChrome; // Expor globalmente
+        if (isChrome) {
+            document.documentElement.classList.add('chrome-browser');
+        } else {
+            document.documentElement.classList.add('non-chrome-browser');
+        }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -145,8 +156,8 @@
         </div>
     </footer>
 
-    <script src="../assets/js/main.js"></script>
     <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/main.js"></script>
     <script>
         function convertTemperature() {
             const temperature = parseFloat(document.getElementById('temperature').value);

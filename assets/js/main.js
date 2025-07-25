@@ -1,56 +1,208 @@
 // Main JavaScript for global functionality
+console.log('Main.js script loaded'); // Debug
+
+// Usar a variável isChrome já declarada no HTML
+console.log('Chrome detected in main.js:', window.isChrome);
+
+// Mostrar o seletor correto baseado no navegador
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    
-    if (navToggle && nav) {
-        navToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-        });
-    }
-
-    // Search functionality
-    const searchInput = document.querySelector('.search-input');
-    const toolCards = document.querySelectorAll('.tool-card');
-    
-    if (searchInput && toolCards.length > 0) {
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            
-            toolCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (nav && nav.classList.contains('active')) {
-            if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
-                nav.classList.remove('active');
-            }
+    if (window.isChrome) {
+        // Chrome: mostrar seletor HTML, esconder seletor i18n
+        const chromeSelector = document.querySelector('.language-selector-chrome');
+        const firefoxSelector = document.querySelector('.language-selector');
+        
+        if (chromeSelector) {
+            chromeSelector.style.display = 'inline-block';
         }
-    });
-
-    // Close mobile menu on language selector click
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.language-selector')) {
-            if (nav && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-            }
+        if (firefoxSelector) {
+            firefoxSelector.style.display = 'none';
         }
-    });
+    } else {
+        // Firefox: esconder seletor Chrome, mostrar seletor i18n
+        const chromeSelector = document.querySelector('.language-selector-chrome');
+        const firefoxSelector = document.querySelector('.language-selector');
+        
+        if (chromeSelector) {
+            chromeSelector.style.display = 'none';
+        }
+        if (firefoxSelector) {
+            firefoxSelector.style.display = 'inline-block';
+        }
+    }
 });
 
-// Utility functions
+// Função global para Chrome (deve estar disponível quando o HTML chamar)
+window.changeLanguageAndUpdateLinks = function(lang) {
+    console.log('Chrome: Changing language to:', lang);
+    
+    // Store in localStorage usando a mesma chave do i18n
+    try {
+        localStorage.setItem('mytools-lang', lang);
+    } catch (e) {
+        console.log('Could not store language');
+    }
+    
+    // Navigate to current page with language parameter
+    window.location.href = window.location.pathname + '?lang=' + lang;
+};
+
+if (window.isChrome) {
+    // Chrome-specific initialization
+    console.log('Using Chrome-specific main.js initialization');
+    
+    function initMainForChrome() {
+        try {
+            console.log('Main.js Chrome initialization attempt');
+            
+            // Mobile menu toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (navToggle && nav) {
+                navToggle.onclick = function() {
+                    console.log('Chrome: Nav toggle clicked'); // Debug
+                    nav.classList.toggle('active');
+                };
+            }
+            
+            // Simple menu close for Chrome
+            document.onclick = function(e) {
+                if (nav && nav.classList.contains('active')) {
+                    const isLanguageRelated = e.target.closest('.language-selector') || 
+                                            e.target.closest('.language-select');
+                    
+                    if (isLanguageRelated) {
+                        console.log('Chrome: Click on language selector, keeping menu open');
+                        return;
+                    }
+                    
+                    if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+                        console.log('Chrome: Closing menu due to outside click');
+                        nav.classList.remove('active');
+                    }
+                }
+            };
+            
+            console.log('Chrome main.js initialization complete');
+        } catch (error) {
+            console.error('Error in Chrome main.js:', error);
+        }
+    }
+    
+    // Try multiple initialization strategies for Chrome
+    initMainForChrome();
+    setTimeout(initMainForChrome, 10);
+    document.addEventListener('DOMContentLoaded', initMainForChrome);
+    
+} else {
+    // Standard initialization for other browsers (Firefox, etc.)
+    try {
+        document.addEventListener('DOMContentLoaded', function() {
+        console.log('Main.js DOMContentLoaded executed'); // Debug
+        
+        // Firefox: Garantir que apenas o seletor i18n seja visível
+        setTimeout(function() {
+            const chromeSelector = document.querySelector('.language-selector-chrome');
+            const firefoxSelector = document.querySelector('.language-selector:not(.language-selector-chrome)');
+            
+            if (chromeSelector) {
+                chromeSelector.style.display = 'none';
+                console.log('*** Firefox: Chrome selector hidden'); // Debug
+            }
+            
+            if (firefoxSelector) {
+                firefoxSelector.style.display = 'inline-block';
+                firefoxSelector.style.visibility = 'visible';
+                firefoxSelector.style.pointerEvents = 'auto';
+                console.log('*** Firefox: Firefox selector made visible and clickable'); // Debug
+                
+                const selectElement = firefoxSelector.querySelector('.language-select');
+                if (selectElement) {
+                    selectElement.style.pointerEvents = 'auto';
+                    selectElement.style.display = 'block';
+                    console.log('*** Firefox: Select element made clickable'); // Debug
+                }
+            }
+        }, 500);
+        
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const nav = document.querySelector('.nav');
+        
+        if (navToggle && nav) {
+            navToggle.addEventListener('click', function() {
+                console.log('Nav toggle clicked'); // Debug
+                nav.classList.toggle('active');
+            });
+            
+            // Firefox: Verificar se o seletor de idioma está sendo criado corretamente
+            setTimeout(function() {
+                const firefoxSelector = document.querySelector('.language-selector:not(.language-selector-chrome)');
+                const chromeSelector = document.querySelector('.language-selector-chrome');
+                console.log('*** Firefox Menu Debug: Firefox selector found:', !!firefoxSelector); // Debug
+                console.log('*** Firefox Menu Debug: Chrome selector found:', !!chromeSelector); // Debug
+                
+                if (firefoxSelector) {
+                    const selectElement = firefoxSelector.querySelector('.language-select');
+                    console.log('*** Firefox Menu Debug: Select element in Firefox selector:', !!selectElement); // Debug
+                    
+                    if (selectElement) {
+                        console.log('*** Firefox Menu Debug: Select element is visible:', getComputedStyle(selectElement).display !== 'none'); // Debug
+                        console.log('*** Firefox Menu Debug: Select element pointer events:', getComputedStyle(selectElement).pointerEvents); // Debug
+                    }
+                }
+            }, 1000);
+        }
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        const toolCards = document.querySelectorAll('.tool-card');
+        
+        if (searchInput && toolCards.length > 0) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                toolCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Simple menu close handler for Chrome compatibility
+        document.addEventListener('click', function(e) {
+            if (nav && nav.classList.contains('active')) {
+                // Check if clicked on language selector
+                const isLanguageRelated = e.target.closest('.language-selector') || 
+                                        e.target.closest('.language-select') ||
+                                        e.target.hasAttribute('data-no-close-menu');
+                
+                if (isLanguageRelated) {
+                    console.log('Click on language selector, keeping menu open'); // Debug
+                    return;
+                }
+                
+                // Close menu if clicked outside
+                if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+                    console.log('Closing menu due to outside click'); // Debug
+                    nav.classList.remove('active');
+                }
+            }
+        });
+    });
+} catch (error) {
+    console.error('Error in main.js:', error);
+}
+
+} // Fecha o bloco else
+
+// Utility functions (mantidas para compatibilidade)
 function copyToClipboard(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
         return navigator.clipboard.writeText(text).then(() => {

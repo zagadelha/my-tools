@@ -34,6 +34,17 @@
     <meta property="twitter:description" content="Coleção de ferramentas úteis online gratuitas: conversores, geradores, calculadoras e muito mais.">
     
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Detecção imediata do navegador para CSS -->
+    <script>
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        window.isChrome = isChrome; // Expor globalmente
+        if (isChrome) {
+            document.documentElement.classList.add('chrome-browser');
+        } else {
+            document.documentElement.classList.add('non-chrome-browser');
+        }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -50,6 +61,15 @@
                 </ul>
                 <div class="search-container">
                     <input type="text" class="search-input" data-i18n-placeholder="hero.searchPlaceholder" placeholder="Buscar ferramentas...">
+                    
+                    <!-- Chrome-compatible language selector (pure HTML/CSS) -->
+                    <div class="language-selector-chrome" onclick="event.stopPropagation();">
+                        <select class="language-select-chrome" onchange="changeLanguageAndUpdateLinks(this.value)">
+                            <option value="pt-BR" selected>🇧🇷 PT</option>
+                            <option value="en">🇺🇸 EN</option>
+                            <option value="es">🇪🇸 ES</option>
+                        </select>
+                    </div>
                 </div>
                 <!-- Language Selector will be added here by JavaScript -->
             </nav>
@@ -175,10 +195,89 @@
     <script src="assets/js/i18n.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-        // Initialize i18n system
+        console.log('Initialization script loaded'); // Debug
+        
+        // Chrome fallback - Simple URL-based language detection
+        function checkChromeLanguageParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            
+            if (langParam) {
+                console.log('Chrome: Language parameter detected:', langParam);
+                
+                // Update select value
+                const select = document.querySelector('.language-select-chrome');
+                if (select) {
+                    select.value = langParam;
+                }
+                
+                // Store in localStorage for persistence usando a mesma chave do i18n
+                try {
+                    localStorage.setItem('mytools-lang', langParam);
+                    console.log('Chrome: Language stored in localStorage');
+                } catch (e) {
+                    console.log('Chrome: Could not store language');
+                }
+                
+                // Remove parameter from URL to clean it up
+                const url = new URL(window.location);
+                url.searchParams.delete('lang');
+                window.history.replaceState({}, document.title, url.pathname);
+                
+                // Simple page reload to apply language (Chrome fallback)
+                if (document.documentElement.lang !== langParam) {
+                    console.log('Chrome: Setting page language');
+                    document.documentElement.lang = langParam;
+                }
+            } else {
+                // Check for stored language usando a mesma chave do i18n
+                try {
+                    const storedLang = localStorage.getItem('mytools-lang');
+                    if (storedLang) {
+                        const select = document.querySelector('.language-select-chrome');
+                        if (select) {
+                            select.value = storedLang;
+                        }
+                        document.documentElement.lang = storedLang;
+                    }
+                } catch (e) {
+                    console.log('Chrome: Could not read stored language');
+                }
+            }
+        }
+        
+        // Usar a variável isChrome do main.js (não redeclarar)
         document.addEventListener('DOMContentLoaded', function() {
-            const i18n = new I18n();
-            i18n.init();
+            // Verificar se é Chrome usando a variável global
+            if (window.isChrome || /Chrome/.test(navigator.userAgent)) {
+                // Abordagem específica para Chrome - URL parameters
+                console.log('Using Chrome-specific initialization');
+                checkChromeLanguageParam();
+            } else {
+                // Abordagem normal para outros navegadores (funciona no Firefox)
+                console.log('Using standard initialization for non-Chrome browser');
+                try {
+                    console.log('Initialization DOMContentLoaded triggered'); // Debug
+                    
+                    // Check if I18n class exists
+                    if (typeof I18n === 'undefined') {
+                        console.error('I18n class not found!');
+                        return;
+                    }
+                    
+                    const i18n = new I18n();
+                    console.log('I18n instance created:', i18n); // Debug
+                    
+                    if (typeof i18n.init === 'function') {
+                        i18n.init();
+                        console.log('I18n initialization complete'); // Debug
+                    } else {
+                        console.error('I18n.init is not a function!');
+                    }
+                } catch (error) {
+                    console.error('Error during initialization:', error);
+                }
+            }
         });
     </script>
 </body>

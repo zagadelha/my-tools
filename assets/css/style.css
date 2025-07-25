@@ -364,6 +364,9 @@ body {
     .search-container {
         margin-left: 0;
         margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
 
     .search-input {
@@ -410,6 +413,69 @@ body {
     position: relative;
     display: inline-block;
     margin-left: 1rem;
+    z-index: 10000; /* Garantir que fique acima de tudo */
+}
+
+.language-select {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+    min-width: 120px;
+    outline: none;
+}
+
+.language-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+/* Chrome-compatible language selector - sempre escondido por padrão */
+.language-selector-chrome {
+    display: none !important;
+}
+
+/* Firefox i18n selector - sempre visível por padrão */
+.language-selector {
+    display: inline-block !important;
+    position: relative;
+    margin-left: 1rem;
+    z-index: 10000;
+}
+
+.language-select-chrome {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+    min-width: 100px;
+    outline: none;
+    /* Garantir funcionamento no Chrome */
+    pointer-events: auto !important;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+}
+
+.language-select-chrome:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.language-select-chrome:hover {
+    background-color: #e9ecef;
 }
 
 .language-button {
@@ -424,12 +490,23 @@ body {
     font-size: 0.9rem;
     color: #333;
     transition: all 0.3s ease;
+    /* Garantir clicabilidade em mobile */
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    user-select: none;
     min-width: 70px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-.language-button:hover {
+.language-button:hover,
+.language-button:active {
     background-color: #f8f9fa;
     border-color: #2563eb;
+    transform: scale(0.98);
 }
 
 .language-button:focus {
@@ -482,7 +559,7 @@ body {
     border-radius: 6px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     min-width: 160px;
-    z-index: 1001;
+    z-index: 9999;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
@@ -505,14 +582,30 @@ body {
     border-bottom: 1px solid #f0f0f0;
     text-decoration: none;
     color: #333;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    /* Garantir clicabilidade */
+    pointer-events: auto !important;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    outline: none;
+    /* Chrome-specific fixes */
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
 }
 
 .language-option:last-child {
     border-bottom: none;
 }
 
-.language-option:hover {
+.language-option:hover,
+.language-option:active {
     background-color: #f8f9fa;
+    transform: scale(0.98);
 }
 
 .language-option.active {
@@ -559,21 +652,116 @@ body {
 
 /* Mobile Responsive Adjustments for Language Selector */
 @media (max-width: 768px) {
-    .language-selector {
+    /* Garantir que o seletor esteja bem posicionado dentro do nav mobile */
+    .nav .search-container .language-selector {
+        position: relative;
         margin-left: 0.5rem;
+        z-index: 10000;
+    }
+    
+    /* Posicionamento específico quando está no nav */
+    .nav .language-selector {
+        display: flex;
+        align-items: center;
+    }
+    
+    /* Chrome selector em mobile */
+    .language-selector-chrome {
+        margin-left: 0.5rem;
+        display: inline-block;
+    }
+    
+    .language-select-chrome {
+        min-width: 90px;
+        font-size: 0.85rem;
+        padding: 0.6rem 2rem 0.6rem 0.8rem;
+        min-height: 44px;
+        background-size: 0.8em;
+        background-position: right 0.5rem center;
     }
     
     .language-button {
-        padding: 0.4rem 0.6rem;
-        min-width: 60px;
+        padding: 0.6rem 0.8rem;
+        min-width: 70px;
+        font-size: 0.85rem;
+        min-height: 44px; /* Melhor área touch para mobile */
     }
     
     .language-dropdown {
-        min-width: 140px;
+        min-width: 150px;
         right: -10px;
+        /* Melhor posicionamento para mobile */
+        max-height: 70vh;
+        overflow-y: auto;
     }
     
     .language-option {
-        padding: 0.6rem;
+        padding: 0.8rem 0.6rem;
+        min-height: 44px; /* Área touch adequada */
+        font-size: 0.9rem;
+        /* Garantir que o elemento seja clicável em mobile */
+        position: relative;
+        display: block !important;
+        cursor: pointer;
+    }
+    
+    .language-option-text {
+        font-size: 0.85rem;
+    }
+    
+    /* Feedback visual melhor para touch - sem transform que pode interferir */
+    .language-option:active {
+        background-color: #e3f2fd !important;
+        /* Removido transform que pode causar problemas no Chrome mobile */
+    }
+    
+    .language-button:active {
+        background-color: #f0f0f0 !important;
+        /* Removido transform que pode causar problemas no Chrome mobile */
+    }
+}
+
+/* Específico para dispositivos muito pequenos (iPhone, etc) */
+@media (max-width: 480px) {
+    .language-selector {
+        margin-left: 0.25rem;
+    }
+    
+    .language-button {
+        padding: 0.7rem 0.9rem;
+        min-width: 75px;
+        min-height: 48px; /* Área ainda maior para iPhone */
+        font-size: 0.9rem;
+    }
+    
+    .language-dropdown {
+        min-width: 160px;
+        right: -15px;
+        /* Posicionamento otimizado para telas pequenas */
+        max-height: 60vh;
+        border-radius: 12px; /* Bordas mais arredondadas para mobile */
+    }
+    
+    .language-option {
+        padding: 1rem 0.8rem;
+        min-height: 48px; /* Área ainda maior para iPhone */
+        font-size: 1rem;
+        /* Garantir máxima área de toque */
+        touch-action: manipulation;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    .language-option-text {
+        font-size: 0.9rem;
+    }
+    
+    .language-option-name {
+        font-size: 0.95rem;
+    }
+    
+    .language-option-native {
+        font-size: 0.8rem;
     }
 }
