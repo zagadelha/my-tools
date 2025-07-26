@@ -24,7 +24,7 @@ class I18n {
 
     detectBrowserLanguage() {
         const browserLang = navigator.language || navigator.userLanguage;
-        const supportedLangs = ['pt-BR', 'en', 'es'];
+        const supportedLangs = ['en', 'es', 'pt-BR'];
         
         if (supportedLangs.includes(browserLang)) {
             return browserLang;
@@ -1860,10 +1860,10 @@ class I18n {
         console.log('Creating language selector...'); // Debug
         console.log('Current language for selector:', this.currentLang); // Debug
         
-        const languages = {
-            'pt-BR': { name: 'Português', flag: '🇧🇷', native: 'Português' },
+        const languages = {                    
             'en': { name: 'English', flag: '🇺🇸', native: 'English' },
-            'es': { name: 'Español', flag: '🇪🇸', native: 'Español' }
+            'es': { name: 'Español', flag: '🇪🇸', native: 'Español' },
+            'pt-BR': { name: 'Português', flag: '🇧🇷', native: 'Português' }
         };
 
         // Criar HTML diretamente como string para melhor compatibilidade
@@ -1972,7 +1972,7 @@ class I18n {
         dropdown.querySelectorAll('.language-option').forEach(option => {
             option.classList.remove('active');
         });
-        const index = ['pt-BR', 'en', 'es'].indexOf(activeCode) + 1;
+        const index = ['en', 'es', 'pt-BR'].indexOf(activeCode) + 1;
         const activeOption = dropdown.querySelector(`.language-option:nth-child(${index})`);
         if (activeOption) {
             activeOption.classList.add('active');
