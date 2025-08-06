@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/js/
+Disallow: /*.min.js
+Disallow: /*.min.css
+
+Sitemap: https://zagadelha.github.io/my-tools/sitemap.xml
