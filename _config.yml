@@ -1,0 +1,22 @@
+# GitHub Pages Configuration
+url: "https://mytools.guru"
+enforce_ssl: mytools.guru
+
+# Plugins
+plugins:
+  - jekyll-redirect-from
+
+# SEO
+title: "MyTools.guru - Ferramentas Online Gratuitas"
+description: "Ferramentas online gratuitas e seguras. Conversores, geradores e utilitários web que funcionam 100% no seu navegador."
+
+# Exclude files
+exclude:
+  - README.md
+  - node_modules/
+  - .gitignore
+  - .git/
+
+# Include files
+include:
+  - .htaccess
