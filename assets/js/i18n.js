@@ -1,17 +1,21 @@
 // Sistema de Internacionalizacao - MyTools
-console.log('i18n.js script loaded'); // Debug
+// Modo debug: defina como false para produção
+const DEBUG_MODE = false;
+const debugLog = DEBUG_MODE ? console.log.bind(console) : () => {};
+
+debugLog('i18n.js script loaded');
 
 class I18n {
     constructor() {
-        console.log('I18n constructor called'); // Debug
+        debugLog('I18n constructor called');
         try {
             const storedLang = this.getStoredLanguage();
             const browserLang = this.detectBrowserLanguage();
-            console.log('Stored language:', storedLang); // Debug
-            console.log('Browser language:', browserLang); // Debug
+            debugLog('Stored language:', storedLang);
+            debugLog('Browser language:', browserLang);
             
             this.currentLang = storedLang || browserLang;
-            console.log('Selected language:', this.currentLang); // Debug
+            debugLog('Selected language:', this.currentLang);
             
             this.translations = {};
             this.loadTranslations();
@@ -41,22 +45,22 @@ class I18n {
     getStoredLanguage() {
         try {
             // Debug da URL e domínio
-            console.log('*** Firefox Storage Debug: Current URL:', window.location.href); // Debug
-            console.log('*** Firefox Storage Debug: Current origin:', window.location.origin); // Debug
-            console.log('*** Firefox Storage Debug: Current protocol:', window.location.protocol); // Debug
+            debugLog('*** Firefox Storage Debug: Current URL:', window.location.href);
+            debugLog('*** Firefox Storage Debug: Current origin:', window.location.origin);
+            debugLog('*** Firefox Storage Debug: Current protocol:', window.location.protocol);
             
             const stored = localStorage.getItem('mytools-lang');
-            console.log('*** Firefox Storage Debug: Raw localStorage value:', stored); // Debug
-            console.log('*** Firefox Storage Debug: localStorage keys:', Object.keys(localStorage)); // Debug
+            debugLog('*** Firefox Storage Debug: Raw localStorage value:', stored);
+            debugLog('*** Firefox Storage Debug: localStorage keys:', Object.keys(localStorage));
             
             // Se localStorage estiver vazio, tentar cookies como backup
             if (!stored) {
                 const cookieValue = this.getCookieLanguage();
-                console.log('*** Firefox Storage Debug: Trying cookie backup:', cookieValue); // Debug
+                debugLog('*** Firefox Storage Debug: Trying cookie backup:', cookieValue);
                 if (cookieValue) {
                     // Restaurar no localStorage
                     localStorage.setItem('mytools-lang', cookieValue);
-                    console.log('*** Firefox Storage Debug: Restored from cookie to localStorage'); // Debug
+                    debugLog('*** Firefox Storage Debug: Restored from cookie to localStorage');
                     return cookieValue;
                 }
             }
@@ -65,7 +69,7 @@ class I18n {
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
                 if (key && (key.includes('lang') || key.includes('mytools'))) {
-                    console.log('*** Firefox Storage Debug: Found related key:', key, '=', localStorage.getItem(key)); // Debug
+                    debugLog('*** Firefox Storage Debug: Found related key:', key, '=', localStorage.getItem(key));
                 }
             }
             
@@ -102,20 +106,20 @@ class I18n {
             const expires = new Date();
             expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000)); // 1 ano
             document.cookie = `mytools-lang=${lang}; expires=${expires.toUTCString()}; path=/`;
-            console.log('*** Firefox Storage Debug: Cookie saved:', document.cookie); // Debug
+            debugLog('*** Firefox Storage Debug: Cookie saved:', document.cookie);
         } catch (error) {
             console.error('*** Firefox Storage Debug: Error saving cookie:', error); // Debug
         }
     }
 
     setStoredLanguage(lang) {
-        console.log('*** Firefox Storage Debug: Attempting to save language:', lang); // Debug
-        console.log('*** Firefox Storage Debug: Saving from URL:', window.location.href); // Debug
-        console.log('*** Firefox Storage Debug: Saving from origin:', window.location.origin); // Debug
+        debugLog('*** Firefox Storage Debug: Attempting to save language:', lang);
+        debugLog('*** Firefox Storage Debug: Saving from URL:', window.location.href);
+        debugLog('*** Firefox Storage Debug: Saving from origin:', window.location.origin);
         try {
             // Verificar o estado antes de salvar
             const before = localStorage.getItem('mytools-lang');
-            console.log('*** Firefox Storage Debug: Value before save:', before); // Debug
+            debugLog('*** Firefox Storage Debug: Value before save:', before);
             
             // Salvar tanto no localStorage quanto no cookie
             localStorage.setItem('mytools-lang', lang);
@@ -123,13 +127,13 @@ class I18n {
             
             // Verificar o estado após salvar
             const after = localStorage.getItem('mytools-lang');
-            console.log('*** Firefox Storage Debug: Value after save:', after); // Debug
-            console.log('*** Firefox Storage Debug: Save successful:', after === lang); // Debug
+            debugLog('*** Firefox Storage Debug: Value after save:', after);
+            debugLog('*** Firefox Storage Debug: Save successful:', after === lang);
             
             // Forçar um flush (algumas versões do Firefox precisam disso)
             if (typeof localStorage.flush === 'function') {
                 localStorage.flush();
-                console.log('*** Firefox Storage Debug: localStorage.flush() called'); // Debug
+                debugLog('*** Firefox Storage Debug: localStorage.flush() called');
             }
             
         } catch (error) {
@@ -1816,10 +1820,10 @@ class I18n {
     }
 
     setLanguage(lang) {
-        console.log('setLanguage called with:', lang); // Debug
-        console.log('Available translations:', Object.keys(this.translations)); // Debug
+        debugLog('setLanguage called with:', lang);
+        debugLog('Available translations:', Object.keys(this.translations));
         if (this.translations[lang]) {
-            console.log('Language found in translations, changing from', this.currentLang, 'to', lang); // Debug
+            debugLog('Language found in translations, changing from', this.currentLang, 'to', lang);
             this.currentLang = lang;
             this.setStoredLanguage(lang);
             this.updatePageContent();
@@ -1827,7 +1831,7 @@ class I18n {
             document.dispatchEvent(new CustomEvent('languageChanged', {
                 detail: { language: lang }
             }));
-            console.log('Language change completed successfully'); // Debug
+            debugLog('Language change completed successfully');
         } else {
             console.error('Language not found in translations:', lang); // Debug
         }
@@ -1857,8 +1861,8 @@ class I18n {
     }
 
     createLanguageSelector() {
-        console.log('Creating language selector...'); // Debug
-        console.log('Current language for selector:', this.currentLang); // Debug
+        debugLog('Creating language selector...');
+        debugLog('Current language for selector:', this.currentLang);
         
         const languages = {                    
             'en': { name: 'English', flag: '🇺🇸', native: 'English' },
@@ -1886,42 +1890,26 @@ class I18n {
         const selectElement = selector.querySelector('.language-select');
         const self = this;
         
-        console.log('*** Firefox: Adding event listener to select element:', selectElement); // Debug
-        console.log('*** Firefox: Select element found:', !!selectElement); // Debug
+        debugLog('*** Firefox: Adding event listener to select element:', selectElement);
+        debugLog('*** Firefox: Select element found:', !!selectElement);
         
         if (selectElement) {
             selectElement.addEventListener('change', function() {
-                console.log('*** Firefox: Selector change event triggered with value:', this.value); // Debug
-                console.log('*** Firefox: Previous language was:', self.currentLang); // Debug
-                console.log('*** Firefox: Calling setLanguage directly...'); // Debug
+                debugLog('*** Firefox: Selector change event triggered with value:', this.value);
+                debugLog('*** Firefox: Previous language was:', self.currentLang);
+                debugLog('*** Firefox: Calling setLanguage directly...');
                 self.setLanguage(this.value);
-                console.log('*** Firefox: setLanguage call completed, new language:', self.currentLang); // Debug
+                debugLog('*** Firefox: setLanguage call completed, new language:', self.currentLang);
             });
             
-            // Testar se o event listener foi adicionado
-            console.log('*** Firefox: Event listener added successfully'); // Debug
-            
-            // Adicionar também um evento de click para debug
-            selectElement.addEventListener('click', function() {
-                console.log('*** Firefox: Select element clicked!'); // Debug
-            });
-            
-            // Teste manual: adicionar um timer que verifica se o valor mudou
-            let lastValue = selectElement.value;
-            setInterval(function() {
-                if (selectElement.value !== lastValue) {
-                    console.log('*** Firefox: Manual detection - value changed from', lastValue, 'to', selectElement.value); // Debug
-                    lastValue = selectElement.value;
-                    self.setLanguage(selectElement.value);
-                }
-            }, 1000);
+            // Event listener adicionado com sucesso
             
         } else {
             console.error('*** Firefox: Select element not found!'); // Debug
         }
         
-        console.log('Language selector created:', selector); // Debug
-        console.log('Selected option in created selector:', selector.querySelector('option[selected]')?.value); // Debug
+        debugLog('Language selector created:', selector);
+        debugLog('Selected option in created selector:', selector.querySelector('option[selected]')?.value);
         return selector;
     }
 
@@ -1980,14 +1968,14 @@ class I18n {
     }
 
     init() {
-        console.log('I18n init() called'); // Debug
-        console.log('Current language on init:', this.currentLang); // Debug
-        console.log('Stored language on init:', this.getStoredLanguage()); // Debug
+        debugLog('I18n init() called');
+        debugLog('Current language on init:', this.currentLang);
+        debugLog('Stored language on init:', this.getStoredLanguage());
         try {
             // Verificar se há idioma salvo e aplicá-lo antes de continuar
             const storedLang = this.getStoredLanguage();
             if (storedLang && storedLang !== this.currentLang) {
-                console.log('Applying stored language:', storedLang); // Debug
+                debugLog('Applying stored language:', storedLang);
                 this.currentLang = storedLang;
             }
             
@@ -1996,11 +1984,11 @@ class I18n {
             // Criar função global simples para mudança de idioma
             const self = this;
             window.i18nChangeLanguage = function(lang) {
-                console.log('*** Firefox: Global language change function called with:', lang); // Debug
-                console.log('*** Firefox: Current language before change:', self.currentLang); // Debug
+                debugLog('*** Firefox: Global language change function called with:', lang);
+                debugLog('*** Firefox: Current language before change:', self.currentLang);
                 try {
                     self.setLanguage(lang);
-                    console.log('*** Firefox: Language changed successfully to:', lang); // Debug
+                    debugLog('*** Firefox: Language changed successfully to:', lang);
                 } catch (error) {
                     console.error('*** Firefox: Error changing language:', error);
                 }
@@ -2008,30 +1996,30 @@ class I18n {
             
             // Detectar se está em uma página de ferramenta ou página principal
             const isToolPage = window.location.pathname.includes('/tools/');
-            console.log('Is tool page:', isToolPage); // Debug
+            debugLog('Is tool page:', isToolPage);
             
             // Sempre usar o search-container para consistência
             const searchContainer = document.querySelector('.nav .search-container');
-            console.log('Search container found:', searchContainer); // Debug
+            debugLog('Search container found:', searchContainer);
             
             if (searchContainer) {
                 const selector = this.createLanguageSelector();
                 searchContainer.appendChild(selector);
-                console.log('Language selector added to search container'); // Debug
+                debugLog('Language selector added to search container');
                 
                 // Verificar se o seletor está mostrando o idioma correto
                 const selectElement = selector.querySelector('.language-select');
                 if (selectElement) {
-                    console.log('Setting selector value to:', this.currentLang); // Debug
+                    debugLog('Setting selector value to:', this.currentLang);
                     selectElement.value = this.currentLang;
-                    console.log('Selector value set to:', selectElement.value); // Debug
+                    debugLog('Selector value set to:', selectElement.value);
                 }
             } else {
-                console.log('Search container NOT found!'); // Debug
+                debugLog('Search container NOT found!');
             }
             
             window.i18n = this;
-            console.log('I18n setup complete, window.i18n assigned'); // Debug
+            debugLog('I18n setup complete, window.i18n assigned');
         } catch (error) {
             console.error('Error in I18n init():', error);
         }
@@ -2050,16 +2038,16 @@ if (typeof window !== 'undefined' && !window.i18nChangeLanguage) {
 
 // Chrome-specific auto-initialization (backup)
 if (typeof window !== 'undefined' && /Chrome/.test(navigator.userAgent)) {
-    console.log('Chrome detected - setting up backup initialization');
+    debugLog('Chrome detected - setting up backup initialization');
     
     // Tentar inicializar após um pequeno delay
     setTimeout(function() {
         if (!window.i18n && typeof I18n !== 'undefined') {
-            console.log('Chrome backup: Initializing I18n');
+            debugLog('Chrome backup: Initializing I18n');
             try {
                 const i18n = new I18n();
                 i18n.init();
-                console.log('Chrome backup initialization successful');
+                debugLog('Chrome backup initialization successful');
             } catch (error) {
                 console.error('Chrome backup initialization failed:', error);
             }
