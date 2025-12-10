@@ -186,3 +186,5 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ---
 
 **Feito com ❤️ para facilitar seu dia a dia**
+
+XXX
