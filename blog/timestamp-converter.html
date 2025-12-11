@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timestamp Unix: Guia Completo | Blog</title>
+<link rel="icon" href="../assets/img/favicon.ico">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>.article-container{max-width:800px;margin:2rem auto;padding:0 1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}.article-header{padding:3rem 2rem;background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%);color:#fff;border-radius:12px 12px 0 0;text-align:center}.article-title{font-size:2.5rem;margin-bottom:1rem}.article-content{padding:3rem 2rem;line-height:1.8}.article-content h2{font-size:1.875rem;margin:2.5rem 0 1rem;border-bottom:3px solid #2563eb}.cta-box{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:2rem;border-radius:12px;text-align:center;margin:3rem 0}.cta-button{display:inline-block;background:#fff;color:#667eea;padding:1rem 2rem;border-radius:8px;text-decoration:none;font-weight:700}.back-to-blog{display:inline-block;margin:2rem;color:#2563eb;text-decoration:none}</style>
+</head>
+<body>
+<header class="header">
+<div class="header-content">
+<a href="../index.html" class="logo"><img src="../assets/img/logo.png" alt="MyTools" class="logo-image"></a>
+<nav class="nav">
+<ul class="nav-list">
+<li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+<li><a href="index.html" class="nav-link" style="color:#2563eb" data-i18n="nav.blog">Blog</a></li>
+<li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+<li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
+</ul>
+<div class="search-container">
+<!-- Language selector will be inserted here -->
+</div>
+</nav>
+</div>
+</header>
+<main>
+<a href="index.html" class="back-to-blog" data-i18n="blog.backToBlog">← Blog</a>
+<article class="article-container">
+<header class="article-header">
+<h1 class="article-title" data-i18n="blog.articles.timestamp.title">⏰ Timestamp Unix: Guia Completo de Conversão</h1>
+</header>
+<div class="article-content">
+<p>Timestamp Unix é a forma universal de representar tempo em programação. Entenda como funciona e como usar em seus projetos.</p>
+<h2>🤔 O Que É Timestamp Unix?</h2>
+<p>Número de segundos desde 1º de janeiro de 1970 00:00:00 UTC (Unix Epoch). É um formato universal e independente de timezone.</p>
+<p><strong>Exemplo:</strong> 1733875200 = 10/Dez/2025 00:00:00 UTC</p>
+<h2>🎯 Por Que Usar Timestamp?</h2>
+<ul>
+<li><strong>Universal:</strong> Mesmo em todos os sistemas</li>
+<li><strong>Simples:</strong> Apenas um número inteiro</li>
+<li><strong>Fácil Comparação:</strong> Maior = mais recente</li>
+<li><strong>Timezone-Free:</strong> UTC sempre</li>
+<li><strong>Matemática Simples:</strong> Diferenças em segundos</li>
+<li><strong>Compacto:</strong> Menos espaço que strings de data</li>
+</ul>
+<h2>📅 Por Que 1970?</h2>
+<p>1º de janeiro de 1970 foi escolhido como ponto de referência pelos criadores do Unix. É chamado de "Unix Epoch" ou "Era Unix".</p>
+<h2>💻 Uso em Programação</h2>
+<h3>JavaScript</h3>
+<code>Date.now() // Timestamp em milissegundos<br>
+Math.floor(Date.now() / 1000) // Em segundos</code>
+<h3>Python</h3>
+<code>import time<br>
+time.time() # Timestamp atual</code>
+<h3>PHP</h3>
+<code>time() // Timestamp atual<br>
+date('Y-m-d H:i:s', $timestamp) // Converter</code>
+<h3>SQL</h3>
+<code>UNIX_TIMESTAMP() -- MySQL<br>
+strftime('%s', 'now') -- SQLite</code>
+<h2>🔄 Conversões Comuns</h2>
+<h3>Timestamp → Data Legível</h3>
+<p>1733875200 → "10/12/2025 00:00:00"</p>
+<h3>Data → Timestamp</h3>
+<p>"10/12/2025" → 1733875200</p>
+<h3>Diferença Entre Datas</h3>
+<p>timestamp2 - timestamp1 = segundos de diferença</p>
+<h2>📊 Aplicações Práticas</h2>
+<h3>1. Banco de Dados</h3>
+<p>Armazenar datas como INT é mais eficiente que DATETIME.</p>
+<h3>2. APIs</h3>
+<p>JSON com timestamps é padrão para comunicação entre sistemas.</p>
+<h3>3. Logs</h3>
+<p>Registrar eventos com precisão de segundo ou milissegundo.</p>
+<h3>4. Expiração</h3>
+<p>Tokens JWT, sessões, cache - tudo usa timestamps.</p>
+<h3>5. Ordenação</h3>
+<p>Ordenar posts, comentários, eventos por timestamp.</p>
+<div class="cta-box">
+<h3>Converta Timestamps Agora!</h3>
+<a href="../tools/timestamp-converter.html" class="cta-button">⏰ Acessar Conversor</a>
+</div>
+<h2>⚠️ Problemas Comuns</h2>
+<h3>1. Milissegundos vs Segundos</h3>
+<ul>
+<li><strong>Unix/PHP:</strong> Segundos (10 dígitos)</li>
+<li><strong>JavaScript:</strong> Milissegundos (13 dígitos)</li>
+</ul>
+<h3>2. Timezones</h3>
+<p>Timestamp é sempre UTC! Converta para timezone local na exibição.</p>
+<h3>3. Problema do Ano 2038</h3>
+<p>Sistemas 32-bit: máximo timestamp = 2147483647 (19/Jan/2038). Solução: usar 64-bit.</p>
+<h2>🌍 Timezones e UTC</h2>
+<p>Sempre armazene em UTC (timestamp), converta apenas para exibição:</p>
+<ul>
+<li><strong>Armazenar:</strong> 1733875200 (UTC)</li>
+<li><strong>Exibir Brasil:</strong> "09/12/2025 21:00" (UTC-3)</li>
+<li><strong>Exibir Japão:</strong> "10/12/2025 09:00" (UTC+9)</li>
+</ul>
+<h2>💡 Boas Práticas</h2>
+<ul>
+<li>✅ Sempre armazene em UTC/timestamp</li>
+<li>✅ Converta para timezone local apenas na exibição</li>
+<li>✅ Use bibliotecas como moment.js, date-fns</li>
+<li>✅ Documente se está usando segundos ou milissegundos</li>
+<li>✅ Considere precisão (segundo/milissegundo/microssegundo)</li>
+</ul>
+<h2>📚 Valores Especiais</h2>
+<ul>
+<li><strong>0:</strong> 1º/Jan/1970 00:00:00 UTC</li>
+<li><strong>1000000000:</strong> 9/Set/2001 01:46:40 UTC</li>
+<li><strong>1234567890:</strong> 13/Fev/2009 23:31:30 UTC</li>
+<li><strong>2147483647:</strong> 19/Jan/2038 03:14:07 UTC (limite 32-bit)</li>
+</ul>
+<h2>🔧 Calculando Diferenças</h2>
+<p><strong>Exemplo:</strong> Quanto tempo passou?</p>
+<code>
+const inicio = 1733870000;<br>
+const fim = 1733875200;<br>
+const diferenca = fim - inicio; // 5200 segundos<br>
+const horas = diferenca / 3600; // 1.44 horas
+</code>
+<h2>✨ Conclusão</h2>
+<p>Timestamp Unix é fundamental para qualquer desenvolvedor. Simples, universal e eficiente, é a melhor forma de trabalhar com datas e horários em sistemas computacionais.</p>
+<p>Use nossa ferramenta para converter facilmente entre timestamps e datas legíveis!</p>
+</div>
+</article>
+</main>
+<footer class="footer">
+<div class="footer-content">
+<p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
+</div>
+</footer>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/blog-translations.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+remover-acentos.html|contador-texto.html|gerar-qr-code.html|codificador-base64.html|gerador-md5.html|timestamp-converter.html
