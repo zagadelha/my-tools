@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://mytools.guru/blog/conversor-temperatura.html">
+    
+    <title>Guia Completo: Conversor de Temperatura | Blog</title>
+    <meta name="description" content="Aprenda tudo sobre conversão de temperatura entre Celsius, Fahrenheit e Kelvin. Fórmulas, exemplos práticos e dicas.">
+    <meta name="keywords" content="conversor temperatura, celsius fahrenheit, kelvin, conversão temperatura">
+    
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .article-header {
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .article-content {
+            padding: 3rem 2rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .article-content h2 {
+            font-size: 1.875rem;
+            color: #1f2937;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            color: #374151;
+            margin: 2rem 0 1rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box h4 {
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .formula-box {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .back-to-blog {
+            display: inline-block;
+            margin: 2rem 0;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-to-blog:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 1.75rem;
+            }
+
+            .article-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+    
+    <script>
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        window.isChrome = isChrome;
+        if (isChrome) {
+            document.documentElement.classList.add('chrome-browser');
+        } else {
+            document.documentElement.classList.add('non-chrome-browser');
+        }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../assets/img/logo.png" alt="MyTools Logo" class="logo-image">
+            </a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="index.html" class="nav-link" style="color: #2563eb;" data-i18n="nav.blog">Blog</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
+                </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-to-blog" style="margin-left: 2rem;" data-i18n="blog.backToBlog">← Blog</a>
+        
+        <article class="article-container">
+            <header class="article-header">
+                <h1 class="article-title" data-i18n="blog.articles.temperature.title">🌡️ Guia Completo: Conversor de Temperatura</h1>
+                <div class="article-meta">
+                    <span>📅 Dezembro 2025</span>
+                    <span>⏱️ 8 min de leitura</span>
+                    <span>🏷️ Conversores</span>
+                </div>
+            </header>
+
+            <div class="article-content">
+                <p>A temperatura é uma das medidas mais importantes do nosso dia a dia. Seja para verificar a previsão do tempo, cozinhar uma receita internacional ou trabalhar com experimentos científicos, saber converter entre diferentes escalas de temperatura é essencial.</p>
+
+                <div class="article-image"></div>
+
+                <h2>🎯 Por Que Existem Diferentes Escalas de Temperatura?</h2>
+                
+                <p>Você já se perguntou por que temos três escalas principais de temperatura? Cada uma foi desenvolvida em diferentes contextos históricos e geográficos:</p>
+
+                <ul>
+                    <li><strong>Celsius (°C)</strong> - Usada na maior parte do mundo, foi criada pelo astrônomo sueco Anders Celsius em 1742</li>
+                    <li><strong>Fahrenheit (°F)</strong> - Predominante nos Estados Unidos, criada por Daniel Gabriel Fahrenheit em 1724</li>
+                    <li><strong>Kelvin (K)</strong> - Escala absoluta usada principalmente em ciência, proposta por Lord Kelvin em 1848</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>💡 Curiosidade</h4>
+                    <p>A escala Kelvin é a única que não usa o símbolo de grau (°). Dizemos simplesmente "300 Kelvin", não "300 graus Kelvin"!</p>
+                </div>
+
+                <h2>📐 As Fórmulas de Conversão</h2>
+
+                <h3>Celsius para Fahrenheit</h3>
+                <div class="formula-box">
+                    °F = (°C × 9/5) + 32
+                </div>
+                <p><strong>Exemplo:</strong> 25°C = (25 × 9/5) + 32 = 77°F</p>
+
+                <h3>Fahrenheit para Celsius</h3>
+                <div class="formula-box">
+                    °C = (°F - 32) × 5/9
+                </div>
+                <p><strong>Exemplo:</strong> 77°F = (77 - 32) × 5/9 = 25°C</p>
+
+                <h3>Celsius para Kelvin</h3>
+                <div class="formula-box">
+                    K = °C + 273.15
+                </div>
+                <p><strong>Exemplo:</strong> 25°C = 25 + 273.15 = 298.15 K</p>
+
+                <h3>Kelvin para Celsius</h3>
+                <div class="formula-box">
+                    °C = K - 273.15
+                </div>
+                <p><strong>Exemplo:</strong> 298.15 K = 298.15 - 273.15 = 25°C</p>
+
+                <h2>📊 Tabela de Referência Rápida</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Celsius (°C)</th>
+                                <th>Fahrenheit (°F)</th>
+                                <th>Kelvin (K)</th>
+                                <th>Referência</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-273.15</td>
+                                <td>-459.67</td>
+                                <td>0</td>
+                                <td>Zero absoluto</td>
+                            </tr>
+                            <tr>
+                                <td>-40</td>
+                                <td>-40</td>
+                                <td>233.15</td>
+                                <td>Ponto de convergência</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>32</td>
+                                <td>273.15</td>
+                                <td>Ponto de congelamento da água</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>68</td>
+                                <td>293.15</td>
+                                <td>Temperatura ambiente confortável</td>
+                            </tr>
+                            <tr>
+                                <td>37</td>
+                                <td>98.6</td>
+                                <td>310.15</td>
+                                <td>Temperatura corporal humana</td>
+                            </tr>
+                            <tr>
+                                <td>100</td>
+                                <td>212</td>
+                                <td>373.15</td>
+                                <td>Ponto de ebulição da água</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>🌍 Aplicações Práticas no Dia a Dia</h2>
+
+                <h3>1. Previsão do Tempo</h3>
+                <p>Se você está planejando viajar para os Estados Unidos e vê que a previsão indica 75°F, pode rapidamente converter para Celsius e descobrir que são aproximadamente 24°C - um dia agradável!</p>
+
+                <h3>2. Culinária Internacional</h3>
+                <p>Muitas receitas americanas indicam temperaturas de forno em Fahrenheit. Saber converter é essencial para não queimar (ou deixar cru) seu prato. Por exemplo, 350°F (temperatura comum para assar) equivale a aproximadamente 177°C.</p>
+
+                <h3>3. Ciência e Pesquisa</h3>
+                <p>Em trabalhos científicos, a escala Kelvin é fundamental porque não possui valores negativos e representa a energia térmica absoluta. É especialmente importante em física, química e engenharia.</p>
+
+                <h3>4. Ar Condicionado e Aquecimento</h3>
+                <p>Ao comprar equipamentos importados, você pode encontrar especificações em diferentes escalas. Saber converter ajuda a escolher o produto adequado para suas necessidades.</p>
+
+                <div class="highlight-box">
+                    <h4>🎓 Dica Profissional</h4>
+                    <p>Uma regra rápida para conversão aproximada de Celsius para Fahrenheit: dobre o valor em Celsius e adicione 30. Por exemplo, 20°C ≈ (20 × 2) + 30 = 70°F. (O valor exato é 68°F, mas essa aproximação é útil para cálculos mentais rápidos!)</p>
+                </div>
+
+                <h2>❄️ Temperaturas Extremas: Curiosidades</h2>
+
+                <ul>
+                    <li><strong>A temperatura mais baixa possível</strong> é o zero absoluto: -273.15°C, -459.67°F ou 0 K</li>
+                    <li><strong>A temperatura mais alta já registrada na Terra</strong> foi de 56.7°C (134°F) no Vale da Morte, Califórnia</li>
+                    <li><strong>A temperatura mais baixa registrada na Terra</strong> foi de -89.2°C (-128.6°F) na Antártida</li>
+                    <li><strong>No espaço</strong>, a temperatura pode variar de -270°C a milhões de graus próximo às estrelas</li>
+                </ul>
+
+                <h2>🚀 Facilite Sua Vida com Nossa Ferramenta</h2>
+
+                <p>Esqueça cálculos manuais e fórmulas complicadas! Nossa ferramenta de conversão de temperatura faz tudo instantaneamente:</p>
+
+                <ul>
+                    <li>✅ Conversão em tempo real enquanto você digita</li>
+                    <li>✅ Suporte para Celsius, Fahrenheit e Kelvin</li>
+                    <li>✅ Interface intuitiva e fácil de usar</li>
+                    <li>✅ 100% gratuito e funciona no navegador</li>
+                    <li>✅ Não requer cadastro ou instalação</li>
+                    <li>✅ Responsivo - funciona em qualquer dispositivo</li>
+                </ul>
+
+                <div class="cta-box">
+                    <h3>Pronto para converter temperaturas?</h3>
+                    <p style="margin-bottom: 1.5rem;">Use nossa ferramenta gratuita agora mesmo!</p>
+                    <a href="../tools/converter-temperatura.html" class="cta-button">🌡️ Acessar Conversor de Temperatura</a>
+                </div>
+
+                <h2>📚 Perguntas Frequentes</h2>
+
+                <h3>Por que -40°C é igual a -40°F?</h3>
+                <p>É um ponto matemático especial onde as duas escalas se cruzam. Você pode verificar aplicando a fórmula de conversão!</p>
+
+                <h3>Posso ter temperaturas negativas em Kelvin?</h3>
+                <p>Não! A escala Kelvin começa no zero absoluto e não possui valores negativos. Por isso é chamada de escala absoluta.</p>
+
+                <h3>Qual escala é mais precisa?</h3>
+                <p>Todas as escalas são igualmente precisas. A escolha depende do contexto: Celsius para uso cotidiano, Fahrenheit nos EUA, e Kelvin para ciência.</p>
+
+                <h3>Como memorizar as fórmulas?</h3>
+                <p>Use nossa ferramenta online! Mas se precisar memorizar, lembre-se: para Celsius↔Fahrenheit, o 32 é o ponto de congelamento da água em °F, e 9/5 (ou 1.8) é o fator de conversão.</p>
+
+                <h2>✨ Conclusão</h2>
+
+                <p>Entender e converter temperaturas é uma habilidade valiosa que vai além da curiosidade científica. No mundo globalizado, onde receitas, previsões do tempo e especificações técnicas vêm de diferentes países, saber navegar entre as escalas de temperatura torna sua vida muito mais fácil.</p>
+
+                <p>Nossa ferramenta elimina a necessidade de memorizar fórmulas ou fazer cálculos manuais. Com apenas um clique, você tem conversões precisas e instantâneas, economizando tempo e evitando erros.</p>
+
+                <p><strong>Experimente agora e veja como é simples!</strong></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="../privacy.html">Privacidade</a>
+                <a href="../terms.html">Termos de Uso</a>
+                <a href="../contact.html">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/blog-translations.js"></script>
+</body>
+</html>

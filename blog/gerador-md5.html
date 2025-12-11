@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash MD5: Segurança e Verificação | Blog</title>
+<link rel="icon" href="../assets/img/favicon.ico">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>.article-container{max-width:800px;margin:2rem auto;padding:0 1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}.article-header{padding:3rem 2rem;background:linear-gradient(135deg,#d299c2 0%,#fef9d7 100%);color:#fff;border-radius:12px 12px 0 0;text-align:center}.article-title{font-size:2.5rem;margin-bottom:1rem}.article-content{padding:3rem 2rem;line-height:1.8}.article-content h2{font-size:1.875rem;margin:2.5rem 0 1rem;border-bottom:3px solid #2563eb}.cta-box{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:2rem;border-radius:12px;text-align:center;margin:3rem 0}.cta-button{display:inline-block;background:#fff;color:#667eea;padding:1rem 2rem;border-radius:8px;text-decoration:none;font-weight:700}.back-to-blog{display:inline-block;margin:2rem;color:#2563eb;text-decoration:none}</style>
+</head>
+<body>
+<header class="header">
+<div class="header-content">
+<a href="../index.html" class="logo"><img src="../assets/img/logo.png" alt="MyTools" class="logo-image"></a>
+<nav class="nav">
+<ul class="nav-list">
+<li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+<li><a href="index.html" class="nav-link" style="color:#2563eb" data-i18n="nav.blog">Blog</a></li>
+<li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+<li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
+</ul>
+<div class="search-container">
+<!-- Language selector will be inserted here -->
+</div>
+</nav>
+</div>
+</header>
+<main>
+<a href="index.html" class="back-to-blog" data-i18n="blog.backToBlog">← Blog</a>
+<article class="article-container">
+<header class="article-header">
+<h1 class="article-title" data-i18n="blog.articles.md5.title">🔒 Hash MD5: Segurança e Verificação de Integridade</h1>
+</header>
+<div class="article-content">
+<p>MD5 (Message-Digest Algorithm 5) é uma função hash criptográfica que gera uma "impressão digital" de 128 bits para qualquer dado. Entenda seus usos e limitações.</p>
+<h2>🤔 O Que É MD5?</h2>
+<p>Algoritmo que transforma qualquer entrada em uma string hexadecimal de 32 caracteres. Mesma entrada = sempre mesmo hash.</p>
+<p><strong>Exemplo:</strong> "Olá" → 5d41402abc4b2a76b9719d911017c592</p>
+<h2>🎯 Para Que Serve?</h2>
+<ul>
+<li><strong>Verificação de Integridade:</strong> Confirmar que arquivo não foi alterado</li>
+<li><strong>Checksums:</strong> Validar downloads</li>
+<li><strong>Deduplicação:</strong> Identificar arquivos duplicados</li>
+<li><strong>Cache Keys:</strong> Chaves únicas para caching</li>
+<li><strong>IDs Únicos:</strong> Gerar identificadores</li>
+</ul>
+<h2>💻 Verificando Downloads</h2>
+<ol>
+<li>Baixe um arquivo</li>
+<li>Gere hash MD5 do arquivo</li>
+<li>Compare com hash fornecido pelo site</li>
+<li>Hashes iguais = arquivo íntegro</li>
+</ol>
+<h2>⚠️ MD5 NÃO É Seguro Para Senhas!</h2>
+<p>MD5 foi quebrado em 2004. NÃO use para:</p>
+<ul>
+<li>❌ Armazenar senhas</li>
+<li>❌ Assinaturas digitais</li>
+<li>❌ Certificados SSL</li>
+<li>❌ Qualquer uso criptográfico crítico</li>
+</ul>
+<p><strong>Use SHA-256, SHA-3, ou bcrypt para segurança!</strong></p>
+<h2>✅ Quando Usar MD5</h2>
+<ul>
+<li>✅ Checksums de arquivos</li>
+<li>✅ IDs de cache</li>
+<li>✅ Detecção de duplicatas</li>
+<li>✅ ETags em HTTP</li>
+<li>✅ Particionamento de dados</li>
+</ul>
+<h2>🔍 Características do MD5</h2>
+<ul>
+<li><strong>Tamanho Fixo:</strong> Sempre 32 caracteres hex (128 bits)</li>
+<li><strong>Determinístico:</strong> Mesma entrada = mesmo hash</li>
+<li><strong>Rápido:</strong> Computação muito eficiente</li>
+<li><strong>Unidirecional:</strong> Impossível reverter (teoricamente)</li>
+<li><strong>Efeito Avalanche:</strong> Pequena mudança = hash totalmente diferente</li>
+</ul>
+<h2>📊 Exemplos Práticos</h2>
+<p><strong>Texto:</strong> "senha123"<br>
+<strong>MD5:</strong> 482c811da5d5b4bc6d497ffa98491e38</p>
+<p><strong>Texto:</strong> "Senha123" (S maiúsculo)<br>
+<strong>MD5:</strong> 9c42a1346e333a770904b2a2b37fa7d3</p>
+<p>Note como uma pequena mudança altera completamente o hash!</p>
+<div class="cta-box">
+<h3>Gere Hashes MD5 Agora!</h3>
+<a href="../tools/gerador-md5.html" class="cta-button">🔒 Acessar Gerador</a>
+</div>
+<h2>🛠️ Casos de Uso</h2>
+<h3>1. Verificação de Arquivos</h3>
+<p>Software ISO, pacotes Linux, arquivos grandes.</p>
+<h3>2. Git e Controle de Versão</h3>
+<p>Sistemas usam hashes para identificar commits e blobs.</p>
+<h3>3. CDN e Caching</h3>
+<p>ETags baseadas em MD5 para cache eficiente.</p>
+<h3>4. Detecção de Duplicatas</h3>
+<p>Armazenamento em nuvem usa hash para evitar duplicação.</p>
+<h2>🔐 Alternativas Mais Seguras</h2>
+<ul>
+<li><strong>SHA-256:</strong> Padrão moderno, 256 bits</li>
+<li><strong>SHA-3:</strong> Mais recente, diversas variantes</li>
+<li><strong>BLAKE2:</strong> Rápido e seguro</li>
+<li><strong>bcrypt/scrypt:</strong> Específicos para senhas</li>
+</ul>
+<h2>💡 Rainbow Tables</h2>
+<p>Tabelas pré-computadas de hashes. Por isso MD5 não serve para senhas - hackers têm bilhões de hashes comuns catalogados!</p>
+<h2>📚 História</h2>
+<ul>
+<li>Criado por Ronald Rivest em 1991</li>
+<li>Sucessor do MD4</li>
+<li>Amplamente usado até 2004</li>
+<li>Colisões encontradas em 2004</li>
+<li>Deprecado para segurança em 2010</li>
+</ul>
+<h2>✨ Conclusão</h2>
+<p>MD5 ainda é útil para verificação de integridade e checksums, mas NUNCA para segurança crítica. Use alternativas modernas como SHA-256 para aplicações sensíveis.</p>
+</div>
+</article>
+</main>
+<footer class="footer">
+<div class="footer-content">
+<p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
+</div>
+</footer>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/blog-translations.js"></script>
+</body>
+</html>

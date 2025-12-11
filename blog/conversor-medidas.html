@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://mytools.guru/blog/conversor-medidas.html">
+    
+    <title>Como Converter Medidas: Guia Definitivo | Blog</title>
+    <meta name="description" content="Domine conversões de comprimento, peso, volume e área. Tabelas de referência e casos de uso práticos.">
+    
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .article-header {
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+        }
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        .article-content {
+            padding: 3rem 2rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+        .article-content h2 {
+            font-size: 1.875rem;
+            color: #1f2937;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #2563eb;
+        }
+        .article-content h3 {
+            font-size: 1.5rem;
+            color: #374151;
+            margin: 2rem 0 1rem;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .article-content ul, .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight-box h4 {
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        .formula-box {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .cta-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        .back-to-blog {
+            display: inline-block;
+            margin: 2rem 0;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-to-blog:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 1.75rem;
+            }
+            .article-content {
+                padding: 2rem 1.5rem;
+            }
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+    
+    <script>
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        window.isChrome = isChrome;
+        if (isChrome) {
+            document.documentElement.classList.add('chrome-browser');
+        } else {
+            document.documentElement.classList.add('non-chrome-browser');
+        }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../assets/img/logo.png" alt="MyTools Logo" class="logo-image">
+            </a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="index.html" class="nav-link" style="color: #2563eb;" data-i18n="nav.blog">Blog</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
+                </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-to-blog" style="margin-left: 2rem;" data-i18n="blog.backToBlog">← Blog</a>
+        
+        <article class="article-container">
+            <header class="article-header">
+                <h1 class="article-title" data-i18n="blog.articles.units.title">📏 Como Converter Medidas: Guia Definitivo</h1>
+                <div class="article-meta">
+                    <span>📅 Dezembro 2025</span>
+                    <span>⏱️ 10 min de leitura</span>
+                    <span>🏷️ Conversores</span>
+                </div>
+            </header>
+
+            <div class="article-content">
+                <p>Converter medidas é uma habilidade essencial no mundo moderno. Seja para seguir receitas internacionais, fazer compras online, trabalhar com projetos de construção ou entender especificações técnicas, dominar conversões de unidades facilita muito nossa vida.</p>
+
+                <div class="article-image"></div>
+
+                <h2>🌍 Sistema Métrico vs Sistema Imperial</h2>
+                
+                <p>O mundo usa principalmente dois sistemas de medição:</p>
+
+                <ul>
+                    <li><strong>Sistema Métrico (SI)</strong> - Usado na maior parte do mundo, baseado em potências de 10</li>
+                    <li><strong>Sistema Imperial</strong> - Usado principalmente nos EUA, baseado em unidades históricas</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>💡 Curiosidade</h4>
+                    <p>Apenas três países no mundo não adotaram oficialmente o sistema métrico: Estados Unidos, Libéria e Myanmar!</p>
+                </div>
+
+                <h2>📐 Conversões de Comprimento</h2>
+
+                <h3>Unidades Métricas</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Unidade</th>
+                                <th>Símbolo</th>
+                                <th>Equivalência</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Quilômetro</td>
+                                <td>km</td>
+                                <td>1.000 metros</td>
+                            </tr>
+                            <tr>
+                                <td>Metro</td>
+                                <td>m</td>
+                                <td>Unidade base</td>
+                            </tr>
+                            <tr>
+                                <td>Centímetro</td>
+                                <td>cm</td>
+                                <td>0,01 metros</td>
+                            </tr>
+                            <tr>
+                                <td>Milímetro</td>
+                                <td>mm</td>
+                                <td>0,001 metros</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Conversões Métrico ↔ Imperial</h3>
+                <div class="formula-box">
+                    1 metro = 3.281 pés = 39.37 polegadas<br>
+                    1 quilômetro = 0.621 milhas<br>
+                    1 polegada = 2.54 centímetros<br>
+                    1 milha = 1.609 quilômetros
+                </div>
+
+                <h2>⚖️ Conversões de Peso/Massa</h2>
+
+                <h3>Unidades Comuns</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Métrico</th>
+                                <th>Imperial</th>
+                                <th>Conversão</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1 quilograma (kg)</td>
+                                <td>2.205 libras (lb)</td>
+                                <td>1 kg = 2.205 lb</td>
+                            </tr>
+                            <tr>
+                                <td>1 grama (g)</td>
+                                <td>0.035 onças (oz)</td>
+                                <td>1 g = 0.035 oz</td>
+                            </tr>
+                            <tr>
+                                <td>1 tonelada métrica</td>
+                                <td>2.204,6 libras</td>
+                                <td>1000 kg</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🎓 Dica Profissional</h4>
+                    <p>Para conversão rápida de kg para libras, multiplique por 2,2. Exemplo: 70 kg ≈ 154 libras (70 × 2,2)</p>
+                </div>
+
+                <h2>🥤 Conversões de Volume</h2>
+
+                <h3>Líquidos - Sistema Métrico</h3>
+                <ul>
+                    <li>1 litro (L) = 1.000 mililitros (ml)</li>
+                    <li>1 litro = 10 decilitros (dl)</li>
+                    <li>1 mililitro = 1 centímetro cúbico (cm³)</li>
+                </ul>
+
+                <h3>Líquidos - Conversões Internacionais</h3>
+                <div class="formula-box">
+                    1 litro = 33.814 onças fluidas (fl oz) = 4.227 xícaras (cups)<br>
+                    1 galão (US) = 3.785 litros<br>
+                    1 xícara = 240 ml<br>
+                    1 colher de sopa = 15 ml
+                </div>
+
+                <h2>📐 Conversões de Área</h2>
+
+                <h3>Unidades de Área Comuns</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Unidade</th>
+                                <th>Equivalência</th>
+                                <th>Uso Comum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Metro quadrado (m²)</td>
+                                <td>Unidade base</td>
+                                <td>Apartamentos, casas</td>
+                            </tr>
+                            <tr>
+                                <td>Hectare (ha)</td>
+                                <td>10.000 m²</td>
+                                <td>Fazendas, terrenos grandes</td>
+                            </tr>
+                            <tr>
+                                <td>Quilômetro quadrado (km²)</td>
+                                <td>1.000.000 m²</td>
+                                <td>Cidades, países</td>
+                            </tr>
+                            <tr>
+                                <td>Acre</td>
+                                <td>4.047 m²</td>
+                                <td>Propriedades rurais (EUA)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>🏗️ Aplicações Práticas</h2>
+
+                <h3>1. Culinária</h3>
+                <p>Receitas internacionais frequentemente usam diferentes unidades. Saber que 1 xícara americana equivale a 240ml ajuda a adaptar qualquer receita.</p>
+
+                <h3>2. Construção e Reforma</h3>
+                <p>Materiais de construção podem vir com especificações em diferentes unidades. Converter corretamente evita desperdício e erro nas compras.</p>
+
+                <h3>3. Compras Online Internacionais</h3>
+                <p>Roupas, móveis e equipamentos importados usam medidas diferentes. Converter polegadas para centímetros ajuda a escolher o tamanho correto.</p>
+
+                <h3>4. Viagens</h3>
+                <p>Entender que 100 km/h equivale a aproximadamente 62 mph ajuda a dirigir com segurança em países que usam o sistema imperial.</p>
+
+                <h2>🎯 Exemplos Práticos do Dia a Dia</h2>
+
+                <div class="highlight-box">
+                    <h4>📱 Exemplo: Comprando TV</h4>
+                    <p>TVs são vendidas em polegadas. Uma TV de 55" = 55 × 2,54 = 139,7 cm de diagonal</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>🏃 Exemplo: Corrida</h4>
+                    <p>Uma maratona tem 42,195 km ou 26,219 milhas. Um atleta que corre a 12 km/h está fazendo aproximadamente 7,5 mph.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>✈️ Exemplo: Bagagem de Viagem</h4>
+                    <p>Limite de 23 kg em voos internacionais = aproximadamente 50,7 libras</p>
+                </div>
+
+                <h2>💡 Dicas para Memorizar Conversões</h2>
+
+                <ul>
+                    <li><strong>Use referências do corpo:</strong> 1 polegada ≈ largura do polegar; 1 pé ≈ comprimento do pé</li>
+                    <li><strong>Arredonde para facilitar:</strong> 1 kg ≈ 2,2 lb pode ser arredondado para 2 lb em cálculos rápidos</li>
+                    <li><strong>Pratique com exemplos comuns:</strong> Uma garrafa de refrigerante (2L), uma régua (30cm), seu peso</li>
+                    <li><strong>Use nossa ferramenta:</strong> Calcule sempre que precisar até que as conversões se tornem naturais</li>
+                </ul>
+
+                <h2>🚀 Simplifique com Nossa Ferramenta</h2>
+
+                <p>Pare de buscar tabelas e fórmulas! Nossa ferramenta faz todas as conversões instantaneamente:</p>
+
+                <ul>
+                    <li>✅ Conversão em tempo real</li>
+                    <li>✅ Suporta comprimento, peso, volume e área</li>
+                    <li>✅ Dezenas de unidades disponíveis</li>
+                    <li>✅ Interface simples e intuitiva</li>
+                    <li>✅ Funciona offline no navegador</li>
+                    <li>✅ Totalmente gratuito</li>
+                </ul>
+
+                <div class="cta-box">
+                    <h3>Pronto para converter medidas?</h3>
+                    <p style="margin-bottom: 1.5rem;">Use nossa ferramenta completa agora mesmo!</p>
+                    <a href="../tools/converter-medidas.html" class="cta-button">📏 Acessar Conversor de Medidas</a>
+                </div>
+
+                <h2>📚 Perguntas Frequentes</h2>
+
+                <h3>Por que o sistema métrico é baseado em 10?</h3>
+                <p>Para facilitar conversões! Basta mover a vírgula decimal. 1 km = 1.000 m, 1 m = 100 cm, etc.</p>
+
+                <h3>Qual sistema é mais preciso?</h3>
+                <p>Ambos são igualmente precisos. O sistema métrico é considerado mais prático por suas conversões simples.</p>
+
+                <h3>Como converter receitas americanas?</h3>
+                <p>Use equivalências: 1 cup = 240ml, 1 tablespoon = 15ml, 1 teaspoon = 5ml. Nossa ferramenta faz isso automaticamente!</p>
+
+                <h3>Devo arredondar os valores?</h3>
+                <p>Depende do contexto. Para culinária, pequenos arredondamentos são aceitáveis. Para engenharia, use valores precisos.</p>
+
+                <h2>✨ Conclusão</h2>
+
+                <p>Dominar conversões de medidas abre portas para um mundo globalizado. Seja cozinhando uma receita francesa, comprando produtos chineses ou trabalhando com especificações americanas, a habilidade de converter unidades é indispensável.</p>
+
+                <p>Nossa ferramenta elimina a necessidade de memorizar fórmulas complexas ou buscar tabelas de conversão. Com apenas alguns cliques, você tem acesso a conversões precisas e confiáveis para todas as situações do seu dia a dia.</p>
+
+                <p><strong>Experimente agora e facilite suas conversões!</strong></p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="../privacy.html">Privacidade</a>
+                <a href="../terms.html">Termos de Uso</a>
+                <a href="../contact.html">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/blog-translations.js"></script>
+</body>
+</html>

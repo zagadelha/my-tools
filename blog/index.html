@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://mytools.guru/blog/">
+    
+    <title>Blog - MyTools | Dicas e Tutoriais sobre Ferramentas Online</title>
+    <meta name="description" content="Aprenda a usar ferramentas online gratuitas com nossos tutoriais e guias completos. Dicas, exemplos práticos e casos de uso.">
+    <meta name="keywords" content="blog ferramentas online, tutoriais, guias, dicas, exemplos práticos">
+    
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .blog-card-excerpt {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: #9ca3af;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .blog-card-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-card-tag {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .blog-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    <script>
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        window.isChrome = isChrome;
+        if (isChrome) {
+            document.documentElement.classList.add('chrome-browser');
+        } else {
+            document.documentElement.classList.add('non-chrome-browser');
+        }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <img src="../assets/img/logo.png" alt="MyTools Logo" class="logo-image">
+            </a>
+            <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+                    <li><a href="index.html" class="nav-link" style="color: #2563eb;" data-i18n="nav.blog">Blog</a></li>
+                    <li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+                    <li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
+                </ul>
+                <div class="search-container">
+                    <!-- Language selector will be inserted here -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <h1 data-i18n="blog.title">📝 Blog</h1>
+            <p data-i18n="blog.subtitle">Tutoriais, dicas e guias completos sobre como aproveitar ao máximo nossas ferramentas online gratuitas</p>
+        </section>
+
+        <section class="blog-grid">
+            <a href="conversor-temperatura.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.temperature.title">🌡️ Guia Completo: Conversor de Temperatura</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.temperature.excerpt">Aprenda tudo sobre conversão de temperatura entre Celsius, Fahrenheit e Kelvin. Entenda as fórmulas, quando usar cada escala e exemplos práticos do dia a dia.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.temperature.tag">Conversores</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="conversor-medidas.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.units.title">📏 Como Converter Medidas: Guia Definitivo</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.units.excerpt">Domine conversões de comprimento, peso, volume e área. Tabelas de referência, dicas práticas e casos de uso comuns para facilitar seu dia a dia.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.units.tag">Conversores</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="texto-maiusculas-minusculas.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.textCase.title">🔤 Formatação de Texto: Maiúsculas e Minúsculas</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.textCase.excerpt">Transforme textos facilmente com nossas ferramentas de capitalização. Aprenda as melhores práticas de formatação e quando usar cada estilo.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.textCase.tag">Texto</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="remover-acentos.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.removeAccents.title">✂️ Remover Acentos: Quando e Como Usar</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.removeAccents.excerpt">Descubra por que remover acentos é importante para URLs, programação e SEO. Tutorial completo com exemplos práticos e casos de uso.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.removeAccents.tag">Texto</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="contador-texto.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.textCounter.title">🔢 Contador de Palavras e Caracteres: Guia Prático</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.textCounter.excerpt">Otimize seus textos para redes sociais, SEO e redação. Aprenda limites de caracteres, contagem de palavras e boas práticas de escrita.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.textCounter.tag">Texto</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="gerar-qr-code.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.qrCode.title">📱 QR Code: Como Criar e Usar Efetivamente</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.qrCode.excerpt">Guia completo sobre QR Codes: criação, personalização, melhores práticas e ideias criativas para marketing, eventos e negócios.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.qrCode.tag">Geradores</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="codificador-base64.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.base64.title">🔐 Base64: O Que É e Como Funciona</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.base64.excerpt">Entenda a codificação Base64, suas aplicações em desenvolvimento web, envio de imagens e dados, com exemplos práticos e tutoriais.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.base64.tag">Codificação</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="gerador-md5.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.md5.title">🔒 Hash MD5: Segurança e Verificação de Integridade</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.md5.excerpt">Aprenda sobre hashes MD5, verificação de arquivos, segurança de dados e como usar checksums para garantir integridade de informações.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.md5.tag">Segurança</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="timestamp-converter.html" class="blog-card">
+                <div class="blog-card-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+                <div class="blog-card-content">
+                    <h2 class="blog-card-title" data-i18n="blog.articles.timestamp.title">⏰ Timestamp Unix: Guia Completo de Conversão</h2>
+                    <p class="blog-card-excerpt" data-i18n="blog.articles.timestamp.excerpt">Domine timestamps Unix: o que são, como converter, aplicações em programação e banco de dados, com exemplos práticos e dicas úteis.</p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date" data-i18n="blog.date">📅 Dezembro 2025</span>
+                        <span class="blog-card-tag" data-i18n="blog.articles.timestamp.tag">Data/Hora</span>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="../privacy.html" data-i18n="footer.privacy">Privacidade</a>
+                <a href="../terms.html" data-i18n="footer.terms">Termos de Uso</a>
+                <a href="../contact.html" data-i18n="footer.contact">Contato</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/i18n.js"></script>
+</body>
+</html>

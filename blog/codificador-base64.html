@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64: O Que É e Como Funciona | Blog</title>
+<link rel="icon" href="../assets/img/favicon.ico">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>.article-container{max-width:800px;margin:2rem auto;padding:0 1rem;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}.article-header{padding:3rem 2rem;background:linear-gradient(135deg,#a1c4fd 0%,#c2e9fb 100%);color:#fff;border-radius:12px 12px 0 0;text-align:center}.article-title{font-size:2.5rem;margin-bottom:1rem}.article-content{padding:3rem 2rem;line-height:1.8}.article-content h2{font-size:1.875rem;margin:2.5rem 0 1rem;border-bottom:3px solid #2563eb}.cta-box{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:2rem;border-radius:12px;text-align:center;margin:3rem 0}.cta-button{display:inline-block;background:#fff;color:#667eea;padding:1rem 2rem;border-radius:8px;text-decoration:none;font-weight:700}.back-to-blog{display:inline-block;margin:2rem;color:#2563eb;text-decoration:none}</style>
+</head>
+<body>
+<header class="header">
+<div class="header-content">
+<a href="../index.html" class="logo"><img src="../assets/img/logo.png" alt="MyTools" class="logo-image"></a>
+<nav class="nav">
+<ul class="nav-list">
+<li><a href="../index.html" class="nav-link" data-i18n="nav.home">Início</a></li>
+<li><a href="index.html" class="nav-link" style="color:#2563eb" data-i18n="nav.blog">Blog</a></li>
+<li><a href="../about.html" class="nav-link" data-i18n="nav.about">Sobre</a></li>
+<li><a href="../contact.html" class="nav-link" data-i18n="nav.contact">Contato</a></li>
+</ul>
+<div class="search-container">
+<!-- Language selector will be inserted here -->
+</div>
+</nav>
+</div>
+</header>
+<main>
+<a href="index.html" class="back-to-blog" data-i18n="blog.backToBlog">← Blog</a>
+<article class="article-container">
+<header class="article-header">
+<h1 class="article-title" data-i18n="blog.articles.base64.title">🔐 Base64: O Que É e Como Funciona</h1>
+</header>
+<div class="article-content">
+<p>Base64 é um método de codificação que converte dados binários em texto ASCII. Essencial para desenvolvimento web, APIs e transmissão de dados.</p>
+<h2>🤔 O Que É Base64?</h2>
+<p>Sistema de codificação que representa dados binários usando 64 caracteres ASCII seguros: A-Z, a-z, 0-9, +, /</p>
+<h2>🎯 Para Que Serve?</h2>
+<ul>
+<li><strong>Imagens Inline:</strong> Embutir imagens em HTML/CSS</li>
+<li><strong>Emails:</strong> Anexos e imagens em HTML</li>
+<li><strong>APIs:</strong> Transmitir arquivos em JSON</li>
+<li><strong>Autenticação:</strong> Basic Auth em headers HTTP</li>
+<li><strong>Data URIs:</strong> Imagens sem requests extras</li>
+<li><strong>Certificados:</strong> Armazenar chaves e certificados</li>
+</ul>
+<h2>💻 Exemplo Prático</h2>
+<p><strong>Texto:</strong> Olá Mundo</p>
+<p><strong>Base64:</strong> T2zDoSBNdW5kbw==</p>
+<h2>🌐 Uso em Desenvolvimento Web</h2>
+<h3>1. Imagens Inline</h3>
+<p>Embutir imagens pequenas diretamente no HTML/CSS reduz requests HTTP:</p>
+<code>&lt;img src="data:image/png;base64,iVBORw0KG..." /&gt;</code>
+<h3>2. Favicon</h3>
+<p>Incluir favicon sem arquivo extra.</p>
+<h3>3. Fontes Web</h3>
+<p>Embutir fontes customizadas em CSS.</p>
+<h2>⚠️ Quando NÃO Usar</h2>
+<ul>
+<li><strong>Imagens Grandes:</strong> Aumenta tamanho em 33%</li>
+<li><strong>Performance:</strong> Cache não funciona</li>
+<li><strong>SEO:</strong> Imagens inline não são indexadas</li>
+<li><strong>Manutenção:</strong> Difícil atualizar</li>
+</ul>
+<h2>🔒 Base64 NÃO É Criptografia!</h2>
+<p>Base64 é CODIFICAÇÃO, não criptografia. Qualquer um pode decodificar. Não use para dados sensíveis!</p>
+<h2>📊 Vantagens e Desvantagens</h2>
+<h3>Vantagens</h3>
+<ul>
+<li>Fácil transmissão via texto</li>
+<li>Compatible com JSON/XML</li>
+<li>Reduz requests HTTP</li>
+<li>Funciona em sistemas legados</li>
+</ul>
+<h3>Desvantagens</h3>
+<ul>
+<li>Aumenta tamanho em ~33%</li>
+<li>Não cacheable</li>
+<li>Processamento adicional</li>
+<li>Não é seguro</li>
+</ul>
+<div class="cta-box">
+<h3>Codifique e Decodifique Base64!</h3>
+<a href="../tools/codificador-base64.html" class="cta-button">🔐 Acessar Codificador</a>
+</div>
+<h2>💡 Casos de Uso Práticos</h2>
+<h3>1. API REST</h3>
+<p>Enviar arquivos em JSON sem multipart/form-data.</p>
+<h3>2. Basic Authentication</h3>
+<p>Header: Authorization: Basic base64(username:password)</p>
+<h3>3. JWT Tokens</h3>
+<p>JWTs usam Base64 URL-safe para codificar payloads.</p>
+<h3>4. Email Marketing</h3>
+<p>Imagens inline em newsletters HTML.</p>
+<h2>🔧 Base64 URL-Safe</h2>
+<p>Variante que substitui caracteres problemáticos em URLs:</p>
+<ul>
+<li>+ → -</li>
+<li>/ → _</li>
+<li>= → omitido</li>
+</ul>
+<h2>📚 Curiosidades</h2>
+<ul>
+<li>Base64 foi criado nos anos 1980</li>
+<li>É padrão em MIME (emails)</li>
+<li>Navegadores modernos suportam nativamente</li>
+<li>Python, JavaScript, PHP têm funções nativas</li>
+</ul>
+</div>
+</article>
+</main>
+<footer class="footer">
+<div class="footer-content">
+<p data-i18n="footer.copyright">&copy; 2025 MyTools. Todos os direitos reservados.</p>
+</div>
+</footer>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/blog-translations.js"></script>
+</body>
+</html>

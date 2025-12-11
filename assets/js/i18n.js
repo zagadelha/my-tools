@@ -146,6 +146,7 @@ class I18n {
             'pt-BR': {
                 nav: {
                     home: 'Início',
+                    blog: 'Blog',
                     about: 'Sobre',
                     contact: 'Contato'
                 },
@@ -230,6 +231,73 @@ class I18n {
                 messages: {
                     copied: 'Copiado para a área de transferência!',
                     copyError: 'Erro ao copiar texto'
+                },
+                blog: {
+                    title: 'Blog',
+                    subtitle: 'Tutoriais, dicas e guias completos sobre como aproveitar ao máximo nossas ferramentas online gratuitas',
+                    readMore: 'Ler mais',
+                    articles: {
+                        temperature: {
+                            title: 'Guia Completo: Conversor de Temperatura',
+                            excerpt: 'Aprenda tudo sobre conversão de temperatura entre Celsius, Fahrenheit e Kelvin. Entenda as fórmulas, quando usar cada escala e exemplos práticos do dia a dia.',
+                            tag: 'Conversores'
+                        },
+                        units: {
+                            title: 'Como Converter Medidas: Guia Definitivo',
+                            excerpt: 'Domine conversões de comprimento, peso, volume e área. Tabelas de referência, dicas práticas e casos de uso comuns para facilitar seu dia a dia.',
+                            tag: 'Conversores'
+                        },
+                        textCase: {
+                            title: 'Formatação de Texto: Maiúsculas e Minúsculas',
+                            excerpt: 'Transforme textos facilmente com nossas ferramentas de capitalização. Aprenda as melhores práticas de formatação e quando usar cada estilo.',
+                            tag: 'Texto'
+                        },
+                        removeAccents: {
+                            title: 'Remover Acentos: Quando e Como Usar',
+                            excerpt: 'Descubra por que remover acentos é importante para URLs, programação e SEO. Tutorial completo com exemplos práticos e casos de uso.',
+                            tag: 'Texto'
+                        },
+                        textCounter: {
+                            title: 'Contador de Palavras e Caracteres: Guia Prático',
+                            excerpt: 'Otimize seus textos para redes sociais, SEO e redação. Aprenda limites de caracteres, contagem de palavras e boas práticas de escrita.',
+                            tag: 'Texto'
+                        },
+                        qrCode: {
+                            title: 'QR Code: Como Criar e Usar Efetivamente',
+                            excerpt: 'Guia completo sobre QR Codes: criação, personalização, melhores práticas e ideias criativas para marketing, eventos e negócios.',
+                            tag: 'Geradores'
+                        },
+                        base64: {
+                            title: 'Base64: O Que É e Como Funciona',
+                            excerpt: 'Entenda a codificação Base64, suas aplicações em desenvolvimento web, envio de imagens e dados, com exemplos práticos e tutoriais.',
+                            tag: 'Codificação'
+                        },
+                        md5: {
+                            title: 'Hash MD5: Segurança e Verificação de Integridade',
+                            excerpt: 'Aprenda sobre hashes MD5, verificação de arquivos, segurança de dados e como usar checksums para garantir integridade de informações.',
+                            tag: 'Segurança'
+                        },
+                        timestamp: {
+                            title: 'Timestamp Unix: Guia Completo de Conversão',
+                            excerpt: 'Domine timestamps Unix: o que são, como converter, aplicações em programação e banco de dados, com exemplos práticos e dicas úteis.',
+                            tag: 'Data/Hora'
+                        }
+                    },
+                    date: 'Dezembro 2025',
+                    backToBlog: '← Blog',
+                    ctaButton: 'Usar Ferramenta',
+                    common: {
+                        whatIs: 'O Que É',
+                        mainUses: 'Usos Principais',
+                        howToUse: 'Como Usar',
+                        bestPractices: 'Melhores Práticas',
+                        examples: 'Exemplos Práticos',
+                        tips: 'Dicas',
+                        benefits: 'Benefícios',
+                        applications: 'Aplicações',
+                        security: 'Segurança',
+                        commonUses: 'Casos de Uso Comuns'
+                    }
                 },
                 about: {
                     title: 'Sobre o MyTools',
@@ -696,6 +764,7 @@ class I18n {
             'en': {
                 nav: {
                     home: 'Home',
+                    blog: 'Blog',
                     about: 'About',
                     contact: 'Contact'
                 },
@@ -780,6 +849,73 @@ class I18n {
                 messages: {
                     copied: 'Copied to clipboard!',
                     copyError: 'Error copying text'
+                },
+                blog: {
+                    title: 'Blog',
+                    subtitle: 'Tutorials, tips and complete guides on how to make the most of our free online tools',
+                    readMore: 'Read more',
+                    articles: {
+                        temperature: {
+                            title: 'Complete Guide: Temperature Converter',
+                            excerpt: 'Learn everything about temperature conversion between Celsius, Fahrenheit and Kelvin. Understand the formulas, when to use each scale and practical everyday examples.',
+                            tag: 'Converters'
+                        },
+                        units: {
+                            title: 'How to Convert Measurements: Definitive Guide',
+                            excerpt: 'Master conversions of length, weight, volume and area. Reference tables, practical tips and common use cases to make your day easier.',
+                            tag: 'Converters'
+                        },
+                        textCase: {
+                            title: 'Text Formatting: Uppercase and Lowercase',
+                            excerpt: 'Transform texts easily with our capitalization tools. Learn formatting best practices and when to use each style.',
+                            tag: 'Text'
+                        },
+                        removeAccents: {
+                            title: 'Remove Accents: When and How to Use',
+                            excerpt: 'Discover why removing accents is important for URLs, programming and SEO. Complete tutorial with practical examples and use cases.',
+                            tag: 'Text'
+                        },
+                        textCounter: {
+                            title: 'Word and Character Counter: Practical Guide',
+                            excerpt: 'Optimize your texts for social media, SEO and writing. Learn character limits, word counting and good writing practices.',
+                            tag: 'Text'
+                        },
+                        qrCode: {
+                            title: 'QR Code: How to Create and Use Effectively',
+                            excerpt: 'Complete guide about QR Codes: creation, customization, best practices and creative ideas for marketing, events and business.',
+                            tag: 'Generators'
+                        },
+                        base64: {
+                            title: 'Base64: What It Is and How It Works',
+                            excerpt: 'Understand Base64 encoding, its applications in web development, sending images and data, with practical examples and tutorials.',
+                            tag: 'Encoding'
+                        },
+                        md5: {
+                            title: 'MD5 Hash: Security and Integrity Verification',
+                            excerpt: 'Learn about MD5 hashes, file verification, data security and how to use checksums to ensure information integrity.',
+                            tag: 'Security'
+                        },
+                        timestamp: {
+                            title: 'Unix Timestamp: Complete Conversion Guide',
+                            excerpt: 'Master Unix timestamps: what they are, how to convert, applications in programming and databases, with practical examples and useful tips.',
+                            tag: 'Date/Time'
+                        }
+                    },
+                    date: 'December 2025',
+                    backToBlog: '← Blog',
+                    ctaButton: 'Use Tool',
+                    common: {
+                        whatIs: 'What Is',
+                        mainUses: 'Main Uses',
+                        howToUse: 'How to Use',
+                        bestPractices: 'Best Practices',
+                        examples: 'Practical Examples',
+                        tips: 'Tips',
+                        benefits: 'Benefits',
+                        applications: 'Applications',
+                        security: 'Security',
+                        commonUses: 'Common Use Cases'
+                    }
                 },
                 about: {
                     title: 'About MyTools',
@@ -1246,6 +1382,7 @@ class I18n {
             'es': {
                 nav: {
                     home: 'Inicio',
+                    blog: 'Blog',
                     about: 'Acerca de',
                     contact: 'Contacto'
                 },
@@ -1330,6 +1467,73 @@ class I18n {
                 messages: {
                     copied: '¡Copiado al portapapeles!',
                     copyError: 'Error al copiar texto'
+                },
+                blog: {
+                    title: 'Blog',
+                    subtitle: 'Tutoriales, consejos y guías completas sobre cómo aprovechar al máximo nuestras herramientas online gratuitas',
+                    readMore: 'Leer más',
+                    articles: {
+                        temperature: {
+                            title: 'Guía Completa: Conversor de Temperatura',
+                            excerpt: 'Aprende todo sobre conversión de temperatura entre Celsius, Fahrenheit y Kelvin. Entiende las fórmulas, cuándo usar cada escala y ejemplos prácticos del día a día.',
+                            tag: 'Conversores'
+                        },
+                        units: {
+                            title: 'Cómo Convertir Medidas: Guía Definitiva',
+                            excerpt: 'Domina conversiones de longitud, peso, volumen y área. Tablas de referencia, consejos prácticos y casos de uso comunes para facilitar tu día a día.',
+                            tag: 'Conversores'
+                        },
+                        textCase: {
+                            title: 'Formato de Texto: Mayúsculas y Minúsculas',
+                            excerpt: 'Transforma textos fácilmente con nuestras herramientas de capitalización. Aprende las mejores prácticas de formato y cuándo usar cada estilo.',
+                            tag: 'Texto'
+                        },
+                        removeAccents: {
+                            title: 'Remover Acentos: Cuándo y Cómo Usar',
+                            excerpt: 'Descubre por qué remover acentos es importante para URLs, programación y SEO. Tutorial completo con ejemplos prácticos y casos de uso.',
+                            tag: 'Texto'
+                        },
+                        textCounter: {
+                            title: 'Contador de Palabras y Caracteres: Guía Práctica',
+                            excerpt: 'Optimiza tus textos para redes sociales, SEO y redacción. Aprende límites de caracteres, conteo de palabras y buenas prácticas de escritura.',
+                            tag: 'Texto'
+                        },
+                        qrCode: {
+                            title: 'Código QR: Cómo Crear y Usar Efectivamente',
+                            excerpt: 'Guía completa sobre Códigos QR: creación, personalización, mejores prácticas e ideas creativas para marketing, eventos y negocios.',
+                            tag: 'Generadores'
+                        },
+                        base64: {
+                            title: 'Base64: Qué Es y Cómo Funciona',
+                            excerpt: 'Entiende la codificación Base64, sus aplicaciones en desarrollo web, envío de imágenes y datos, con ejemplos prácticos y tutoriales.',
+                            tag: 'Codificación'
+                        },
+                        md5: {
+                            title: 'Hash MD5: Seguridad y Verificación de Integridad',
+                            excerpt: 'Aprende sobre hashes MD5, verificación de archivos, seguridad de datos y cómo usar checksums para garantizar integridad de información.',
+                            tag: 'Seguridad'
+                        },
+                        timestamp: {
+                            title: 'Timestamp Unix: Guía Completa de Conversión',
+                            excerpt: 'Domina timestamps Unix: qué son, cómo convertir, aplicaciones en programación y bases de datos, con ejemplos prácticos y consejos útiles.',
+                            tag: 'Fecha/Hora'
+                        }
+                    },
+                    date: 'Diciembre 2025',
+                    backToBlog: '← Blog',
+                    ctaButton: 'Usar Herramienta',
+                    common: {
+                        whatIs: 'Qué Es',
+                        mainUses: 'Usos Principales',
+                        howToUse: 'Cómo Usar',
+                        bestPractices: 'Mejores Prácticas',
+                        examples: 'Ejemplos Prácticos',
+                        tips: 'Consejos',
+                        benefits: 'Beneficios',
+                        applications: 'Aplicaciones',
+                        security: 'Seguridad',
+                        commonUses: 'Casos de Uso Comunes'
+                    }
                 },
                 about: {
                     title: 'Acerca de MyTools',
