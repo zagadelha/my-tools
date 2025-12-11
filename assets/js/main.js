@@ -1,12 +1,8 @@
 // Main JavaScript for global functionality
-// Modo debug: defina como false para produção
-const DEBUG_MODE = false;
-const debugLog = DEBUG_MODE ? console.log.bind(console) : () => {};
-
-debugLog('Main.js script loaded');
+console.log('Main.js script loaded'); // Debug
 
 // Usar a variável isChrome já declarada no HTML
-debugLog('Chrome detected in main.js:', window.isChrome);
+console.log('Chrome detected in main.js:', window.isChrome);
 
 // Mostrar o seletor correto baseado no navegador
 document.addEventListener('DOMContentLoaded', function() {
@@ -64,7 +60,7 @@ if (window.isChrome) {
             
             if (navToggle && nav) {
                 navToggle.onclick = function() {
-                    debugLog('Chrome: Nav toggle clicked');
+                    console.log('Chrome: Nav toggle clicked');
                     nav.classList.toggle('active');
                 };
             }
@@ -102,7 +98,7 @@ if (window.isChrome) {
     // Standard initialization for other browsers (Firefox, etc.)
     try {
         document.addEventListener('DOMContentLoaded', function() {
-        debugLog('Main.js DOMContentLoaded executed');
+        console.log('Main.js DOMContentLoaded executed');
         
         // Firefox: Garantir que apenas o seletor i18n seja visível
         setTimeout(function() {
@@ -111,20 +107,20 @@ if (window.isChrome) {
             
             if (chromeSelector) {
                 chromeSelector.style.display = 'none';
-                debugLog('*** Firefox: Chrome selector hidden');
+                console.log('*** Firefox: Chrome selector hidden');
             }
             
             if (firefoxSelector) {
                 firefoxSelector.style.display = 'inline-block';
                 firefoxSelector.style.visibility = 'visible';
                 firefoxSelector.style.pointerEvents = 'auto';
-                debugLog('*** Firefox: Firefox selector made visible and clickable');
+                console.log('*** Firefox: Firefox selector made visible and clickable');
                 
                 const selectElement = firefoxSelector.querySelector('.language-select');
                 if (selectElement) {
                     selectElement.style.pointerEvents = 'auto';
                     selectElement.style.display = 'block';
-                    debugLog('*** Firefox: Select element made clickable');
+                    console.log('*** Firefox: Select element made clickable');
                 }
             }
         }, 500);
@@ -135,7 +131,7 @@ if (window.isChrome) {
         
         if (navToggle && nav) {
             navToggle.addEventListener('click', function() {
-                debugLog('Nav toggle clicked');
+                console.log('Nav toggle clicked');
                 nav.classList.toggle('active');
             });
             
@@ -143,16 +139,16 @@ if (window.isChrome) {
             setTimeout(function() {
                 const firefoxSelector = document.querySelector('.language-selector:not(.language-selector-chrome)');
                 const chromeSelector = document.querySelector('.language-selector-chrome');
-                debugLog('*** Firefox Menu Debug: Firefox selector found:', !!firefoxSelector);
-                debugLog('*** Firefox Menu Debug: Chrome selector found:', !!chromeSelector);
+                console.log('*** Firefox Menu Debug: Firefox selector found:', !!firefoxSelector);
+                console.log('*** Firefox Menu Debug: Chrome selector found:', !!chromeSelector);
                 
                 if (firefoxSelector) {
                     const selectElement = firefoxSelector.querySelector('.language-select');
-                    debugLog('*** Firefox Menu Debug: Select element in Firefox selector:', !!selectElement);
+                    console.log('*** Firefox Menu Debug: Select element in Firefox selector:', !!selectElement);
                     
                     if (selectElement) {
-                        debugLog('*** Firefox Menu Debug: Select element is visible:', getComputedStyle(selectElement).display !== 'none');
-                        debugLog('*** Firefox Menu Debug: Select element pointer events:', getComputedStyle(selectElement).pointerEvents);
+                        console.log('*** Firefox Menu Debug: Select element is visible:', getComputedStyle(selectElement).display !== 'none');
+                        console.log('*** Firefox Menu Debug: Select element pointer events:', getComputedStyle(selectElement).pointerEvents);
                     }
                 }
             }, 1000);
@@ -188,13 +184,13 @@ if (window.isChrome) {
                                         e.target.hasAttribute('data-no-close-menu');
                 
                 if (isLanguageRelated) {
-                    debugLog('Click on language selector, keeping menu open');
+                    console.log('Click on language selector, keeping menu open');
                     return;
                 }
                 
                 // Close menu if clicked outside
                 if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
-                    debugLog('Closing menu due to outside click');
+                    console.log('Closing menu due to outside click');
                     nav.classList.remove('active');
                 }
             }
