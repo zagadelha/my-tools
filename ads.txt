@@ -1,0 +1,6 @@
+# Ads.txt - Managed by Ezoic
+# This file will be automatically updated by GitHub Actions
+
+ezoic.com, 19390, DIRECT
+ezoic.com, 19390, DIRECT, 6a698e2ec38604c6
+google.com, pub-9440970032217316, RESELLER, f08c47fec0942fa0
